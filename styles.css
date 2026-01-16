@@ -1156,6 +1156,26 @@ h2::after {
     color: white;
 }
 
+.social-btn.twitter {
+    color: #000000;
+    border-color: #000000;
+}
+
+.social-btn.twitter:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.social-btn.facebook {
+    color: #1877F2;
+    border-color: #1877F2;
+}
+
+.social-btn.facebook:hover {
+    background-color: #1877F2;
+    color: white;
+}
+
 /* Footer */
 footer {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
