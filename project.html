@@ -88,26 +88,21 @@
                                     <span class="badge rounded-pill bg-primary">Optimization</span>
                                 </div>
                                 <hr>
-                                <p><strong>Part 1 (Divide2Conquer):</strong> Introduced the Divide2Conquer (D2C) method,
-                                    which partitions training data to train identical models independently on each
-                                    subset, aggregating parameters periodically to limit the impact of individual
-                                    outliers/noise and mitigate overfitting. Published at IEEE BigData 2024.</p>
+                                <p>Designed a Zero-Shot, context-aware video anomaly detection framework that detects
+                                    unseen abnormal events without requiring anomaly samples during training, leveraging
+                                    spatiotemporal prediction and semantic context.</p>
+                                <p>Tech Stack: Python, PyTorch, Hugging Face Transformers, TimeSformer, CLIP, DPC-RNN,
+                                    CNN, Contrastive & Zero-Shot Learning, InfoNCE/CPC losses, OpenCV, UCF-Crime
+                                    dataset. </p>
+                                <p>Proposed a dual-stream architecture combining TimeSformer based spatiotemporal
+                                    transformers, DPC-based predictive modeling, and CLIP vision–language alignment to
+                                    enable pure zero-shot anomaly detection. </p>
+                                <p>The model outperformed multiple state-of-the-art zero-shot and vision-only baselines
+                                    while reducing false alarms via scene-aware context conditioning. </p>
                                 <div class="mb-3">
-                                    <a href="https://doi.org/10.1109/BigData62323.2024.10826082"
-                                        class="btn btn-outline-primary btn-sm" target="_blank"><i
-                                            class="fas fa-external-link-alt me-1"></i> Paper</a>
+                                    <a href="https://arxiv.org/pdf/2508.18463" class="btn btn-outline-primary btn-sm"
+                                        target="_blank"><i class="fas fa-external-link-alt me-1"></i> Paper</a>
                                     <a href="https://github.com/Saiful185/Divide2Conquer"
-                                        class="btn btn-outline-primary btn-sm" target="_blank"><i
-                                            class="fab fa-github me-1"></i> Code</a>
-                                </div>
-                                <p><strong>Part 2 (DUA-D2C):</strong> Extended D2C to develop Dynamic Uncertainty-Aware
-                                    D2C (DUA-D2C), an enhancement that dynamically weights edge models based on
-                                    performance and prediction uncertainty, further improving robustness. Currently
-                                    under review.</p>
-                                <div>
-                                    <a href="https://arxiv.org/abs/2411.15876" class="btn btn-outline-primary btn-sm"
-                                        target="_blank"><i class="fas fa-external-link-alt me-1"></i> Preprint</a>
-                                    <a href="https://github.com/Saiful185/DUA-D2C"
                                         class="btn btn-outline-primary btn-sm" target="_blank"><i
                                             class="fab fa-github me-1"></i> Code</a>
                                 </div>
