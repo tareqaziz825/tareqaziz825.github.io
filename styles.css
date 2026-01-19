@@ -1147,7 +1147,8 @@ h2::after {
 }
 
 .social-btn.youtube {
-    background-color: white;
+    background-color: transparent;
+    border-color: #ff0000;
     color: #ff0000;
 }
 
@@ -2726,6 +2727,18 @@ body.dark-mode .social-btn.github {
 body.dark-mode .social-btn.github:hover {
     background-color: #f0f6fc; /* A light, GitHub-style grey */
     color: #121212 !important; /* Dark icon color for the light button */
+}
+
+/* Fix for YouTube button in dark mode */
+body.dark-mode .social-btn.youtube {
+    background-color: transparent !important;
+    border: 1px solid #888 !important;
+    color: #f0f6fc !important;
+}
+
+body.dark-mode .social-btn.youtube:hover {
+    background-color: #ff0000 !important;
+    color: white !important;
 }
 
 .list-group-flush > .list-group-item:last-child {
