@@ -2228,7 +2228,7 @@ body.dark-mode {
 
 body.dark-mode .social-btn.github {
     background-color: transparent;
-    border:solid #888;
+    border:solid #f0f6fc !important;
     color: #f0f6fc !important;
 }
 
