@@ -44,7 +44,7 @@ This is a fully static website built with modern, lightweight technologies. No c
 This project is licensed under the MIT License.
 
 <p align="center">
-  <sub>Built with ❤️ by Mohammod Tareq Aziz Justice</sub>
+  <sub>Built with ❤️ by MOHAMMOD TAREQ AZIZ JUSTICE</sub>
 </p>
 <p align="center">
   <sub>&copy; 2026 Mohammod Tareq Aziz Justice. All rights reserved.</sub>
