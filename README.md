@@ -1,4 +1,4 @@
-# Personal Website of Mohammod Tareq Aziz
+# Personal Website of MOHAMMOD TAREQ AZIZ JUSTICE
 
 [![Website is Live](https://img.shields.io/badge/Website-Live-brightgreen?style=for-the-badge&logo=githubpages)](https://tareqaziz825.github.io/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
