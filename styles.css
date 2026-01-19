@@ -2228,7 +2228,7 @@ body.dark-mode {
 
 body.dark-mode .social-btn.github {
     background-color: transparent;
-    border: 1px solid #888;
+    border:solid #888;
     color: #f0f6fc !important;
 }
 
@@ -2239,8 +2239,8 @@ body.dark-mode .social-btn.github:hover {
 
 body.dark-mode .social-btn.youtube {
     background-color: transparent !important;
-    border: 1px solid #888 !important;
-    color: #f0f6fc !important;
+    border: solid #ff0000 !important;
+    color: #ff0000 !important;
 }
 
 body.dark-mode .social-btn.youtube:hover {
