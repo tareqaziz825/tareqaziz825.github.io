@@ -1,227 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammod Tareq Aziz - Homepage</title>
-
-    <!-- CSS Links etc. -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Mohammod Tareq Aziz's Homepage">
-    <meta property="og:description"
-        content="Academic Researcher and Educator in Computer Science, focusing on Multi-Modal Machine Learning, and Deep Learning">
-    <meta property="og:image" content="https://tareqaziz825.github.io/profile.jpg">
-    <meta property="og:url" content="https://tareqaziz825.github.io/">
-    <meta property="og:type" content="website">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammod Tareq Aziz — About</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <meta property="og:title" content="Mohammod Tareq Aziz — Portfolio">
+  <meta property="og:description" content="CS Graduate · ML & Deep Learning Researcher · BRAC University">
+  <meta property="og:url" content="https://tareqaziz825.github.io/">
 </head>
-
 <body>
-    <!-- Final Navigation Bar with Dark Mode Toggle -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="01index.html">MOHAMMOD TAREQ AZIZ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="01index.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="02project.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="03education.html">Education</a></li>
-                    <li class="nav-item"><a class="nav-link" href="04skills.html">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="05experience.html">Experience</a></li>
-                </ul>
-                <button id="theme-toggle" class="btn theme-toggle-btn ms-2">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <div class="jumbotron text-center">
-        <h1>MOHAMMOD TAREQ AZIZ JUSTICE</h1>
-        <p class="lead">~ Machine Learning & Deep Learning Enthusiast ~</p>
-        <p>Exploring the frontiers of Deep Learning, Machine Learning, and their applications in solving complex
-            real world problems.</p>
-        <div>
-            <a href="https://drive.google.com/file/d/11sc1MD383cGChF9JH3LyAaxuaAGIY8ej/view?usp=sharing"
-                class="btn btn-outline-light ms-2" target="_blank"><i class="fas fa-download me-2"></i>Resume</a>
-        </div>
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="nav-brand" href="01index.html">Mohammod Tareq Aziz</a>
+      <ul class="nav-links">
+        <li><a href="01index.html" class="active">About</a></li>
+        <li><a href="02project.html">Projects</a></li>
+        <li><a href="03education.html">Education</a></li>
+        <li><a href="04skills.html">Skills</a></li>
+        <li><a href="05experience.html">Experience</a></li>
+        <li><a href="06blog.html">Blog</a></li>
+        <li><a href="07ataglance.html">At a Glance</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-btn" id="themeToggle" title="Toggle dark mode">
+          <i class="fas fa-moon" id="themeIcon"></i>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
     </div>
+  </nav>
 
-    <!-- Main Content -->
-    <main>
-        <!-- About Section -->
-        <section id="about" class="section fade-in">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-lg-4 text-center">
-                        <img src="profile.jpg" alt="Profile Picture" class="profile-image mb-4">
-                        <div class="academic-info">
-                            <p><i class="fas fa-university"></i> Graduated from BRAC University, Dhaka</p>
-                            <p><i class="fas fa-graduation-cap"></i> B.Sc. in Computer Science</p>
-                        </div>
-                    </div>
-                    <div class="col-lg-8">
-                        <div class="about-content">
-                            <h2 class="text-center mb-4">About Me</h2>
-                            <div style="text-align: justify;">
-                                <p class="lead"> I am a Computer Science graduate from BRAC University,
-                                    Dhaka, with a strong research-driven
-                                    interest in Machine Learning, Deep Learning, and Computer Vision. My academic and
-                                    project work focuses on
-                                    developing intelligent, data-driven systems, particularly in areas such as video
-                                    understanding, anomaly
-                                    detection, and applied machine learning.</p>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="01index.html" class="active">About</a>
+    <a href="02project.html">Projects</a>
+    <a href="03education.html">Education</a>
+    <a href="04skills.html">Skills</a>
+    <a href="05experience.html">Experience</a>
+    <a href="06blog.html">Blog</a>
+    <a href="07ataglance.html">At a Glance</a>
+  </div>
 
-                                <p> My academic training in Computer Science, combined with hands-on experience in
-                                    research-oriented projects,
-                                    has naturally drawn me toward exploring the intersection of deep learning
-                                    architectures, representation
-                                    learning, and real-world problem solving. My primary research interests span
-                                    Zero-Shot and Self-Supervised
-                                    Learning, Vision Transformers, Spatiotemporal Modeling, and Multi-Modal Learning,
-                                    with applications in
-                                    surveillance, human behavior analysis, and data-driven diagnostics. My undergraduate
-                                    thesis centers on
-                                    context-aware zero-shot anomaly detection in surveillance videos, where I designed a
-                                    dual-stream framework
-                                    leveraging spatiotemporal transformers, predictive modeling, and vision-language
-                                    alignment to detect unseen
-                                    anomalous events without requiring labeled anomaly data.</p>
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag"><i class="fas fa-flask me-1"></i> ML &amp; Deep Learning Enthusiast</span>
+      <h1>Mohammod Tareq Aziz Justice</h1>
+      <p>Exploring the frontiers of Deep Learning, Computer Vision, and Multi-Modal Machine Learning to build intelligent, data-driven systems that solve real-world problems.</p>
+      <a href="https://drive.google.com/file/d/11sc1MD383cGChF9JH3LyAaxuaAGIY8ej/view?usp=sharing"
+         class="hero-cta" target="_blank" rel="noopener">
+        <i class="fas fa-file-alt"></i> Download Résumé
+      </a>
+    </div>
+  </section>
 
-                                <p>In addition to deep learning research, I have worked on applied machine learning
-                                    projects involving
-                                    spectrophotometric data analysis and classical ML models, strengthening my
-                                    understanding of data
-                                    preprocessing, feature engineering, and experimental evaluation. I am proficient in
-                                    Python-based ML and
-                                    deep learning ecosystems, including PyTorch, TensorFlow, and common scientific
-                                    computing libraries. You can explore the
-                                    different sections of this site to learn more about my research projects, technical
-                                    skills, and ongoing work.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- ── ABOUT SECTION ── -->
+  <section class="section fade-in">
+    <div class="container">
+      <div class="about-grid">
 
+        <!-- Profile Card -->
+        <aside class="profile-card">
+          <div class="profile-img-wrap">
+            <img src="images/profile.jpg" alt="Mohammod Tareq Aziz">
+          </div>
+          <p class="profile-name">Mohammod Tareq Aziz Justice</p>
+          <p class="profile-role">CS Graduate · ML Researcher</p>
+          <ul class="profile-meta">
+            <li><span><i class="fas fa-university"></i> BRAC University, Dhaka</span></li>
+            <li><span><i class="fas fa-graduation-cap"></i> B.Sc. Computer Science</span></li>
+            <li><span><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</span></li>
+            <li><span><i class="fas fa-envelope"></i> mohammodtareqaziz@gmail.com</span></li>
+          </ul>
+        </aside>
 
-        <!-- Connect Section -->
-        <section id="connect" class="section fade-in">
-            <div class="container">
-                <h2 class="text-center mb-4">Connect</h2>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="insight-card connect text-center">
-                            <div class="social-links">
+        <!-- About Content -->
+        <article class="about-content">
+          <div class="section-head">
+            <h2 class="section-title">About Me</h2>
+            <div class="divider"></div>
+          </div>
+          <p class="lead-text">
+            Computer Science graduate from BRAC University with a research-driven passion for Machine Learning, Deep Learning, and Computer Vision.
+          </p>
+          <p>
+            My academic and project work focuses on developing intelligent, data-driven systems — particularly in video understanding, anomaly detection, and applied machine learning. My training in Computer Science, combined with hands-on research experience, has drawn me toward the intersection of deep learning architectures, representation learning, and real-world problem solving.
+          </p>
+          <p>
+            My primary research interests span <strong>Zero-Shot and Self-Supervised Learning</strong>, Vision Transformers, Spatiotemporal Modeling, and Multi-Modal Learning — with applications in surveillance, human behavior analysis, and data-driven diagnostics. My undergraduate thesis centers on context-aware zero-shot anomaly detection in surveillance videos, where I designed a dual-stream framework leveraging spatiotemporal transformers, predictive modeling, and vision-language alignment to detect unseen anomalous events without requiring labeled anomaly data.
+          </p>
+          <p>
+            Beyond deep learning research, I have worked on applied ML projects involving spectrophotometric data analysis and classical ML models — strengthening my skills in data preprocessing, feature engineering, and experimental evaluation. I am proficient in Python-based ML ecosystems including <strong>PyTorch</strong>, <strong>TensorFlow</strong>, and scientific computing libraries.
+          </p>
+        </article>
 
-                                <a href="https://www.linkedin.com/in/tareqaziz825/" class="btn social-btn linkedin"
-                                    title="LinkedIn" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-linkedin"></i> LinkedIn
-                                </a>
+      </div>
+    </div>
+  </section>
 
-                                <a href="https://github.com/tareqaziz825/" class="btn social-btn github" title="GitHub"
-                                    target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-
-                                <a href="https://twitter.com/tareqaziz825" class="btn social-btn twitter"
-                                    title="Twitter" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-twitter"></i> Twitter
-                                </a>
-
-                                <a href="https://www.youtube.com/@TareqAziz825" class="btn social-btn youtube"
-                                    title="YouTube" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-youtube"></i> YouTube
-                                </a>
-
-                                <a href="https://www.facebook.com/tareqaziz825/" class="btn social-btn facebook"
-                                    title="Facebook" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-facebook"></i> Facebook
-                                </a>
-
-                            </div>
-                            <div class="contact-info mt-4">
-                                <p><i class="fas fa-envelope"></i> <a
-                                        href="mailto:mohammodtareqaziz@gmail.com">mohammodtareqaziz@gmail.com</a></p>
-                                <p><i class="fas fa-map-marker-alt"></i>Merul Badda, Dhaka-1212, Bangladesh</p>
-                                <p><i class="fas fa-phone"></i> +88 01922-667040</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="container">
-            <p>&copy; 2026 Mohammod Tareq Aziz Justice. All rights reserved.</p>
+  <!-- ── CONNECT SECTION ── -->
+  <section class="section section-alt fade-in">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Connect</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">Let's get in touch — open to research collaborations and opportunities.</p>
+      </div>
+      <div class="connect-grid">
+        <div>
+          <p style="font-size:.88rem;color:var(--clr-slate);margin-bottom:1rem;">Find me on the web:</p>
+          <div class="social-btns">
+            <a href="https://www.linkedin.com/in/tareqaziz825/" class="social-btn linkedin" target="_blank" rel="noopener">
+              <i class="fab fa-linkedin"></i> LinkedIn
+            </a>
+            <a href="https://github.com/tareqaziz825/" class="social-btn github" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i> GitHub
+            </a>
+            <a href="https://twitter.com/tareqaziz825" class="social-btn twitter" target="_blank" rel="noopener">
+              <i class="fab fa-twitter"></i> Twitter
+            </a>
+            <a href="https://www.youtube.com/@TareqAziz825" class="social-btn youtube" target="_blank" rel="noopener">
+              <i class="fab fa-youtube"></i> YouTube
+            </a>
+            <a href="https://www.facebook.com/tareqaziz825/" class="social-btn facebook" target="_blank" rel="noopener">
+              <i class="fab fa-facebook"></i> Facebook
+            </a>
+          </div>
         </div>
-    </footer>
+        <div>
+          <p style="font-size:.88rem;color:var(--clr-slate);margin-bottom:1rem;">Direct contact:</p>
+          <ul class="contact-list">
+            <li><i class="fas fa-envelope"></i> <a href="mailto:mohammodtareqaziz@gmail.com">mohammodtareqaziz@gmail.com</a></li>
+            <li><i class="fas fa-phone"></i> +88 01922-667040</li>
+            <li><i class="fas fa-map-marker-alt"></i> Merul Badda, Dhaka-1212, Bangladesh</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Custom JS for fade-in effect -->
-    <script>
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        });
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
-    </script>
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;·&nbsp; All rights reserved.</p>
+  </footer>
 
-    <!-- Dark Mode Toggle & Persistence Script -->
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const icon = themeToggle.querySelector('i');
-
-        // Function to apply the saved theme on page load
-        const applyTheme = () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                body.classList.add('dark-mode');
-                icon.className = 'fas fa-sun';
-            } else {
-                body.classList.remove('dark-mode');
-                icon.className = 'fas fa-moon';
-            }
-        };
-
-        // Event listener for the toggle button
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            // Save the theme preference to localStorage
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                icon.className = 'fas fa-sun';
-            } else {
-                localStorage.setItem('theme', 'light');
-                icon.className = 'fas fa-moon';
-            }
-        });
-
-        // Apply the theme when the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', applyTheme);
-    </script>
+  <script src="scripts.js"></script>
 </body>
-
 </html>

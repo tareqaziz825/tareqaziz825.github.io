@@ -1,190 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohammod Tareq Aziz - Skills</title>
-    <!-- CSS Links etc. -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammod Tareq Aziz — Skills</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="01index.html">MOHAMMOD TAREQ AZIZ</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="01index.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="02project.html">Projects</a></li>
-                    <li class="nav-item"><a class="nav-link" href="03education.html">Education</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="04skills.html">Skills</a></li>
-                    <li class="nav-item"><a class="nav-link" href="05experience.html">Experience</a></li>
-                </ul>
-                <button id="theme-toggle" class="btn theme-toggle-btn ms-2">
-                    <i class="fas fa-moon"></i>
-                </button>
-            </div>
+
+  <!-- ── NAVBAR ── -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a class="nav-brand" href="01index.html">Mohammod Tareq Aziz</a>
+      <ul class="nav-links">
+        <li><a href="01index.html">About</a></li>
+        <li><a href="02project.html">Projects</a></li>
+        <li><a href="03education.html">Education</a></li>
+        <li><a href="04skills.html" class="active">Skills</a></li>
+        <li><a href="05experience.html">Experience</a></li>
+        <li><a href="06blog.html">Blog</a></li>
+        <li><a href="07ataglance.html">At a Glance</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="01index.html">About</a>
+    <a href="02project.html">Projects</a>
+    <a href="03education.html">Education</a>
+    <a href="04skills.html" class="active">Skills</a>
+    <a href="05experience.html">Experience</a>
+    <a href="06blog.html">Blog</a>
+    <a href="07ataglance.html">At a Glance</a>
+  </div>
+
+  <!-- ── PAGE HEADER ── -->
+  <header class="page-header">
+    <h1>Skills &amp; Expertise</h1>
+    <p>Technical competencies built through rigorous coursework and hands-on research projects</p>
+  </header>
+
+  <!-- ── SKILLS ── -->
+  <section class="section fade-in">
+    <div class="container">
+      <div class="section-head">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="divider"></div>
+        <p class="section-subtitle">A comprehensive overview of my tools, technologies, and research expertise</p>
+      </div>
+
+      <div class="skills-grid">
+
+        <!-- ML & Research -->
+        <div class="skill-category fade-in">
+          <h3 class="skill-category-title"><i class="fas fa-brain"></i> Machine Learning &amp; Research</h3>
+          <ul class="skill-items">
+            <li class="skill-item"><i class="fas fa-brain"></i> Multi-Modal Machine Learning</li>
+            <li class="skill-item"><i class="fas fa-network-wired"></i> Deep Learning Architectures</li>
+            <li class="skill-item"><i class="fas fa-eye"></i> Computer Vision</li>
+            <li class="skill-item"><i class="fas fa-image"></i> Image &amp; Video Processing</li>
+            <li class="skill-item"><i class="fas fa-project-diagram"></i> Transformer-based Models</li>
+            <li class="skill-item"><i class="fas fa-stream"></i> Temporal &amp; Video Understanding</li>
+            <li class="skill-item"><i class="fas fa-search"></i> Zero-Shot &amp; Self-Supervised Learning</li>
+            <li class="skill-item"><i class="fas fa-microscope"></i> Anomaly Detection</li>
+          </ul>
         </div>
-    </nav>
 
-    <!-- Main Content -->
-    <main>
-        <!-- Skills Section -->
-        <section id="research-interests" class="section fade-in">
-            <div class="container">
-                <h2 class="text-center mb-4">Skills</h2>
-                <div class="row">
-
-                    <!-- ML & Research Skills -->
-                    <div class="col-md-6">
-                        <ul class="list-unstyled specializations">
-                            <li><i class="fas fa-brain"></i> Multi-Modal Machine Learning</li>
-                            <li><i class="fas fa-network-wired"></i> Deep Learning Architectures</li>
-                            <li><i class="fas fa-eye"></i> Computer Vision</li>
-                            <li><i class="fas fa-image"></i> Image Processing</li>
-                            <li><i class="fas fa-project-diagram"></i> Transformer-based Models</li>
-                            <li><i class="fas fa-stream"></i> Temporal & Video Understanding (TimeSformer)</li>
-                        </ul>
-                    </div>
-
-                    <!-- Programming, Libraries & Tools -->
-                    <div class="col-md-6">
-                        <ul class="list-unstyled specializations">
-                            <li><i class="fab fa-python"></i> Python</li>
-                            <li><i class="fas fa-code"></i> C / C++</li>
-                            <li><i class="fab fa-java"></i> Java (Basic)</li>
-                            <li><i class="fas fa-database"></i> SQL (MySQL)</li>
-
-                            <li><i class="fas fa-cubes"></i> NumPy, Pandas, Matplotlib</li>
-                            <li><i class="fas fa-camera"></i> OpenCV, Scikit-learn</li>
-
-                            <li><i class="fas fa-fire"></i> TensorFlow, PyTorch</li>
-                            <li><i class="fas fa-robot"></i> CLIP, DPC-RNN</li>
-
-                            <li><i class="fas fa-tools"></i> Git, GitHub </li>
-                            <li><i class="fas fa-laptop-code"></i> Jupyter, VS Code, PyCharm</li>
-                            <li><i class="fab fa-google"></i> Google Cloud (Compute Engine, Colab)</li>
-                        </ul>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-
-        <!-- Connect Section -->
-        <section id="connect" class="section fade-in">
-            <div class="container">
-                <h2 class="text-center mb-4">Connect</h2>
-                <div class="row">
-                    <div class="col-12">
-                        <div class="insight-card connect text-center">
-                            <div class="social-links">
-
-                                <a href="https://www.linkedin.com/in/tareqaziz825/" class="btn social-btn linkedin"
-                                    title="LinkedIn" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-linkedin"></i> LinkedIn
-                                </a>
-
-                                <a href="https://github.com/tareqaziz825/" class="btn social-btn github" title="GitHub"
-                                    target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github"></i> GitHub
-                                </a>
-
-                                <a href="https://twitter.com/tareqaziz825" class="btn social-btn twitter"
-                                    title="Twitter" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-twitter"></i> Twitter
-                                </a>
-
-                                <a href="https://www.youtube.com/@TareqAziz825" class="btn social-btn youtube"
-                                    title="YouTube" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-youtube"></i> YouTube
-                                </a>
-
-                                <a href="https://www.facebook.com/tareqaziz825/" class="btn social-btn facebook"
-                                    title="Facebook" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-facebook"></i> Facebook
-                                </a>
-
-                            </div>
-                            <div class="contact-info mt-4">
-                                <p><i class="fas fa-envelope"></i> <a
-                                        href="mailto:mohammodtareqaziz@gmail.com">mohammodtareqaziz@gmail.com</a></p>
-                                <p><i class="fas fa-map-marker-alt"></i>Merul Badda, Dhaka-1212, Bangladesh</p>
-                                <p><i class="fas fa-phone"></i> +88 01922-667040</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="text-center">
-        <div class="container">
-            <p>&copy; 2026 Mohammod Tareq Aziz Justice. All rights reserved.</p>
+        <!-- Programming -->
+        <div class="skill-category fade-in">
+          <h3 class="skill-category-title"><i class="fas fa-code"></i> Programming Languages</h3>
+          <ul class="skill-items">
+            <li class="skill-item"><i class="fab fa-python"></i> Python (Proficient)</li>
+            <li class="skill-item"><i class="fas fa-code"></i> C / C++</li>
+            <li class="skill-item"><i class="fab fa-java"></i> Java (Basic)</li>
+            <li class="skill-item"><i class="fas fa-database"></i> SQL (MySQL)</li>
+          </ul>
         </div>
-    </footer>
 
-    <!-- JS Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const fadeElements = document.querySelectorAll('.fade-in');
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        });
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
-    </script>
-    <!-- Dark Mode Toggle & Persistence Script -->
-    <script>
-        const themeToggle = document.getElementById('theme-toggle');
-        const body = document.body;
-        const icon = themeToggle.querySelector('i');
+        <!-- ML Libraries -->
+        <div class="skill-category fade-in">
+          <h3 class="skill-category-title"><i class="fas fa-cubes"></i> ML Libraries &amp; Frameworks</h3>
+          <ul class="skill-items">
+            <li class="skill-item"><i class="fas fa-fire"></i> PyTorch</li>
+            <li class="skill-item"><i class="fas fa-layer-group"></i> TensorFlow / Keras</li>
+            <li class="skill-item"><i class="fas fa-robot"></i> Hugging Face Transformers</li>
+            <li class="skill-item"><i class="fas fa-chart-line"></i> Scikit-learn</li>
+            <li class="skill-item"><i class="fas fa-cubes"></i> NumPy · Pandas · Matplotlib</li>
+            <li class="skill-item"><i class="fas fa-camera"></i> OpenCV</li>
+            <li class="skill-item"><i class="fas fa-robot"></i> CLIP · DPC-RNN · TimeSformer</li>
+          </ul>
+        </div>
 
-        // Function to apply the saved theme on page load
-        const applyTheme = () => {
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'dark') {
-                body.classList.add('dark-mode');
-                icon.className = 'fas fa-sun';
-            } else {
-                body.classList.remove('dark-mode');
-                icon.className = 'fas fa-moon';
-            }
-        };
+        <!-- Tools -->
+        <div class="skill-category fade-in">
+          <h3 class="skill-category-title"><i class="fas fa-tools"></i> Tools &amp; Platforms</h3>
+          <ul class="skill-items">
+            <li class="skill-item"><i class="fab fa-git-alt"></i> Git &amp; GitHub</li>
+            <li class="skill-item"><i class="fas fa-laptop-code"></i> Jupyter Notebook</li>
+            <li class="skill-item"><i class="fas fa-code"></i> VS Code · PyCharm</li>
+            <li class="skill-item"><i class="fab fa-google"></i> Google Colab</li>
+            <li class="skill-item"><i class="fas fa-cloud"></i> Google Cloud Compute Engine</li>
+          </ul>
+        </div>
 
-        // Event listener for the toggle button
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('dark-mode');
-            // Save the theme preference to localStorage
-            if (body.classList.contains('dark-mode')) {
-                localStorage.setItem('theme', 'dark');
-                icon.className = 'fas fa-sun';
-            } else {
-                localStorage.setItem('theme', 'light');
-                icon.className = 'fas fa-moon';
-            }
-        });
+      </div>
+    </div>
+  </section>
 
-        // Apply the theme when the DOM is fully loaded
-        document.addEventListener('DOMContentLoaded', applyTheme);
-    </script>
+  <!-- ── FOOTER ── -->
+  <footer>
+    <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;·&nbsp; All rights reserved.</p>
+  </footer>
+
+  <script src="scripts.js"></script>
 </body>
-
 </html>
