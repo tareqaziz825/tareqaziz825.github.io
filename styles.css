@@ -308,6 +308,22 @@ body.dark-mode .site-nav {
 .soc-btn.facebook:hover  { background:#1877f2; color:#fff; }
 body.dark-mode .soc-btn.github { color:#e2e8f0; border-color:#e2e8f0; }
 body.dark-mode .soc-btn.github:hover { background:#e2e8f0; color:#0f172a; }
+.soc-btn.instagram { color: #e1306c; border-color: #e1306c; }
+.soc-btn.instagram:hover { background: #e1306c; color: #fff; }
+
+.soc-btn.contact-info {
+    cursor: default;
+    color: var(--text);
+    border-color: var(--border);
+    gap: .45rem;
+}
+.soc-btn.contact-info a { color: var(--text); }
+.soc-btn.contact-info:hover {
+    background: var(--blue-lt);
+    border-color: var(--blue);
+    color: var(--blue);
+}
+.soc-btn.contact-info:hover a { color: var(--blue); }
 
 .contact-rows { display: flex; flex-direction: column; gap: .7rem; }
 .contact-row { display: flex; align-items: center; gap: .6rem; font-size: .88rem; color: var(--text); }
