@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../images/TAJLogo.png">
+  <title>Vision Transformers vs. CNNs — Mohammod Tareq Aziz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a class="nav-brand" href="../index.html">Mohammod Tareq Aziz</a>
+    <ul class="nav-menu">
+      <li><a href="../index.html">About</a></li>
+      <li><a href="../02project.html">Projects</a></li>
+      <li><a href="../03education.html">Education</a></li>
+      <li><a href="../04skills.html">Skills</a></li>
+      <li><a href="../05experience.html">Experience</a></li>
+      <li><a href="../06blog.html" class="active">Blog</a></li>
+      <li><a href="../07ataglance.html">At a Glance</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+      <button class="nav-hamburger" id="navHam" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<nav class="nav-mobile" id="mobileNav">
+  <a href="../index.html">About</a>
+  <a href="../02project.html">Projects</a>
+  <a href="../03education.html">Education</a>
+  <a href="../04skills.html">Skills</a>
+  <a href="../05experience.html">Experience</a>
+  <a href="../06blog.html" class="active">Blog</a>
+  <a href="../07ataglance.html">At a Glance</a>
+</nav>
+
+<main class="section">
+  <div class="article-wrap">
+
+    <a href="../06blog.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Back to Blog
+    </a>
+
+    <header class="article-header fade-up">
+      <div class="article-meta-row">
+        <span class="blog-date"><i class="fas fa-calendar-alt"></i> January 2026</span>
+        <span class="badge-cat">Computer Vision</span>
+        <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
+      </div>
+      <h1 class="article-title">Vision Transformers vs. CNNs: What Changed and Why It Matters</h1>
+      <div class="article-author-row">
+        <img src="../images/profile.jpg" alt="Mohammod Tareq Aziz" class="author-avatar">
+        <div>
+          <div class="author-name">Mohammod Tareq Aziz Justice</div>
+          <div class="author-role">CS Graduate · ML Researcher, BRAC University</div>
+        </div>
+      </div>
+    </header>
+
+    <article class="article-body fade-up">
+
+      <p>
+        For over a decade, <strong>Convolutional Neural Networks (CNNs)</strong> reigned supreme in computer vision. AlexNet, VGG, ResNet, EfficientNet — every year brought a new CNN architecture pushing benchmark scores higher. Then, in 2020, a paper titled <em>"An Image is Worth 16×16 Words"</em> introduced the <strong>Vision Transformer (ViT)</strong> — and the landscape changed permanently.
+      </p>
+
+      <p>
+        But what exactly changed? And does that mean CNNs are obsolete? This article walks through the architectural differences, the practical tradeoffs, and where each approach genuinely excels — including how this shaped my own thesis work.
+      </p>
+
+      <h2>How CNNs Work: The Inductive Bias Advantage</h2>
+
+      <p>
+        CNNs are built around a powerful assumption: <strong>local patterns matter, and they repeat</strong>. A convolutional filter slides across an image, detecting edges in the top-left corner just as effectively as in the bottom-right. This is called <em>translation equivariance</em> — and it's a tremendous advantage when you're working with images.
+      </p>
+
+      <p>
+        This inductive bias means CNNs learn efficiently from relatively small datasets. They don't need to "discover" that a nose detector should work anywhere in an image — it's baked into the architecture. Pooling layers add spatial hierarchy, letting deeper layers respond to increasingly abstract patterns.
+      </p>
+
+      <h2>How Vision Transformers Work: Attention Is All You Need (for Vision Too)</h2>
+
+      <p>
+        ViTs take a completely different approach. An image is split into fixed-size <strong>patches</strong> (e.g., 16×16 pixels each), which are flattened and linearly projected into embedding vectors — like tokens in a language model. A special <code>[CLS]</code> token is prepended, positional embeddings are added, and the whole sequence is fed into a standard Transformer encoder.
+      </p>
+
+      <p>
+        The key operation is <strong>multi-head self-attention</strong>: every patch can attend to every other patch, allowing the model to capture global relationships from the very first layer. A patch in the top-left corner can directly influence the understanding of a patch in the bottom-right — something CNNs can only achieve in deep layers through hierarchical feature aggregation.
+      </p>
+
+      <div class="info-box">
+        <p class="info-box-title"><i class="fas fa-balance-scale"></i> Core Difference</p>
+        <p>CNNs have strong <strong>inductive bias</strong> (locality, translation equivariance) — great for small datasets. ViTs have <strong>no inductive bias</strong> — they learn everything from data, which requires large datasets but scales remarkably well.</p>
+      </div>
+
+      <h2>The Data Hunger Problem — and How It Was Solved</h2>
+
+      <p>
+        Early ViTs had a critical weakness: they required enormous amounts of training data to match CNN performance. When trained on ImageNet alone (~1.2M images), ViTs underperformed ResNets. It was only when pre-trained on JFT-300M (300 million images) that ViTs truly shone.
+      </p>
+
+      <p>
+        The community responded with innovations like DeiT (Data-efficient Image Transformers), which used knowledge distillation to train ViTs effectively on ImageNet-scale data; Swin Transformer, which introduced hierarchical windows to restore some locality; and hybrid approaches combining CNN feature extractors with Transformer encoders.
+      </p>
+
+      <h2>TimeSformer: Taking ViT into the Temporal Dimension</h2>
+
+      <p>
+        For my thesis, I needed to understand not just single frames, but <em>sequences of frames</em> — video. This is where <strong>TimeSformer</strong> (Time-Space Transformer) became essential.
+      </p>
+
+      <p>
+        TimeSformer extends ViT to video by decomposing self-attention into two operations: <strong>spatial attention</strong> (attending to different patches within the same frame) and <strong>temporal attention</strong> (attending to the same patch position across different frames). This "divided attention" approach is computationally efficient while capturing rich spatiotemporal dynamics.
+      </p>
+
+      <p>
+        A CNN-based video model, by contrast, typically uses 3D convolutions (C3D, I3D) which are computationally expensive and struggle with long-range temporal dependencies. TimeSformer's attention mechanism handles 8-second video clips in a single forward pass — exactly what's needed for real-time surveillance anomaly detection.
+      </p>
+
+      <h2>When to Use Which?</h2>
+
+      <ul>
+        <li><strong>Use CNNs when:</strong> you have limited labeled data, need fast inference on edge devices, are working on well-understood visual tasks (classification, segmentation), or have tight compute budgets.</li>
+        <li><strong>Use ViTs when:</strong> you have large datasets or access to pre-trained models, need global context understanding (e.g., scene-level reasoning), are working on multi-modal tasks (vision + language), or need to scale up with more compute and data.</li>
+        <li><strong>Use hybrid architectures when:</strong> you want the best of both — local feature extraction from CNNs feeding into Transformer encoders for global reasoning.</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+
+      <p>
+        CNNs are not dead — they remain excellent, efficient choices for many practical applications. But Vision Transformers have fundamentally expanded what's possible in computer vision, especially when combined with large-scale pre-training and multi-modal learning. For research pushing the boundaries of zero-shot understanding, scene-level reasoning, and video analysis, ViTs and their variants are now the architecture of choice.
+      </p>
+
+      <hr>
+
+      <div class="article-nav">
+        <a href="post-01-zero-shot-learning.html" class="article-nav-back">
+          <i class="fas fa-arrow-left"></i> Previous: Zero-Shot Learning
+        </a>
+        <a href="post-03-thesis-experience.html" class="article-nav-next">
+          Next: My Thesis Experience <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="author-card">
+        <img src="../images/profile.jpg" alt="Mohammod Tareq Aziz" class="author-card-avatar">
+        <div class="author-card-body">
+          <h4>Mohammod Tareq Aziz Justice</h4>
+          <p>CS Graduate from BRAC University, Dhaka. Passionate about Machine Learning, Deep Learning, and Computer Vision. Currently seeking ML engineering and AI research opportunities.</p>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../scripts.js"></script>
+</body>
+</html>

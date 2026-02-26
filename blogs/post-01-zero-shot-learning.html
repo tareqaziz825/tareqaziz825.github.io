@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../images/TAJLogo.png">
+  <title>Understanding Zero-Shot Learning — Mohammod Tareq Aziz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a class="nav-brand" href="../index.html">Mohammod Tareq Aziz</a>
+    <ul class="nav-menu">
+      <li><a href="../index.html">About</a></li>
+      <li><a href="../02project.html">Projects</a></li>
+      <li><a href="../03education.html">Education</a></li>
+      <li><a href="../04skills.html">Skills</a></li>
+      <li><a href="../05experience.html">Experience</a></li>
+      <li><a href="../06blog.html" class="active">Blog</a></li>
+      <li><a href="../07ataglance.html">At a Glance</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+      <button class="nav-hamburger" id="navHam" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<nav class="nav-mobile" id="mobileNav">
+  <a href="../index.html">About</a>
+  <a href="../02project.html">Projects</a>
+  <a href="../03education.html">Education</a>
+  <a href="../04skills.html">Skills</a>
+  <a href="../05experience.html">Experience</a>
+  <a href="../06blog.html" class="active">Blog</a>
+  <a href="../07ataglance.html">At a Glance</a>
+</nav>
+
+<!-- ── ARTICLE ── -->
+<main class="section">
+  <div class="article-wrap">
+
+    <!-- Back button -->
+    <a href="../06blog.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Back to Blog
+    </a>
+
+    <!-- Article header -->
+    <header class="article-header fade-up">
+      <div class="article-meta-row">
+        <span class="blog-date"><i class="fas fa-calendar-alt"></i> February 2026</span>
+        <span class="badge-cat">Deep Learning</span>
+        <span class="badge-new"><i class="fas fa-star" style="font-size:.62rem;"></i> Latest</span>
+        <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
+      </div>
+      <h1 class="article-title">Understanding Zero-Shot Learning: How AI Recognizes What It Has Never Seen</h1>
+      <div class="article-author-row">
+        <img src="../images/profile.jpg" alt="Mohammod Tareq Aziz" class="author-avatar">
+        <div>
+          <div class="author-name">Mohammod Tareq Aziz Justice</div>
+          <div class="author-role">CS Graduate · ML Researcher, BRAC University</div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Article body -->
+    <article class="article-body fade-up">
+
+      <p>
+        Imagine showing a child thousands of pictures of cats and dogs, then asking them to identify a zebra — an animal they've never seen before. A smart child would reason: <em>"It has four legs, stripes like patterns I've seen, and looks like a horse."</em> They would get it right. This, in essence, is the intuition behind <strong>zero-shot learning (ZSL)</strong>.
+      </p>
+
+      <p>
+        Traditional machine learning models are trained to classify objects they've seen examples of. If a model was never trained on "zebras," it simply cannot classify them. Zero-shot learning breaks this fundamental limitation — it enables AI to recognize and reason about concepts it has <em>never directly been trained on</em>.
+      </p>
+
+      <h2>Why Zero-Shot Learning Matters</h2>
+
+      <p>
+        In the real world, collecting labeled training data for every possible category is expensive, time-consuming, and often impossible. Consider surveillance systems: you cannot anticipate every possible type of anomalous event and collect labeled examples for each. Medical imaging faces the same challenge — rare diseases may have only a handful of documented cases. Zero-shot learning offers a path forward.
+      </p>
+
+      <div class="info-box">
+        <p class="info-box-title"><i class="fas fa-lightbulb"></i> Key Insight</p>
+        <p>Zero-shot learning transfers knowledge from <strong>seen classes</strong> to <strong>unseen classes</strong> using semantic descriptions, attribute embeddings, or language models — without requiring a single labeled example of the unseen class.</p>
+      </div>
+
+      <h2>The Core Mechanism: Semantic Embeddings</h2>
+
+      <p>
+        The magic of ZSL lies in the <strong>semantic space</strong>. Instead of learning a direct mapping from image → label, the model learns to map images into a shared semantic space where visual features and textual/attribute descriptions coexist. At inference time, even if the model has never seen a "zebra," it can match the image's visual embedding to the textual description "a horse-like animal with black and white stripes."
+      </p>
+
+      <p>There are three main approaches to building this semantic bridge:</p>
+
+      <ul>
+        <li><strong>Attribute-based:</strong> Each class is described by a set of binary or continuous attributes (e.g., "has stripes: yes", "is quadruped: yes").</li>
+        <li><strong>Text embedding-based:</strong> Class descriptions or Wikipedia articles are encoded using word2vec, GloVe, or BERT to produce dense semantic vectors.</li>
+        <li><strong>Vision-Language Models:</strong> Models like CLIP jointly learn visual and textual representations, allowing direct cross-modal matching.</li>
+      </ul>
+
+      <h2>CLIP: The Game Changer</h2>
+
+      <p>
+        OpenAI's CLIP (Contrastive Language–Image Pretraining) fundamentally changed the landscape of zero-shot learning. CLIP is trained on 400 million image-text pairs scraped from the internet, learning to align images and their textual descriptions in a shared embedding space using a contrastive loss.
+      </p>
+
+      <p>
+        At inference time, you simply describe your target categories in natural language — e.g., <em>"a photo of a car crash"</em> or <em>"a normal street scene"</em> — and CLIP computes similarity scores between the image embedding and each text embedding. The highest scoring text description "wins." No fine-tuning required.
+      </p>
+
+      <blockquote>
+        <p>"CLIP has essentially taught an AI to read the visual world through the lens of language — and that unlocks an extraordinary range of zero-shot capabilities."</p>
+      </blockquote>
+
+      <h2>My Thesis: Zero-Shot Anomaly Detection in Surveillance</h2>
+
+      <p>
+        In my undergraduate thesis (CSE 400), I applied zero-shot learning to one of the hardest problems in computer vision: <strong>detecting anomalous events in surveillance videos</strong> — specifically events the model has never seen during training.
+      </p>
+
+      <p>
+        The core challenge: how do you teach a system to detect "robbery" or "explosion" when you have no labeled examples of those events? My solution was a dual-stream spatiotemporal framework combining three components:
+      </p>
+
+      <ul>
+        <li><strong>TimeSformer:</strong> A video transformer that captures spatial and temporal attention across video frames, learning rich spatiotemporal features of normal behavior.</li>
+        <li><strong>DPC-RNN:</strong> A predictive model trained to predict future video representations, enabling the system to flag frames that deviate from expected patterns.</li>
+        <li><strong>CLIP:</strong> Used for semantic context alignment — text descriptions of normal vs. anomalous events guide the model's understanding of scene context.</li>
+      </ul>
+
+      <p>
+        The system was trained <em>only on normal videos</em>. Anomalies are detected as deviations from the learned normal distribution — and CLIP's semantic alignment allows the model to reason about <em>what kind</em> of anomaly it might be, even without having seen it before.
+      </p>
+
+      <h2>Results &amp; Takeaways</h2>
+
+      <p>
+        On the UCF-Crime dataset, the model achieved <strong>84.5% ROC-AUC</strong> and 72.3% PR-AUC — outperforming the state-of-the-art zero-shot baseline AnomalyCLIP (82.4%) while maintaining real-time detection speed.
+      </p>
+
+      <div class="info-box">
+        <p class="info-box-title"><i class="fas fa-star"></i> Key Takeaways</p>
+        <p>
+          1. Zero-shot learning enables AI to generalize to unseen categories using semantic bridges.<br>
+          2. CLIP's joint vision-language training makes it a powerful backbone for ZSL applications.<br>
+          3. For video anomaly detection, combining temporal modeling (TimeSformer + DPC-RNN) with semantic alignment (CLIP) is a winning combination.
+        </p>
+      </div>
+
+      <h2>What's Next?</h2>
+
+      <p>
+        The frontier of zero-shot learning is moving rapidly — generalized ZSL (where seen and unseen classes are evaluated together), transductive ZSL (leveraging unlabeled test data), and few-shot extensions are all active research areas. With large vision-language models becoming more capable, zero-shot performance on difficult real-world tasks will only improve.
+      </p>
+
+      <p>
+        If you're a student curious about zero-shot learning, I'd recommend starting with the <a href="https://openai.com/research/clip" target="_blank" rel="noopener">CLIP paper</a>, then exploring the UCF-Crime and ShanghaiTech datasets for anomaly detection benchmarks.
+      </p>
+
+      <hr>
+
+      <!-- Article navigation -->
+      <div class="article-nav">
+        <a href="../06blog.html" class="article-nav-back">
+          <i class="fas fa-arrow-left"></i> Back to All Posts
+        </a>
+        <a href="post-02-vit-vs-cnn.html" class="article-nav-next">
+          Next: Vision Transformers vs. CNNs <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Author card -->
+      <div class="author-card">
+        <img src="../images/profile.jpg" alt="Mohammod Tareq Aziz" class="author-card-avatar">
+        <div class="author-card-body">
+          <h4>Mohammod Tareq Aziz Justice</h4>
+          <p>CS Graduate from BRAC University, Dhaka. Passionate about Machine Learning, Deep Learning, and Computer Vision. Currently seeking ML engineering and AI research opportunities.</p>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../scripts.js"></script>
+</body>
+</html>

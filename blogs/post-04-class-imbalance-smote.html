@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="../images/TAJLogo.png">
+  <title>Class Imbalance &amp; SMOTE — Mohammod Tareq Aziz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a class="nav-brand" href="../index.html">Mohammod Tareq Aziz</a>
+    <ul class="nav-menu">
+      <li><a href="../index.html">About</a></li>
+      <li><a href="../02project.html">Projects</a></li>
+      <li><a href="../03education.html">Education</a></li>
+      <li><a href="../04skills.html">Skills</a></li>
+      <li><a href="../05experience.html">Experience</a></li>
+      <li><a href="../06blog.html" class="active">Blog</a></li>
+      <li><a href="../07ataglance.html">At a Glance</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+      <button class="nav-hamburger" id="navHam" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<nav class="nav-mobile" id="mobileNav">
+  <a href="../index.html">About</a>
+  <a href="../02project.html">Projects</a>
+  <a href="../03education.html">Education</a>
+  <a href="../04skills.html">Skills</a>
+  <a href="../05experience.html">Experience</a>
+  <a href="../06blog.html" class="active">Blog</a>
+  <a href="../07ataglance.html">At a Glance</a>
+</nav>
+
+<main class="section">
+  <div class="article-wrap">
+
+    <a href="../06blog.html" class="back-btn">
+      <i class="fas fa-arrow-left"></i> Back to Blog
+    </a>
+
+    <header class="article-header fade-up">
+      <div class="article-meta-row">
+        <span class="blog-date"><i class="fas fa-calendar-alt"></i> November 2025</span>
+        <span class="badge-cat">Machine Learning</span>
+        <span class="read-time"><i class="fas fa-clock"></i> 7 min read</span>
+      </div>
+      <h1 class="article-title">Dealing with Class Imbalance in Real-World Datasets: SMOTE and Beyond</h1>
+      <div class="article-author-row">
+        <img src="../images/profile.jpg" alt="Mohammod Tareq Aziz" class="author-avatar">
+        <div>
+          <div class="author-name">Mohammod Tareq Aziz Justice</div>
+          <div class="author-role">CS Graduate · ML Researcher, BRAC University</div>
+        </div>
+      </div>
+    </header>
+
+    <article class="article-body fade-up">
+
+      <p>
+        Your model reports <strong>95% accuracy</strong>. You feel great. Then you look closer — the dataset has 95% negative samples and 5% positive samples, and the model has learned to predict "negative" for everything. Congratulations, you've built a useless classifier.
+      </p>
+
+      <p>
+        This is the class imbalance problem, and it's one of the most common traps in real-world machine learning. I ran into it head-on during my CSE 427 Machine Learning course project — a loan eligibility prediction system for Dream Housing Finance Company.
+      </p>
+
+      <h2>Why Class Imbalance Is So Dangerous</h2>
+
+      <p>
+        In the loan eligibility dataset, approximately 68% of applicants were eligible (positive class) and 32% were ineligible (negative class). That sounds moderate — but even this mild imbalance caused significant problems. Models optimized on accuracy alone learned to overpredict the majority class, performing poorly on the minority class (ineligible applicants) — which is exactly the class you care most about getting right in a loan approval context.
+      </p>
+
+      <p>
+        The core issue: <strong>accuracy is a terrible metric for imbalanced datasets</strong>. Use instead:
+      </p>
+
+      <ul>
+        <li><strong>Precision:</strong> Of all applicants predicted eligible, how many actually were?</li>
+        <li><strong>Recall:</strong> Of all truly eligible applicants, how many did we correctly identify?</li>
+        <li><strong>F1 Score:</strong> The harmonic mean of precision and recall.</li>
+        <li><strong>ROC-AUC:</strong> Measures the model's ability to distinguish between classes across all thresholds.</li>
+      </ul>
+
+      <div class="info-box">
+        <p class="info-box-title"><i class="fas fa-exclamation-triangle"></i> Golden Rule</p>
+        <p>Never evaluate an imbalanced classifier using accuracy alone. A model that predicts "eligible" for everyone achieves 68% accuracy on this dataset — but has zero predictive value.</p>
+      </div>
+
+      <h2>What Is SMOTE?</h2>
+
+      <p>
+        <strong>SMOTE (Synthetic Minority Over-sampling Technique)</strong> is one of the most widely used techniques for addressing class imbalance. Instead of simply duplicating minority class samples (random oversampling), SMOTE <em>creates synthetic new samples</em> by interpolating between existing minority class examples.
+      </p>
+
+      <p>The algorithm works as follows:</p>
+
+      <ol>
+        <li>For each minority class sample, find its k nearest neighbors (typically k=5).</li>
+        <li>Randomly select one of those neighbors.</li>
+        <li>Create a new synthetic sample at a random point along the line segment connecting the original sample and the selected neighbor.</li>
+        <li>Repeat until the desired class balance is reached.</li>
+      </ol>
+
+      <p>
+        This is more effective than simple duplication because the synthetic samples add <em>new information</em> to the feature space — they explore the local neighborhood of minority class examples rather than just repeating existing ones.
+      </p>
+
+      <h2>SMOTE in Practice: Our Loan Dataset</h2>
+
+      <p>
+        In our project, we applied SMOTE using the <code>imbalanced-learn</code> library in Python. After preprocessing (imputation, encoding, scaling), we applied SMOTE only to the <strong>training set</strong> — a critical detail many beginners get wrong.
+      </p>
+
+      <pre><code>from imblearn.over_sampling import SMOTE
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Apply SMOTE ONLY to training data
+smote = SMOTE(k_neighbors=5, random_state=42)
+X_train_resampled, y_train_resampled = smote.fit_resample(X_train, y_train)</code></pre>
+
+      <p>
+        <strong>Never apply SMOTE to the test set.</strong> The test set must reflect the real-world distribution. Synthetic samples in your test data would give you an unrealistically optimistic evaluation.
+      </p>
+
+      <h2>Results: What SMOTE Actually Improved</h2>
+
+      <p>
+        After applying SMOTE and training five ML models (Random Forest, Logistic Regression, AdaBoost, KNN, MLP), we saw meaningful improvements across recall for the minority class (ineligible applicants). The MLP model achieved 96% recall for the eligible class and meaningfully better performance on the ineligible class compared to training without SMOTE.
+      </p>
+
+      <p>
+        Random Forest and MLP achieved the highest overall accuracy at <strong>89.29%</strong> — but more importantly, their F1 scores and recall for both classes were balanced, which is the real measure of success.
+      </p>
+
+      <h2>Where SMOTE Falls Short</h2>
+
+      <p>
+        SMOTE is not a silver bullet. It has well-documented failure modes:
+      </p>
+
+      <ul>
+        <li><strong>Overfitting risk:</strong> Synthetic samples created in sparse regions may not represent real-world data distribution, leading to overfitting.</li>
+        <li><strong>Noisy data amplification:</strong> If minority class samples include noisy or mislabeled examples, SMOTE will create more synthetic versions of those noisy samples.</li>
+        <li><strong>High-dimensional data:</strong> K-nearest neighbor interpolation becomes unreliable in very high-dimensional feature spaces (the curse of dimensionality).</li>
+      </ul>
+
+      <h2>Better Alternatives Worth Knowing</h2>
+
+      <ul>
+        <li><strong>ADASYN (Adaptive Synthetic Sampling):</strong> Like SMOTE, but generates more synthetic samples in harder-to-learn regions, not uniformly.</li>
+        <li><strong>Borderline-SMOTE:</strong> Only generates synthetic samples near the decision boundary, where class confusion is most likely.</li>
+        <li><strong>Class weights:</strong> Instead of resampling, penalize the model more for misclassifying the minority class. Most sklearn models support <code>class_weight='balanced'</code>.</li>
+        <li><strong>Ensemble methods (EasyEnsemble, BalancedRandomForest):</strong> Train multiple classifiers on balanced subsets of the data.</li>
+      </ul>
+
+      <h2>Conclusion</h2>
+
+      <p>
+        Class imbalance is the rule, not the exception, in real-world ML projects. Fraud detection, medical diagnosis, anomaly detection, loan default prediction — all are imbalanced by nature. The key lessons: always evaluate with appropriate metrics, apply resampling techniques only to training data, and understand when SMOTE helps vs. when alternatives are more appropriate.
+      </p>
+
+      <hr>
+
+      <div class="article-nav">
+        <a href="post-03-thesis-experience.html" class="article-nav-back">
+          <i class="fas fa-arrow-left"></i> Previous: Thesis Experience
+        </a>
+        <a href="post-05-job-hunt-bangladesh.html" class="article-nav-next">
+          Next: AI Job Hunt in Bangladesh <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="author-card">
+        <img src="../images/profile.jpg" alt="Mohammod Tareq Aziz" class="author-card-avatar">
+        <div class="author-card-body">
+          <h4>Mohammod Tareq Aziz Justice</h4>
+          <p>CS Graduate from BRAC University, Dhaka. Passionate about Machine Learning, Deep Learning, and Computer Vision. Currently seeking ML engineering and AI research opportunities.</p>
+        </div>
+      </div>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="../scripts.js"></script>
+</body>
+</html>
