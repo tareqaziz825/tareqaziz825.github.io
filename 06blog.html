@@ -1,157 +1,182 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blog — Mohammod Tareq Aziz</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="images/TAJLogo.png">
+    <title>Blog — Mohammod Tareq Aziz</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-<nav class="site-nav">
-  <div class="nav-container">
-    <a class="nav-brand" href="index.html">Mohammod Tareq Aziz</a>
-    <ul class="nav-menu">
-      <li><a href="index.html">About</a></li>
-      <li><a href="02project.html">Projects</a></li>
-      <li><a href="03education.html">Education</a></li>
-      <li><a href="04skills.html">Skills</a></li>
-      <li><a href="05experience.html">Experience</a></li>
-      <li><a href="06blog.html" class="active">Blog</a></li>
-      <li><a href="07ataglance.html">At a Glance</a></li>
-    </ul>
-    <div class="nav-right">
-      <button id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
-      <button class="nav-hamburger" id="navHam" aria-label="Open menu"><span></span><span></span><span></span></button>
-    </div>
-  </div>
-</nav>
-<nav class="nav-mobile" id="mobileNav">
-  <a href="index.html">About</a>
-  <a href="02project.html">Projects</a>
-  <a href="03education.html">Education</a>
-  <a href="04skills.html">Skills</a>
-  <a href="05experience.html">Experience</a>
-  <a href="06blog.html" class="active">Blog</a>
-  <a href="07ataglance.html">At a Glance</a>
-</nav>
-
-<header class="page-header">
-  <h1>Blog</h1>
-  <p>Writings on machine learning, research insights, and tech — newest articles first</p>
-</header>
-
-<section class="section">
-  <div class="wrap">
-    <div class="sec-head fade-up">
-      <h2 class="sec-title">My Writings</h2>
-      <div class="sec-line"></div>
-      <p class="sec-sub">Articles on deep learning, AI research, and the journey of a CS graduate</p>
-    </div>
-
-    <div class="blog-list">
-
-      <!-- Post 1 — Latest -->
-      <article class="blog-card latest fade-up">
-        <div class="blog-meta-row">
-          <span class="blog-date"><i class="fas fa-calendar-alt"></i> February 2026</span>
-          <span class="badge-cat">Deep Learning</span>
-          <span class="badge-new"><i class="fas fa-star" style="font-size:.62rem;"></i> Latest</span>
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a class="nav-brand" href="index.html">Mohammod Tareq Aziz</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">About</a></li>
+                <li><a href="02project.html">Projects</a></li>
+                <li><a href="03education.html">Education</a></li>
+                <li><a href="04skills.html">Skills</a></li>
+                <li><a href="05experience.html">Experience</a></li>
+                <li><a href="06blog.html" class="active">Blog</a></li>
+                <li><a href="07ataglance.html">At a Glance</a></li>
+            </ul>
+            <div class="nav-right">
+                <button id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <button class="nav-hamburger" id="navHam"
+                    aria-label="Open menu"><span></span><span></span><span></span></button>
+            </div>
         </div>
-        <h2 class="blog-title">Understanding Zero-Shot Learning: How AI Recognizes What It Has Never Seen</h2>
-        <p class="blog-excerpt">
-          Zero-shot learning is one of the most fascinating challenges in modern AI — teaching a model to correctly identify or classify something it has never been directly trained on. In this article, I break down the intuition behind zero-shot learning, explain the role of semantic embeddings and vision-language alignment (like CLIP), and share lessons from my own undergraduate thesis on zero-shot anomaly detection in surveillance videos.
-        </p>
-        <div class="blog-foot">
-          <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
-          <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
-        </div>
-      </article>
+    </nav>
+    <nav class="nav-mobile" id="mobileNav">
+        <a href="index.html">About</a>
+        <a href="02project.html">Projects</a>
+        <a href="03education.html">Education</a>
+        <a href="04skills.html">Skills</a>
+        <a href="05experience.html">Experience</a>
+        <a href="06blog.html" class="active">Blog</a>
+        <a href="07ataglance.html">At a Glance</a>
+    </nav>
 
-      <!-- Post 2 -->
-      <article class="blog-card fade-up">
-        <div class="blog-meta-row">
-          <span class="blog-date"><i class="fas fa-calendar-alt"></i> January 2026</span>
-          <span class="badge-cat">Computer Vision</span>
-        </div>
-        <h2 class="blog-title">Vision Transformers vs. CNNs: What Changed and Why It Matters</h2>
-        <p class="blog-excerpt">
-          For years, Convolutional Neural Networks were the backbone of computer vision. Then Vision Transformers arrived — and everything shifted. I explore the architectural differences, where each excels, and why the spatiotemporal variant TimeSformer became central to my thesis work in video understanding.
-        </p>
-        <div class="blog-foot">
-          <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
-          <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
-        </div>
-      </article>
+    <header class="page-header">
+        <h1>Blog</h1>
+        <p>Writings on machine learning, research insights, and tech — newest articles first</p>
+    </header>
 
-      <!-- Post 3 -->
-      <article class="blog-card fade-up">
-        <div class="blog-meta-row">
-          <span class="blog-date"><i class="fas fa-calendar-alt"></i> December 2025</span>
-          <span class="badge-cat">Research</span>
+    <section class="section">
+        <div class="wrap">
+            <div class="sec-head fade-up">
+                <h2 class="sec-title">My Writings</h2>
+                <div class="sec-line"></div>
+                <p class="sec-sub">Articles on deep learning, AI research, and the journey of a CS graduate</p>
+            </div>
+
+            <div class="blog-list">
+
+                <!-- Post 1 — Latest -->
+                <article class="blog-card latest fade-up">
+                    <div class="blog-meta-row">
+                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> February 2026</span>
+                        <span class="badge-cat">Deep Learning</span>
+                        <span class="badge-new"><i class="fas fa-star" style="font-size:.62rem;"></i> Latest</span>
+                    </div>
+                    <h2 class="blog-title">Understanding Zero-Shot Learning: How AI Recognizes What It Has Never Seen
+                    </h2>
+                    <p class="blog-excerpt">
+                        Zero-shot learning is one of the most fascinating challenges in modern AI — teaching a model to
+                        correctly identify or classify something it has never been directly trained on. In this article,
+                        I break down the intuition behind zero-shot learning, explain the role of semantic embeddings
+                        and vision-language alignment (like CLIP), and share lessons from my own undergraduate thesis on
+                        zero-shot anomaly detection in surveillance videos.
+                    </p>
+                    <div class="blog-foot">
+                        <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
+                        <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Post 2 -->
+                <article class="blog-card fade-up">
+                    <div class="blog-meta-row">
+                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> January 2026</span>
+                        <span class="badge-cat">Computer Vision</span>
+                    </div>
+                    <h2 class="blog-title">Vision Transformers vs. CNNs: What Changed and Why It Matters</h2>
+                    <p class="blog-excerpt">
+                        For years, Convolutional Neural Networks were the backbone of computer vision. Then Vision
+                        Transformers arrived — and everything shifted. I explore the architectural differences, where
+                        each excels, and why the spatiotemporal variant TimeSformer became central to my thesis work in
+                        video understanding.
+                    </p>
+                    <div class="blog-foot">
+                        <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
+                        <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Post 3 -->
+                <article class="blog-card fade-up">
+                    <div class="blog-meta-row">
+                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> December 2025</span>
+                        <span class="badge-cat">Research</span>
+                    </div>
+                    <h2 class="blog-title">My Final Year Thesis Experience: From Idea to 84.5% AUC</h2>
+                    <p class="blog-excerpt">
+                        Writing a thesis is unlike any other academic task — it's months of uncertainty, late-night
+                        experiments, and gradual breakthroughs. I share the honest story of my CSE 400 thesis: the
+                        research decisions, the dead ends, and what I'd do differently. A must-read for any CS student
+                        about to begin their own research journey.
+                    </p>
+                    <div class="blog-foot">
+                        <span class="read-time"><i class="fas fa-clock"></i> 10 min read</span>
+                        <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Post 4 -->
+                <article class="blog-card fade-up">
+                    <div class="blog-meta-row">
+                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> November 2025</span>
+                        <span class="badge-cat">Machine Learning</span>
+                    </div>
+                    <h2 class="blog-title">Dealing with Class Imbalance in Real-World Datasets: SMOTE and Beyond</h2>
+                    <p class="blog-excerpt">
+                        Class imbalance is one of the most common yet underestimated problems in applied ML. Using the
+                        loan eligibility dataset from my CSE 427 project, I walk through why naive accuracy is
+                        misleading and how SMOTE helps — and where it falls short.
+                    </p>
+                    <div class="blog-foot">
+                        <span class="read-time"><i class="fas fa-clock"></i> 7 min read</span>
+                        <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
+                    </div>
+                </article>
+
+                <!-- Post 5 -->
+                <article class="blog-card fade-up">
+                    <div class="blog-meta-row">
+                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> October 2025</span>
+                        <span class="badge-cat">Career</span>
+                    </div>
+                    <h2 class="blog-title">From Graduation to Job Hunt: Navigating the AI Job Market as a Fresher in
+                        Bangladesh</h2>
+                    <p class="blog-excerpt">
+                        The AI job market is booming globally — but what does it look like for a fresh CS graduate in
+                        Bangladesh? I share my experience searching for ML and data science roles, what employers
+                        actually look for, the gaps in local vs. remote opportunity, and practical steps I took to be
+                        competitive.
+                    </p>
+                    <div class="blog-foot">
+                        <span class="read-time"><i class="fas fa-clock"></i> 9 min read</span>
+                        <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
+                    </div>
+                </article>
+
+            </div><!-- /.blog-list -->
+
+            <div class="blog-note fade-up">
+                <i class="fas fa-pencil-alt"></i>
+                <strong>More articles on the way.</strong> New posts are published regularly.
+                Stay connected via <a href="https://www.linkedin.com/in/tareqaziz825/" target="_blank"
+                    rel="noopener">LinkedIn</a> to get notified.
+            </div>
+
         </div>
-        <h2 class="blog-title">My Final Year Thesis Experience: From Idea to 84.5% AUC</h2>
-        <p class="blog-excerpt">
-          Writing a thesis is unlike any other academic task — it's months of uncertainty, late-night experiments, and gradual breakthroughs. I share the honest story of my CSE 400 thesis: the research decisions, the dead ends, and what I'd do differently. A must-read for any CS student about to begin their own research journey.
-        </p>
-        <div class="blog-foot">
-          <span class="read-time"><i class="fas fa-clock"></i> 10 min read</span>
-          <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
-        </div>
-      </article>
+    </section>
 
-      <!-- Post 4 -->
-      <article class="blog-card fade-up">
-        <div class="blog-meta-row">
-          <span class="blog-date"><i class="fas fa-calendar-alt"></i> November 2025</span>
-          <span class="badge-cat">Machine Learning</span>
-        </div>
-        <h2 class="blog-title">Dealing with Class Imbalance in Real-World Datasets: SMOTE and Beyond</h2>
-        <p class="blog-excerpt">
-          Class imbalance is one of the most common yet underestimated problems in applied ML. Using the loan eligibility dataset from my CSE 427 project, I walk through why naive accuracy is misleading and how SMOTE helps — and where it falls short.
-        </p>
-        <div class="blog-foot">
-          <span class="read-time"><i class="fas fa-clock"></i> 7 min read</span>
-          <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
-        </div>
-      </article>
+    <footer class="site-footer">
+        <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
+    </footer>
 
-      <!-- Post 5 -->
-      <article class="blog-card fade-up">
-        <div class="blog-meta-row">
-          <span class="blog-date"><i class="fas fa-calendar-alt"></i> October 2025</span>
-          <span class="badge-cat">Career</span>
-        </div>
-        <h2 class="blog-title">From Graduation to Job Hunt: Navigating the AI Job Market as a Fresher in Bangladesh</h2>
-        <p class="blog-excerpt">
-          The AI job market is booming globally — but what does it look like for a fresh CS graduate in Bangladesh? I share my experience searching for ML and data science roles, what employers actually look for, the gaps in local vs. remote opportunity, and practical steps I took to be competitive.
-        </p>
-        <div class="blog-foot">
-          <span class="read-time"><i class="fas fa-clock"></i> 9 min read</span>
-          <a href="#" class="btn-read"><i class="fas fa-arrow-right"></i> Read Article</a>
-        </div>
-      </article>
-
-    </div><!-- /.blog-list -->
-
-    <div class="blog-note fade-up">
-      <i class="fas fa-pencil-alt"></i>
-      <strong>More articles on the way.</strong> New posts are published regularly.
-      Stay connected via <a href="https://www.linkedin.com/in/tareqaziz825/" target="_blank" rel="noopener">LinkedIn</a> to get notified.
-    </div>
-
-  </div>
-</section>
-
-<footer class="site-footer">
-  <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
-</footer>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="scripts.js"></script>
 </body>
+
 </html>
