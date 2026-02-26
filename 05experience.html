@@ -3,98 +3,96 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammod Tareq Aziz — Experience</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Experience — Mohammod Tareq Aziz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- ── NAVBAR ── -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a class="nav-brand" href="01index.html">Mohammod Tareq Aziz</a>
-      <ul class="nav-links">
-        <li><a href="01index.html">About</a></li>
-        <li><a href="02project.html">Projects</a></li>
-        <li><a href="03education.html">Education</a></li>
-        <li><a href="04skills.html">Skills</a></li>
-        <li><a href="05experience.html" class="active">Experience</a></li>
-        <li><a href="06blog.html">Blog</a></li>
-        <li><a href="07ataglance.html">At a Glance</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
-        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-      </div>
+<nav class="site-nav">
+  <div class="nav-container">
+    <a class="nav-brand" href="index.html">Mohammod Tareq Aziz</a>
+    <ul class="nav-menu">
+      <li><a href="index.html">About</a></li>
+      <li><a href="02project.html">Projects</a></li>
+      <li><a href="03education.html">Education</a></li>
+      <li><a href="04skills.html">Skills</a></li>
+      <li><a href="05experience.html" class="active">Experience</a></li>
+      <li><a href="06blog.html">Blog</a></li>
+      <li><a href="07ataglance.html">At a Glance</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+      <button class="nav-hamburger" id="navHam" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="01index.html">About</a>
-    <a href="02project.html">Projects</a>
-    <a href="03education.html">Education</a>
-    <a href="04skills.html">Skills</a>
-    <a href="05experience.html" class="active">Experience</a>
-    <a href="06blog.html">Blog</a>
-    <a href="07ataglance.html">At a Glance</a>
   </div>
+</nav>
+<nav class="nav-mobile" id="mobileNav">
+  <a href="index.html">About</a>
+  <a href="02project.html">Projects</a>
+  <a href="03education.html">Education</a>
+  <a href="04skills.html">Skills</a>
+  <a href="05experience.html" class="active">Experience</a>
+  <a href="06blog.html">Blog</a>
+  <a href="07ataglance.html">At a Glance</a>
+</nav>
 
-  <!-- ── PAGE HEADER ── -->
-  <header class="page-header">
-    <h1>Experience</h1>
-    <p>Professional and research experience — building expertise through real-world engagement</p>
-  </header>
+<header class="page-header">
+  <h1>Experience</h1>
+  <p>Professional and research experience — building expertise through real-world engagement</p>
+</header>
 
-  <!-- ── EXPERIENCE ── -->
-  <section class="section experience-section fade-in">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="section-title">Work &amp; Research Experience</h2>
-        <div class="divider"></div>
-      </div>
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head fade-up">
+      <h2 class="sec-title">Work &amp; Research Experience</h2>
+      <div class="sec-line"></div>
+    </div>
 
-      <!-- Empty state — add entries here when ready -->
-      <div class="empty-state">
-        <div class="empty-state-icon"><i class="fas fa-briefcase"></i></div>
-        <h3>Experience Coming Soon</h3>
-        <p>As a recent graduate actively seeking opportunities, this section will be updated with professional and research experience. Please check back or connect with me directly.</p>
-        <div style="margin-top:1.5rem;">
-          <a href="https://www.linkedin.com/in/tareqaziz825/" class="btn-primary" target="_blank" rel="noopener">
-            <i class="fab fa-linkedin"></i> View LinkedIn Profile
-          </a>
+    <!-- Empty state — replace with timeline entries below when ready -->
+    <div class="empty-state fade-up">
+      <div class="empty-icon"><i class="fas fa-briefcase"></i></div>
+      <h3>Building My Experience</h3>
+      <p>As a recent graduate actively seeking opportunities, this section will be updated as I gain professional and research experience. I'm currently open to ML engineering, research assistant, and data science roles.</p>
+      <a href="https://www.linkedin.com/in/tareqaziz825/" class="btn-sm-outline" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.5rem;">
+        <i class="fab fa-linkedin"></i> View LinkedIn Profile
+      </a>
+    </div>
+
+    <!--
+    ═══════════════════════════════════════════════════════
+    ADD EXPERIENCE ENTRIES BELOW — copy one tl-item block per role
+    ═══════════════════════════════════════════════════════
+
+    <div class="timeline fade-up">
+
+      <div class="tl-item">
+        <span class="tl-date">Month Year – Present</span>
+        <div class="tl-card">
+          <h3>Job Title</h3>
+          <h4>Company / Institution · Location</h4>
+          <ul>
+            <li>Key responsibility or achievement.</li>
+            <li>Another accomplishment or technical contribution.</li>
+          </ul>
         </div>
       </div>
-
-      <!-- ──────────────────────────────────────────────────────────────
-           TEMPLATE: Copy and paste the block below to add experience
-           ──────────────────────────────────────────────────────────────
-
-      <div class="timeline">
-        <div class="timeline-item">
-          <span class="timeline-date">Jan 2025 – Present</span>
-          <div class="timeline-card">
-            <h3>Job Title</h3>
-            <h4>Company / Institution · Location</h4>
-            <ul>
-              <li>Key responsibility or achievement.</li>
-              <li>Another accomplishment or contribution.</li>
-              <li>Technical scope or outcome.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      ─────────────────────────────────────────────────────────────── -->
 
     </div>
-  </section>
+    ═══════════════════════════════════════════════════════
+    -->
 
-  <!-- ── FOOTER ── -->
-  <footer>
-    <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;·&nbsp; All rights reserved.</p>
-  </footer>
+  </div>
+</section>
 
-  <script src="scripts.js"></script>
+<footer class="site-footer">
+  <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>

@@ -1,79 +1,48 @@
-/* ── scripts.js — Shared across all pages ── */
-
+/* scripts.js — shared across all pages */
 (function () {
+  /* ── Dark Mode ── */
+  const toggle = document.getElementById('themeToggle');
+  const icon   = document.getElementById('themeIcon');
 
-  /* ─── Dark Mode ─── */
-  const themeToggle = document.getElementById('themeToggle');
-  const themeIcon   = document.getElementById('themeIcon');
-  const body        = document.body;
+  function applyTheme(dark) {
+    document.body.classList.toggle('dark-mode', dark);
+    if (icon) icon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
+  }
 
-  const applyTheme = (dark) => {
-    if (dark) {
-      body.classList.add('dark');
-      if (themeIcon) { themeIcon.className = 'fas fa-sun'; }
-    } else {
-      body.classList.remove('dark');
-      if (themeIcon) { themeIcon.className = 'fas fa-moon'; }
-    }
-  };
+  applyTheme(localStorage.getItem('theme') === 'dark');
 
-  // Apply saved preference immediately
-  const saved = localStorage.getItem('theme');
-  applyTheme(saved === 'dark');
-
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      const isDark = body.classList.contains('dark');
-      applyTheme(!isDark);
-      localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  if (toggle) {
+    toggle.addEventListener('click', () => {
+      const dark = !document.body.classList.contains('dark-mode');
+      applyTheme(dark);
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
     });
   }
 
-  /* ─── Mobile Menu / Hamburger ─── */
-  const hamburger  = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  if (hamburger && mobileMenu) {
-    hamburger.addEventListener('click', () => {
-      mobileMenu.classList.toggle('open');
+  /* ── Hamburger ── */
+  const ham   = document.getElementById('navHam');
+  const mmenu = document.getElementById('mobileNav');
+  if (ham && mmenu) {
+    ham.addEventListener('click', (e) => {
+      e.stopPropagation();
+      mmenu.classList.toggle('open');
     });
-
-    // Close on outside click
     document.addEventListener('click', (e) => {
-      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
-        mobileMenu.classList.remove('open');
-      }
+      if (!mmenu.contains(e.target) && !ham.contains(e.target))
+        mmenu.classList.remove('open');
     });
   }
 
-  /* ─── Fade-in on Scroll ─── */
-  const faders = document.querySelectorAll('.fade-in');
-
+  /* ── Scroll Fade-up ── */
+  const els = document.querySelectorAll('.fade-up');
   if ('IntersectionObserver' in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in-view'); obs.unobserve(e.target); }
       });
-    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-    faders.forEach(el => observer.observe(el));
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(el => obs.observe(el));
   } else {
-    // Fallback: show all immediately
-    faders.forEach(el => el.classList.add('visible'));
+    els.forEach(el => el.classList.add('in-view'));
   }
-
-  /* ─── Smooth scroll for anchor links ─── */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-
 })();

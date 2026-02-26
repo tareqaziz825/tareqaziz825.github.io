@@ -3,125 +3,123 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohammod Tareq Aziz — Education</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <title>Education — Mohammod Tareq Aziz</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  <!-- ── NAVBAR ── -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a class="nav-brand" href="01index.html">Mohammod Tareq Aziz</a>
-      <ul class="nav-links">
-        <li><a href="01index.html">About</a></li>
-        <li><a href="02project.html">Projects</a></li>
-        <li><a href="03education.html" class="active">Education</a></li>
-        <li><a href="04skills.html">Skills</a></li>
-        <li><a href="05experience.html">Experience</a></li>
-        <li><a href="06blog.html">Blog</a></li>
-        <li><a href="07ataglance.html">At a Glance</a></li>
-      </ul>
-      <div class="nav-actions">
-        <button class="theme-btn" id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
-        <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
-      </div>
+<nav class="site-nav">
+  <div class="nav-container">
+    <a class="nav-brand" href="index.html">Mohammod Tareq Aziz</a>
+    <ul class="nav-menu">
+      <li><a href="index.html">About</a></li>
+      <li><a href="02project.html">Projects</a></li>
+      <li><a href="03education.html" class="active">Education</a></li>
+      <li><a href="04skills.html">Skills</a></li>
+      <li><a href="05experience.html">Experience</a></li>
+      <li><a href="06blog.html">Blog</a></li>
+      <li><a href="07ataglance.html">At a Glance</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
+      <button class="nav-hamburger" id="navHam" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
-  </nav>
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="01index.html">About</a>
-    <a href="02project.html">Projects</a>
-    <a href="03education.html" class="active">Education</a>
-    <a href="04skills.html">Skills</a>
-    <a href="05experience.html">Experience</a>
-    <a href="06blog.html">Blog</a>
-    <a href="07ataglance.html">At a Glance</a>
   </div>
+</nav>
+<nav class="nav-mobile" id="mobileNav">
+  <a href="index.html">About</a>
+  <a href="02project.html">Projects</a>
+  <a href="03education.html" class="active">Education</a>
+  <a href="04skills.html">Skills</a>
+  <a href="05experience.html">Experience</a>
+  <a href="06blog.html">Blog</a>
+  <a href="07ataglance.html">At a Glance</a>
+</nav>
 
-  <!-- ── PAGE HEADER ── -->
-  <header class="page-header">
-    <h1>Education</h1>
-    <p>Academic journey from school to university — building a strong foundation in Computer Science</p>
-  </header>
+<header class="page-header">
+  <h1>Education</h1>
+  <p>Academic journey from school to university — a strong foundation in Computer Science and Science</p>
+</header>
 
-  <!-- ── EDUCATION CARDS ── -->
-  <section class="section fade-in">
-    <div class="container">
-      <div class="section-head">
-        <h2 class="section-title">Academic Background</h2>
-        <div class="divider"></div>
-        <p class="section-subtitle">Chronological overview of my educational qualifications</p>
-      </div>
-
-      <div class="edu-grid">
-
-        <!-- BSc -->
-        <div class="edu-card fade-in">
-          <img src="images/BRACU.svg" class="edu-logo" alt="BRAC University Logo">
-          <p class="edu-degree">Bachelor of Science (B.Sc.) in Computer Science</p>
-          <p class="edu-institution">BRAC University, Dhaka</p>
-          <span class="edu-year">Fall 2025 — Graduated</span>
-          <div class="edu-meta">
-            <span><i class="fas fa-code" style="color:var(--clr-blue);width:14px;"></i> Focus Area: Artificial Intelligence</span>
-            <span><i class="fas fa-book" style="color:var(--clr-blue);width:14px;"></i> Thesis: Context-Aware Zero-Shot Anomaly Detection in Surveillance</span>
-          </div>
-          <div class="course-chips">
-            <span class="chip">Data Science</span>
-            <span class="chip">Graph Theory</span>
-            <span class="chip">Advanced AI</span>
-            <span class="chip">Symbolic ML-I</span>
-            <span class="chip">Neural Networks</span>
-            <span class="chip">Pattern Recognition</span>
-          </div>
-        </div>
-
-        <!-- HSC -->
-        <div class="edu-card fade-in">
-          <img src="images/MMCollege.png" class="edu-logo" alt="MM College Logo">
-          <p class="edu-degree">Higher Secondary Certificate (HSC)</p>
-          <p class="edu-institution">Govt. Michael Madhusudan College, Jashore</p>
-          <span class="edu-year">2018</span>
-          <div class="edu-meta">
-            <span><i class="fas fa-landmark" style="color:var(--clr-blue);width:14px;"></i> Education Board: Jashore</span>
-            <span><i class="fas fa-flask" style="color:var(--clr-blue);width:14px;"></i> Major: Science</span>
-          </div>
-        </div>
-
-        <!-- SSC -->
-        <div class="edu-card fade-in">
-          <img src="images/DPSchool.png" class="edu-logo" alt="Daud Public School Logo">
-          <p class="edu-degree">Secondary School Certificate (SSC)</p>
-          <p class="edu-institution">Daud Public School and College, Jashore</p>
-          <span class="edu-year">2016</span>
-          <div class="edu-meta">
-            <span><i class="fas fa-landmark" style="color:var(--clr-blue);width:14px;"></i> Education Board: Jashore</span>
-            <span><i class="fas fa-flask" style="color:var(--clr-blue);width:14px;"></i> Major: Science</span>
-          </div>
-        </div>
-
-        <!-- JSC -->
-        <div class="edu-card fade-in">
-          <img src="images/DPSchool.png" class="edu-logo" alt="Daud Public School Logo">
-          <p class="edu-degree">Junior School Certificate (JSC)</p>
-          <p class="edu-institution">Daud Public School and College, Jashore</p>
-          <span class="edu-year">2013</span>
-          <div class="edu-meta">
-            <span><i class="fas fa-landmark" style="color:var(--clr-blue);width:14px;"></i> Education Board: Jashore</span>
-            <span><i class="fas fa-book-open" style="color:var(--clr-blue);width:14px;"></i> Major: General</span>
-          </div>
-        </div>
-
-      </div>
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head fade-up">
+      <h2 class="sec-title">Academic Qualifications</h2>
+      <div class="sec-line"></div>
+      <p class="sec-sub">Chronological overview of formal education</p>
     </div>
-  </section>
 
-  <!-- ── FOOTER ── -->
-  <footer>
-    <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;·&nbsp; All rights reserved.</p>
-  </footer>
+    <div class="edu-grid">
 
-  <script src="scripts.js"></script>
+      <!-- BSc -->
+      <div class="edu-card fade-up">
+        <img src="images/BRACU.svg" class="edu-logo" alt="BRAC University">
+        <p class="edu-degree">Bachelor of Science (B.Sc.) in Computer Science</p>
+        <p class="edu-inst">BRAC University, Dhaka</p>
+        <span class="edu-year">Graduated Fall 2025</span>
+        <div class="edu-info">
+          <div class="edu-info-row"><i class="fas fa-code"></i><span><strong>Focus Area:</strong> Artificial Intelligence</span></div>
+          <div class="edu-info-row"><i class="fas fa-book"></i><span><strong>Thesis:</strong> Context-Aware Zero-Shot Anomaly Detection in Surveillance</span></div>
+        </div>
+        <div class="chip-row">
+          <span class="chip">Data Science</span>
+          <span class="chip">Graph Theory</span>
+          <span class="chip">Advanced AI</span>
+          <span class="chip">Neural Networks</span>
+          <span class="chip">Pattern Recognition</span>
+          <span class="chip">Machine Learning</span>
+        </div>
+      </div>
+
+      <!-- HSC -->
+      <div class="edu-card fade-up">
+        <img src="images/MMCollege.png" class="edu-logo" alt="Michael Madhusudan College">
+        <p class="edu-degree">Higher Secondary Certificate (HSC)</p>
+        <p class="edu-inst">Govt. Michael Madhusudan College, Jashore</p>
+        <span class="edu-year">2018</span>
+        <div class="edu-info">
+          <div class="edu-info-row"><i class="fas fa-landmark"></i><span><strong>Board:</strong> Jashore Education Board</span></div>
+          <div class="edu-info-row"><i class="fas fa-flask"></i><span><strong>Major:</strong> Science</span></div>
+        </div>
+      </div>
+
+      <!-- SSC -->
+      <div class="edu-card fade-up">
+        <img src="images/DPSchool.png" class="edu-logo" alt="Daud Public School">
+        <p class="edu-degree">Secondary School Certificate (SSC)</p>
+        <p class="edu-inst">Daud Public School and College, Jashore</p>
+        <span class="edu-year">2016</span>
+        <div class="edu-info">
+          <div class="edu-info-row"><i class="fas fa-landmark"></i><span><strong>Board:</strong> Jashore Education Board</span></div>
+          <div class="edu-info-row"><i class="fas fa-flask"></i><span><strong>Major:</strong> Science</span></div>
+        </div>
+      </div>
+
+      <!-- JSC -->
+      <div class="edu-card fade-up">
+        <img src="images/DPSchool.png" class="edu-logo" alt="Daud Public School">
+        <p class="edu-degree">Junior School Certificate (JSC)</p>
+        <p class="edu-inst">Daud Public School and College, Jashore</p>
+        <span class="edu-year">2013</span>
+        <div class="edu-info">
+          <div class="edu-info-row"><i class="fas fa-landmark"></i><span><strong>Board:</strong> Jashore Education Board</span></div>
+          <div class="edu-info-row"><i class="fas fa-book-open"></i><span><strong>Major:</strong> General</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="scripts.js"></script>
 </body>
 </html>
