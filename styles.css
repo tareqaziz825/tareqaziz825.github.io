@@ -803,3 +803,76 @@ body.dark-mode .article-body pre { background: #020817; }
 }
 .author-card-body h4 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: .2rem; }
 .author-card-body p { font-size: .85rem; color: var(--muted); margin: 0; line-height: 1.6; }
+
+/* ============================================================
+   Contact Form
+   ============================================================ */
+.contact-form {
+    margin-top: .75rem;
+    max-width: 640px;
+}
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .85rem;
+    margin-bottom: .85rem;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+.form-group label {
+    font-size: .8rem;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: .03em;
+    text-transform: uppercase;
+}
+.form-group input,
+.form-group textarea {
+    padding: .6rem .85rem;
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: .9rem;
+    transition: border-color var(--transition), box-shadow var(--transition);
+    resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(59,130,246,.12);
+}
+.form-group textarea { margin-bottom: .85rem; }
+.btn-form-send {
+    display: inline-flex;
+    align-items: center;
+    gap: .45rem;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    padding: .65rem 1.75rem;
+    border-radius: 50px;
+    font-family: var(--font-body);
+    font-size: .88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all var(--transition);
+}
+.btn-form-send:hover { background: var(--navy); transform: translateY(-1px); }
+.btn-form-send:disabled { opacity: .6; cursor: not-allowed; transform: none; }
+.form-status {
+    margin-top: .75rem;
+    font-size: .85rem;
+    font-weight: 500;
+    min-height: 1.2rem;
+}
+.form-status.success { color: #16a34a; }
+.form-status.error   { color: #dc2626; }
+@media (max-width: 540px) {
+    .form-row { grid-template-columns: 1fr; }
+}

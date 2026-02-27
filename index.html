@@ -202,6 +202,31 @@
                     Bangladesh</span>
             </div>
 
+            <!-- ===================== -->
+            <p class="connect-label" style="margin-top: 1.5rem;">Send a message</p>
+            <form class="contact-form" id="contactForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="from_name">Your Name</label>
+                        <input type="text" id="from_name" name="from_name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="from_email">Your Email</label>
+                        <input type="email" id="from_email" name="from_email" placeholder="john@email.com" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Write your message here…"
+                        required></textarea>
+                </div>
+                <button type="submit" class="btn-form-send" id="sendBtn">
+                    <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+                <p class="form-status" id="formStatus"></p>
+            </form>
+            <!-- ===================== -->
+
         </div>
     </section>
     <!-- ╚══════════════════════════════════════════════════╝ -->
@@ -212,6 +237,38 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="scripts.js"></script>
+
+    <!-- EmailJS -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        emailjs.init('y3EFG7KJvU0XqX380'); // ← paste your Public Key here
+
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const btn = document.getElementById('sendBtn');
+            const status = document.getElementById('formStatus');
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
+            status.textContent = '';
+            status.className = 'form-status';
+
+            emailjs.sendForm('service_write2justice', 'template_write2justice', this)
+                .then(() => {
+                    status.textContent = '✓ Message sent! I\'ll get back to you soon.';
+                    status.className = 'form-status success';
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    btn.disabled = false;
+                    this.reset();
+                }, (error) => {
+                    status.textContent = '✗ Something went wrong. Please try emailing directly.';
+                    status.className = 'form-status error';
+                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
+                    btn.disabled = false;
+                    console.error(error);
+                });
+        });
+    </script>
 </body>
 
 </html>
