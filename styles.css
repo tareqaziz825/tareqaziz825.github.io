@@ -306,9 +306,9 @@ body.light-mode .hero-section::after {
 .profile-sidebar h2 { font-family:var(--font-disp); font-size:1.1rem; font-weight:700; text-align:center; color:var(--navy); margin-bottom:.2rem; letter-spacing:-.02em; }
 .profile-sidebar .role { text-align:center; font-family:var(--font-mono); font-size:.73rem; font-weight:500; color:var(--green); letter-spacing:.03em; margin-bottom:1.2rem; }
 /* .profile-sidebar .role::before { content:'< '; color:var(--text-faint); } */
-.profile-sidebar .role::before { content:''; color:var(--text-faint); }
+.profile-sidebar .role::before { content:''; }
 /* .profile-sidebar .role::after  { content:' />'; color:var(--text-faint); } */
-.profile-sidebar .role::after  { content:''; color:var(--text-faint); }
+.profile-sidebar .role::after  { content:'';}
 .profile-info { display:flex; flex-direction:column; gap:.6rem; }
 .profile-info-row {
   display:flex; align-items:flex-start; gap:.55rem; font-size:.84rem; color:var(--text-dim);
