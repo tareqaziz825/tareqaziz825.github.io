@@ -201,7 +201,8 @@ body.light-mode .hero-section::after {
   animation:fadeInDown .6s var(--ease-smooth) .1s both;
   position:relative; overflow:hidden;
 }
-.hero-eyebrow::before { content:'$'; color:var(--text-faint); }
+/* .hero-eyebrow::before { content:'$'; color:var(--text-faint); } */
+.hero-eyebrow::before { content:''; }
 .hero-eyebrow::after {
   content:''; position:absolute; inset:0;
   background:linear-gradient(90deg,transparent,rgba(138,201,38,.1),transparent);
