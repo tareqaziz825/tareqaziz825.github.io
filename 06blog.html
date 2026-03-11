@@ -1,279 +1,182 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="images/TAJLogo.png">
-    <title>Blog — Mohammod Tareq Aziz</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Oxanium:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="images/TAJLogo.png">
+  <title>Blog — Mohammod Tareq Aziz</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-    <nav class="site-nav">
-        <div class="nav-container">
-            <a class="nav-brand" href="index.html">Mohammod Tareq Aziz</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">About</a></li>
-                <li><a href="02project.html">Projects</a></li>
-                <li><a href="03education.html">Education</a></li>
-                <li><a href="04skills.html">Skills</a></li>
-                <li><a href="05experience.html">Experience</a></li>
-                <li><a href="06blog.html" class="active">Blog</a></li>
-                <li><a href="07ataglance.html">At a Glance</a></li>
-            </ul>
-            <div class="nav-right">
-                <button id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
-                <button class="nav-hamburger" id="navHam"
-                    aria-label="Open menu"><span></span><span></span><span></span></button>
-            </div>
+<div id="scroll-progress"></div>
+<div id="cursor-dot"></div>
+<div class="page-transition-overlay"></div>
+
+<nav class="site-nav">
+  <div class="nav-container">
+    <a class="nav-brand" href="index.html">Mohammod Tareq Aziz</a>
+    <ul class="nav-menu">
+      <li><a href="index.html">About</a></li>
+      <li><a href="02project.html">Projects</a></li>
+      <li><a href="03education.html">Education</a></li>
+      <li><a href="04skills.html">Skills</a></li>
+      <li><a href="05experience.html">Experience</a></li>
+      <li><a href="06blog.html" class="active">Blog</a></li>
+      <li><a href="07ataglance.html">At a Glance</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="themeToggle" title="Toggle theme"><i class="fas fa-sun" id="themeIcon"></i></button>
+      <button class="nav-hamburger" id="navHam" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+<nav class="nav-mobile" id="mobileNav">
+  <a href="index.html">About</a>
+  <a href="02project.html">Projects</a>
+  <a href="03education.html">Education</a>
+  <a href="04skills.html">Skills</a>
+  <a href="05experience.html">Experience</a>
+  <a href="06blog.html" class="active">Blog</a>
+  <a href="07ataglance.html">At a Glance</a>
+</nav>
+
+<div class="page-header">
+  <h1>Blog</h1>
+  <p>Articles on ML &amp; Deep Learning, career insights, and the journey of a CS graduate</p>
+  <div class="page-header-line"></div>
+</div>
+
+<section class="section">
+  <div class="wrap">
+    <div class="sec-head fade-up">
+      <h2 class="sec-title">My Writings</h2>
+      <div class="sec-line"></div>
+    </div>
+
+    <div class="blog-list">
+
+      <!-- Post 5 — Zero-Shot Learning -->
+      <article class="blog-card latest fade-up">
+        <div class="blog-meta-row">
+          <span class="blog-date"><i class="fas fa-calendar-alt"></i> February 2026</span>
+          <span class="badge-cat">Deep Learning</span>
+          <span class="badge-new"><i class="fas fa-star" style="font-size:.62rem;"></i> Latest</span>
         </div>
-    </nav>
-    <nav class="nav-mobile" id="mobileNav">
-        <a href="index.html">About</a>
-        <a href="02project.html">Projects</a>
-        <a href="03education.html">Education</a>
-        <a href="04skills.html">Skills</a>
-        <a href="05experience.html">Experience</a>
-        <a href="06blog.html" class="active">Blog</a>
-        <a href="07ataglance.html">At a Glance</a>
-    </nav>
-
-    <header class="page-header">
-        <h1>Blog</h1>
-        <p>Articles on ML &amp; Deep Learning, Interviews, and the journey of a CS graduate</p>
-    </header>
-
-    <section class="section">
-        <div class="wrap">
-            <div class="sec-head fade-up">
-                <h2 class="sec-title">My Writings</h2>
-                <div class="sec-line"></div>
-            </div>
-
-            <div class="blog-list">
-
-                <!-- Post 5 — Latest -->
-                <!-- <article class="blog-card latest fade-up">
-                    <div class="blog-meta-row">
-                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> February 2026</span>
-                        <span class="badge-cat">Deep Learning</span>
-                        <span class="badge-new"><i class="fas fa-star" style="font-size:.62rem;"></i> Latest</span>
-                    </div>
-                    <h2 class="blog-title">Understanding Zero-Shot Learning: How AI Recognizes What It Has Never Seen
-                    </h2>
-                    <p class="blog-excerpt">
-                        Zero-shot learning is one of the most fascinating challenges in modern AI — teaching a model to
-                        correctly identify or classify something it has never been directly trained on. I break down the
-                        intuition, the role of semantic embeddings and vision-language alignment (like CLIP), and share
-                        lessons from my own undergraduate thesis on zero-shot anomaly detection in surveillance videos.
-                    </p>
-                    <div class="blog-foot">
-                        <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
-                        <a href="blogs/post-05-zero-shot-learning.html" class="btn-read"><i
-                                class="fas fa-arrow-right"></i> Read Article</a>
-                    </div>
-                </article> -->
-
-                <!-- Post 4 -->
-                <!-- <article class="blog-card fade-up">
-                    <div class="blog-meta-row">
-                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> January 2026</span>
-                        <span class="badge-cat">Computer Vision</span>
-                    </div>
-                    <h2 class="blog-title">Vision Transformers vs. CNNs: What Changed and Why It Matters</h2>
-                    <p class="blog-excerpt">
-                        For years, Convolutional Neural Networks were the backbone of computer vision. Then Vision
-                        Transformers arrived — and everything shifted. I explore the architectural differences, where
-                        each excels, and why the spatiotemporal variant TimeSformer became central to my thesis work in
-                        video understanding.
-                    </p>
-                    <div class="blog-foot">
-                        <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
-                        <a href="blogs/post-04-vit-vs-cnn.html" class="btn-read"><i class="fas fa-arrow-right"></i> Read
-                            Article</a>
-                    </div>
-                </article> -->
-
-                <!-- Post 3 -->
-                <!-- <article class="blog-card fade-up">
-                    <div class="blog-meta-row">
-                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> December 2025</span>
-                        <span class="badge-cat">Research</span>
-                    </div>
-                    <h2 class="blog-title">My Final Year Thesis Experience: From Idea to 84.5% AUC</h2>
-                    <p class="blog-excerpt">
-                        Writing a thesis is unlike any other academic task — it's months of uncertainty, late-night
-                        experiments, and gradual breakthroughs. I share the honest story of my CSE 400 thesis: the
-                        research decisions, the dead ends, and what I'd do differently. A must-read for any CS student
-                        about to begin their own research journey.
-                    </p>
-                    <div class="blog-foot">
-                        <span class="read-time"><i class="fas fa-clock"></i> 10 min read</span>
-                        <a href="blogs/post-03-thesis-experience.html" class="btn-read"><i
-                                class="fas fa-arrow-right"></i> Read Article</a>
-                    </div>
-                </article> -->
-
-                <!-- Post 2 -->
-                <article class="blog-card fade-up">
-                    <div class="blog-meta-row">
-                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> February 2026</span>
-                        <span class="badge-cat">Career Guide</span>
-                    </div>
-                    <h2 class="blog-title">Guide to City Bank's Trainee Assistant Manager (TAM) Program
-                    </h2>
-                    <p class="blog-excerpt">
-                        Breakdown of the TAM recruitment process, including salary structure, 4-stage
-                        selection, and questions from the online assessment.
-                    </p>
-                    <div class="blog-foot">
-                        <span class="read-time"><i class="fas fa-clock"></i> 15 min read</span>
-                        <a href="blogs/post-02-city-bank-atm-position.html" class="btn-read"><i
-                                class="fas fa-arrow-right"></i> Read Article</a>
-                    </div>
-                </article>
-
-                <!-- Post 1 -->
-                <!-- <article class="blog-card fade-up">
-                    <div class="blog-meta-row">
-                        <span class="blog-date"><i class="fas fa-calendar-alt"></i> October 2025</span>
-                        <span class="badge-cat">Career</span>
-                    </div>
-                    <h2 class="blog-title">From Graduation to Job Hunt: Navigating the AI Job Market as a Fresher in
-                        Bangladesh</h2>
-                    <p class="blog-excerpt">
-                        The AI job market is booming globally — but what does it look like for a fresh CS graduate in
-                        Bangladesh? I share my experience searching for ML and data science roles, what employers
-                        actually look for, the gaps in local vs. remote opportunity, and practical steps I took to be
-                        competitive.
-                    </p>
-                    <div class="blog-foot">
-                        <span class="read-time"><i class="fas fa-clock"></i> 9 min read</span>
-                        <a href="blogs/post-01-job-hunt-bangladesh.html" class="btn-read"><i
-                                class="fas fa-arrow-right"></i> Read Article</a>
-                    </div>
-                </article> -->
-
-            </div><!-- /.blog-list -->
-
-            <div class="blog-note fade-up">
-                <i class="fas fa-pencil-alt"></i>
-                <strong>More articles on the way.</strong> New posts are published regularly.
-                Stay connected via <a href="https://www.linkedin.com/in/tareqaziz825/" target="_blank"
-                    rel="noopener">LinkedIn</a> to get notified.
-            </div>
-
+        <h2 class="blog-title">Understanding Zero-Shot Learning: How AI Recognizes What It Has Never Seen</h2>
+        <p class="blog-excerpt">
+          Zero-shot learning is one of the most fascinating challenges in modern AI — teaching a model to
+          correctly identify or classify something it has never been directly trained on. I break down the
+          intuition, the role of semantic embeddings and vision-language alignment (like CLIP), and share
+          lessons from my own undergraduate thesis on zero-shot anomaly detection in surveillance videos.
+        </p>
+        <div class="blog-foot">
+          <span class="read-time"><i class="fas fa-clock"></i> 8 min read</span>
+          <a href="blogs/post-05-zero-shot-learning.html" class="btn-read">
+            <i class="fas fa-arrow-right"></i> Read Article
+          </a>
         </div>
-    </section>
+      </article>
 
-    <!-- ╔══════════════════════ CONNECT ══════════════════════╗ -->
-    <section class="section section-muted">
-        <div class="wrap fade-up">
-            <div class="sec-head">
-                <h2 class="sec-title">Connect</h2>
-                <div class="sec-line"></div>
-            </div>
-
-            <p class="connect-label">Find me on the web</p>
-            <div class="social-row">
-                <a href="https://www.linkedin.com/in/tareqaziz825/" class="soc-btn linkedin" target="_blank"
-                    rel="noopener"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/tareqaziz825/" class="soc-btn github" target="_blank" rel="noopener"><i
-                        class="fab fa-github"></i> GitHub</a>
-                <a href="https://twitter.com/tareqaziz825" class="soc-btn twitter" target="_blank" rel="noopener"><i
-                        class="fab fa-x-twitter"></i> Twitter</a>
-                <a href="https://www.youtube.com/@TareqAziz825" class="soc-btn youtube" target="_blank"
-                    rel="noopener"><i class="fab fa-youtube"></i> YouTube</a>
-                <a href="https://www.facebook.com/tareqaziz825/" class="soc-btn facebook" target="_blank"
-                    rel="noopener"><i class="fab fa-facebook"></i> Facebook</a>
-                <a href="https://www.instagram.com/tareqaziz825/" class="soc-btn instagram" target="_blank"
-                    rel="noopener"><i class="fab fa-instagram"></i> Instagram</a>
-            </div>
-
-            <p class="connect-label" style="margin-top: 1.5rem;">Direct contact</p>
-            <div class="social-row">
-                <span class="soc-btn contact-info"><i class="fas fa-envelope"></i> <a
-                        href="mailto:mohammodtareqaziz@gmail.com">mohammodtareqaziz@gmail.com</a></span>
-                <span class="soc-btn contact-info"><i class="fas fa-phone"></i> +88 01922-667040</span>
-                <span class="soc-btn contact-info"><i class="fas fa-map-marker-alt"></i> Merul Badda, Dhaka-1212,
-                    Bangladesh</span>
-            </div>
-
-            <!-- ===================== -->
-            <p class="connect-label" style="margin-top: 1.5rem;">Send a message</p>
-            <form class="contact-form" id="contactForm">
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="from_name">Your Name</label>
-                        <input type="text" id="from_name" name="from_name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="from_email">Your Email</label>
-                        <input type="email" id="from_email" name="from_email" placeholder="john@email.com" required>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="1" placeholder="Write your message here…"
-                        required></textarea>
-                </div>
-                <button type="submit" class="btn-form-send" id="sendBtn">
-                    <i class="fas fa-paper-plane"></i> Send Message
-                </button>
-                <p class="form-status" id="formStatus"></p>
-            </form>
-            <!-- ===================== -->
-
+      <!-- Post 4 — ViT vs CNN -->
+      <article class="blog-card fade-up">
+        <div class="blog-meta-row">
+          <span class="blog-date"><i class="fas fa-calendar-alt"></i> January 2026</span>
+          <span class="badge-cat">Computer Vision</span>
         </div>
-    </section>
-    <!-- ╚══════════════════════════════════════════════════╝ -->
+        <h2 class="blog-title">Vision Transformers vs. CNNs: What Changed and Why It Matters</h2>
+        <p class="blog-excerpt">
+          For years, Convolutional Neural Networks were the backbone of computer vision. Then Vision
+          Transformers arrived — and everything shifted. I explore the architectural differences, where
+          each excels, and why the spatiotemporal variant TimeSformer became central to my thesis work
+          in video understanding.
+        </p>
+        <div class="blog-foot">
+          <span class="read-time"><i class="fas fa-clock"></i> 6 min read</span>
+          <a href="blogs/post-04-vit-vs-cnn.html" class="btn-read">
+            <i class="fas fa-arrow-right"></i> Read Article
+          </a>
+        </div>
+      </article>
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
-    </footer>
+      <!-- Post 3 — Thesis Experience -->
+      <article class="blog-card fade-up">
+        <div class="blog-meta-row">
+          <span class="blog-date"><i class="fas fa-calendar-alt"></i> December 2025</span>
+          <span class="badge-cat">Research</span>
+        </div>
+        <h2 class="blog-title">My Final Year Thesis Experience: From Idea to 84.5% AUC</h2>
+        <p class="blog-excerpt">
+          Writing a thesis is unlike any other academic task — it's months of uncertainty, late-night
+          experiments, and gradual breakthroughs. I share the honest story of my CSE 400 thesis: the
+          research decisions, the dead ends, and what I'd do differently. A must-read for any CS student
+          about to begin their own research journey.
+        </p>
+        <div class="blog-foot">
+          <span class="read-time"><i class="fas fa-clock"></i> 10 min read</span>
+          <a href="blogs/post-03-thesis-experience.html" class="btn-read">
+            <i class="fas fa-arrow-right"></i> Read Article
+          </a>
+        </div>
+      </article>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="scripts.js"></script>
+      <!-- Post 2 — City Bank -->
+      <article class="blog-card fade-up">
+        <div class="blog-meta-row">
+          <span class="blog-date"><i class="fas fa-calendar-alt"></i> February 2026</span>
+          <span class="badge-cat">Career Guide</span>
+        </div>
+        <h2 class="blog-title">Guide to City Bank's Trainee Assistant Manager (TAM) Program</h2>
+        <p class="blog-excerpt">
+          Breakdown of the TAM recruitment process, including salary structure, 4-stage
+          selection, and questions from the online assessment. Everything you need to
+          prepare for Bangladesh's most competitive banking entry roles.
+        </p>
+        <div class="blog-foot">
+          <span class="read-time"><i class="fas fa-clock"></i> 15 min read</span>
+          <a href="blogs/post-02-city-bank-atm-position.html" class="btn-read">
+            <i class="fas fa-arrow-right"></i> Read Article
+          </a>
+        </div>
+      </article>
 
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script>
-        emailjs.init('y3EFG7KJvU0XqX380');
+      <!-- Post 1 — Job Hunt -->
+      <article class="blog-card fade-up">
+        <div class="blog-meta-row">
+          <span class="blog-date"><i class="fas fa-calendar-alt"></i> October 2025</span>
+          <span class="badge-cat">Career</span>
+        </div>
+        <h2 class="blog-title">From Graduation to Job Hunt: Navigating the AI Job Market as a Fresher in Bangladesh</h2>
+        <p class="blog-excerpt">
+          What nobody tells you about breaking into tech after graduation — the real challenges, the
+          rejections, and the strategies that actually work. A candid look at the local ML job market
+          from someone in the trenches.
+        </p>
+        <div class="blog-foot">
+          <span class="read-time"><i class="fas fa-clock"></i> 7 min read</span>
+          <a href="blogs/post-01-job-hunt-bangladesh.html" class="btn-read">
+            <i class="fas fa-arrow-right"></i> Read Article
+          </a>
+        </div>
+      </article>
 
-        document.getElementById('contactForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const btn = document.getElementById('sendBtn');
-            const status = document.getElementById('formStatus');
+    </div>
+  </div>
+</section>
 
-            btn.disabled = true;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
-            status.textContent = '';
-            status.className = 'form-status';
+<div id="connect-section"></div>
 
-            emailjs.sendForm('service_write2justice', 'template_write2justice', this)
-                .then(() => {
-                    status.textContent = '✓ Message sent! I\'ll get back to you soon.';
-                    status.className = 'form-status success';
-                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-                    btn.disabled = false;
-                    this.reset();
-                }, (error) => {
-                    status.textContent = '✗ Something went wrong. Please try emailing directly.';
-                    status.className = 'form-status error';
-                    btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-                    btn.disabled = false;
-                    console.error(error);
-                });
-        });
-    </script>
+<footer class="site-footer">
+  <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;·&nbsp; All rights reserved.</p>
+</footer>
+
+<script src="scripts.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script>if (window.emailjs) emailjs.init('y3EFG7KJvU0XqX380');</script>
 </body>
-
 </html>
