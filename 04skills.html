@@ -13,6 +13,15 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Oxanium:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+    /* ── 5th skill card: Web Development (yellow accent) ── */
+    .skill-cat:nth-child(5)::before              { background: var(--yellow); }
+    .skill-cat:nth-child(5):hover                { border-color: rgba(255,190,11,.4); box-shadow: 0 0 0 1px rgba(255,190,11,.15), 0 8px 32px rgba(255,190,11,.18); transform: translateY(-3px); }
+    .skill-cat:nth-child(5) .skill-cat-title i   { color: var(--yellow); }
+    .skill-cat:nth-child(5) .skill-row i         { color: var(--yellow); }
+    .skill-cat:nth-child(5) .skill-row:hover     { background: var(--yellow-lt); color: var(--yellow); transform: translateX(4px); }
+    </style>
 </head>
 
 <body>
