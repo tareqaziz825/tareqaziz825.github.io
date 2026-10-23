@@ -750,24 +750,56 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
                   letter-spacing: .1em; margin-bottom: 8px }
 
 /* connect */
-.connect-bg-glow { display: none }
-.connect-label { font-family: var(--font-mono); font-size: .68rem; font-weight: 700; text-transform: uppercase;
-                 letter-spacing: .14em; margin-bottom: 12px; color: var(--on-stock) }
-.connect-label::before { content: '// '; opacity: .55 }
-.social-row { display: flex; flex-wrap: wrap; gap: 8px }
-.soc-btn {
-  display: inline-flex; align-items: center; gap: 7px;
-  font-family: var(--font-mono); font-size: .7rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .07em; padding: 8px 14px;
-  border: var(--border-hair) solid var(--on-stock) !important;
-  background: var(--stock) !important; color: var(--on-stock) !important;
-  transition: box-shadow .2s, transform .2s;
+.connect-bg-glow, .connect-label { display: none }
+
+/* all eight buttons share the width of the box */
+.social-row {
+  display: grid; gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));   /* phones: two per row */
 }
+@media (min-width: 640px)  { .social-row { grid-template-columns: repeat(4, minmax(0, 1fr)) } }
+@media (min-width: 1100px) { .social-row { grid-template-columns: repeat(8, minmax(0, 1fr)) } }
+
+.soc-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  font-family: var(--font-mono); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .07em; padding: 9px 10px;
+  white-space: nowrap; min-width: 0;
+  border: var(--border-hair) solid var(--on-stock);
+  background: var(--stock); color: var(--on-stock);
+  transition: box-shadow .2s, transform .2s, background-color .2s, color .2s, border-color .2s;
+}
+
+/* on hover each button takes its own service colour; the hard offset
+   shadow stays as it was */
 @media (hover: hover) {
-  .soc-btn:hover {
-    background: var(--on-stock) !important; color: var(--stock) !important;
-    box-shadow: var(--offset-sm) var(--offset-sm) 0 var(--on-stock); transform: translate(-1px,-1px);
+  .soc-btn:hover, .soc-btn:focus-visible {
+    background: var(--brand, var(--on-stock));
+    color: var(--on-brand, var(--stock));
+    border-color: var(--brand, var(--on-stock));
+    box-shadow: var(--offset-sm) var(--offset-sm) 0 var(--on-stock);
+    transform: translate(-1px, -1px);
   }
+  .soc-btn.instagram:hover, .soc-btn.instagram:focus-visible {
+    background: linear-gradient(45deg, #F58529, #DD2A7B 45%, #8134AF 75%, #515BD4);
+    border-color: #DD2A7B;
+  }
+}
+
+.soc-btn.linkedin  { --brand:#0A66C2; --on-brand:#fff }
+.soc-btn.github    { --brand:#24292F; --on-brand:#fff }
+.soc-btn.email     { --brand:#EA4335; --on-brand:#fff }
+.soc-btn.phone     { --brand:#1EBE5D; --on-brand:#06240F }
+.soc-btn.twitter   { --brand:#000000; --on-brand:#fff }
+.soc-btn.youtube   { --brand:#FF0000; --on-brand:#fff }
+.soc-btn.facebook  { --brand:#1877F2; --on-brand:#fff }
+.soc-btn.instagram { --brand:#DD2A7B; --on-brand:#fff }
+
+/* GitHub and X are achromatic, so flip them in dark mode or they vanish
+   into the panel */
+@media screen {
+  html:not(.light) .soc-btn.github  { --brand:#E6EDF3; --on-brand:#0D1117 }
+  html:not(.light) .soc-btn.twitter { --brand:#E7E9EA; --on-brand:#0F1419 }
 }
 
 /* ============================================================ 14 · PRINT */

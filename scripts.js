@@ -94,6 +94,7 @@
         } else {
           newFadeEls.forEach(el => el.classList.add('in-view'));
         }
+        applyMailFallback();   // the Email button arrives with this fragment
       })
       .catch(() => {
         // fallback: hide placeholder gracefully
@@ -142,7 +143,9 @@
      compose window — same recipient, subject and body.
      Runs before the page-transition handler below so that handler sees
      the final href and leaves the link alone either way.            */
-  (function () {
+  // a declaration, not an IIFE, so the connect fragment can re-run it:
+  // those links do not exist in the DOM at first paint
+  function applyMailFallback() {
     var links = document.querySelectorAll('a[data-mail="gmail-fallback"]');
     if (!links.length) return;
     if (/Android|iPhone|iPad|iPod|Windows Phone|Mobile/i.test(navigator.userAgent)) return;
@@ -163,7 +166,8 @@
       a.setAttribute('target', '_blank');
       a.setAttribute('rel', 'noopener');
     });
-  })();
+  }
+  applyMailFallback();
 
   /* ── Smooth page transition on link click ── */
   let overlay = document.querySelector('.page-transition');
