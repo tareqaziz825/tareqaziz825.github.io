@@ -134,6 +134,36 @@
     setTimeout(() => typewriter(twEl, strings), 1200);
   }
 
+  /* ── Resume request link ──────────────────────────────────────────
+     A mailto: works on phones, which always have a mail app registered.
+     On desktop, Chrome and friends often have no mailto handler at all,
+     so the link silently does nothing. There, rewrite it to Gmail's web
+     compose window — same recipient, subject and body.
+     Runs before the page-transition handler below so that handler sees
+     the final href and leaves the link alone either way.            */
+  (function () {
+    var links = document.querySelectorAll('a[data-mail="gmail-fallback"]');
+    if (!links.length) return;
+    if (/Android|iPhone|iPad|iPod|Windows Phone|Mobile/i.test(navigator.userAgent)) return;
+
+    Array.prototype.forEach.call(links, function (a) {
+      var href = a.getAttribute('href') || '';
+      if (href.indexOf('mailto:') !== 0) return;
+      var rest = href.slice(7);
+      var qi   = rest.indexOf('?');
+      var to   = qi === -1 ? rest : rest.slice(0, qi);
+      var p    = new URLSearchParams(qi === -1 ? '' : rest.slice(qi + 1));
+
+      a.setAttribute('href',
+        'https://mail.google.com/mail/?view=cm&fs=1' +
+        '&to='   + encodeURIComponent(decodeURIComponent(to)) +
+        '&su='   + encodeURIComponent(p.get('subject') || '') +
+        '&body=' + encodeURIComponent(p.get('body') || ''));
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    });
+  })();
+
   /* ── Smooth page transition on link click ── */
   let overlay = document.querySelector('.page-transition');
   if (!overlay) {
