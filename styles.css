@@ -628,3 +628,261 @@ footer.site-footer::before { content:''; position:absolute; top:0; left:0; right
   .hero-name { font-size:2rem; }
   .sec-title { font-size:1.45rem; }
 }
+
+/* ============================================================
+   HERO — SPLIT LAYOUT + DIAGONAL GLITCH PORTRAIT
+   Formal shot sits in front; the casual shot bleeds through it
+   in 45° diagonal bands, with an RGB split and a rare full swap.
+   Swap the two files below to change the photos.
+   ============================================================ */
+:root {
+  --hero-front: url("images/HEROformal-cut.webp");   /* front / default */
+  --hero-back:  url("images/HEROcasual-cut.webp");   /* bleeds through  */
+  --hero-photo-filter: contrast(1.05) saturate(1.03) brightness(1.03);
+}
+
+/* ---------- split grid ---------- */
+.hero-inner.hero-split {
+  max-width: 1180px;
+  text-align: left;
+  display: grid;
+  grid-template-columns: minmax(0,1.04fr) minmax(0,.96fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: center;
+}
+.hero-copy { min-width: 0; }
+
+/* copy tweaks for the left column (overrides the old centred rules) */
+.hero-split .hero-eyebrow { margin-bottom: 1.5rem; }
+.hero-copy > p {
+  font-size: 1.07rem; color: var(--text-dim);
+  max-width: 50ch; margin: .95rem 0 2.4rem; line-height: 1.8;
+  animation: fadeInUp .6s var(--ease-smooth) .5s both;
+}
+.hero-split .hero-actions { justify-content: flex-start; }
+
+/* ---------- three-line name ---------- */
+.hero-split .hero-name {
+  font-size: clamp(2.1rem, 4.6vw, 3.75rem);
+  line-height: 1.04;
+  letter-spacing: -.02em;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.hero-name-line {
+  display: block;
+  position: relative;
+  width: fit-content;
+}
+.hero-name-line:nth-child(1) { animation: fadeInUp .7s var(--ease-smooth) .25s both; }
+.hero-name-line:nth-child(2) { animation: fadeInUp .7s var(--ease-smooth) .36s both; }
+.hero-name-line:nth-child(3) { animation: fadeInUp .7s var(--ease-smooth) .47s both; }
+
+/* accent ghosts that slice across the name every few seconds */
+.hero-name-line::before,
+.hero-name-line::after {
+  content: attr(data-text);
+  position: absolute; left: 0; top: 0;
+  width: 100%; overflow: hidden; pointer-events: none;
+  -webkit-text-fill-color: currentColor;
+  clip-path: polygon(0 0,0 0,0 0,0 0);
+}
+.hero-name-line::before { color: var(--orange); animation: heroNameA 9s infinite steps(1,end); }
+.hero-name-line::after  { color: var(--blue);   animation: heroNameB 9s infinite steps(1,end); }
+.hero-name-line:nth-child(2)::before,
+.hero-name-line:nth-child(2)::after { animation-delay: .35s; }
+.hero-name-line:nth-child(3)::before,
+.hero-name-line:nth-child(3)::after { animation-delay: .7s; }
+
+@keyframes heroNameA {
+  0%,74%  { clip-path:polygon(0 0,0 0,0 0,0 0); transform:translate(0) }
+  75%     { clip-path:polygon(110% -80%,138% -80%,-42% 180%,-70% 180%); transform:translate(-4px,4px) }
+  77%     { clip-path:polygon(40% -80%,66% -80%,-114% 180%,-140% 180%); transform:translate(4px,-4px) }
+  79%     { clip-path:polygon(0 0,0 0,0 0,0 0); transform:translate(0) }
+  95%     { clip-path:polygon(160% -80%,190% -80%,10% 180%,-20% 180%); transform:translate(-3px,3px) }
+  96.5%   { clip-path:polygon(0 0,0 0,0 0,0 0) }
+}
+@keyframes heroNameB {
+  0%,74%  { clip-path:polygon(0 0,0 0,0 0,0 0); transform:translate(0) }
+  75.8%   { clip-path:polygon(70% -80%,96% -80%,-84% 180%,-110% 180%); transform:translate(5px,-5px) }
+  78%     { clip-path:polygon(150% -80%,180% -80%,0% 180%,-30% 180%); transform:translate(-5px,5px) }
+  80%     { clip-path:polygon(0 0,0 0,0 0,0 0); transform:translate(0) }
+  95.6%   { clip-path:polygon(30% -80%,54% -80%,-126% 180%,-150% 180%); transform:translate(3px,-3px) }
+  97%     { clip-path:polygon(0 0,0 0,0 0,0 0) }
+}
+
+/* ---------- portrait stack ---------- */
+.hero-glitch-filters { position: absolute; }
+.hero-portrait {
+  position: relative;
+  width: min(100%, 460px);
+  margin-left: auto;
+  aspect-ratio: 1 / 1;
+  isolation: isolate;
+  animation: fadeInUp .8s var(--ease-smooth) .4s both;
+}
+/* coloured halo behind the cut-out */
+.hero-portrait::before {
+  content: ''; position: absolute; inset: -8% -5% 0;
+  background:
+    radial-gradient(46% 42% at 54% 38%, rgba(131,56,236,.34), transparent 70%),
+    radial-gradient(50% 46% at 44% 70%, rgba(58,134,255,.24), transparent 72%),
+    radial-gradient(40% 36% at 70% 80%, rgba(251,86,7,.16), transparent 70%);
+  filter: blur(30px);
+  z-index: -1;
+}
+body.light-mode .hero-portrait::before {
+  background:
+    radial-gradient(46% 42% at 54% 38%, rgba(131,56,236,.22), transparent 70%),
+    radial-gradient(50% 46% at 44% 70%, rgba(58,134,255,.18), transparent 72%);
+}
+
+.hp-layer {
+  position: absolute; inset: 0;
+  background-size: contain;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+}
+.hp-base {
+  background-image: var(--hero-front);
+  filter: var(--hero-photo-filter) drop-shadow(0 0 30px rgba(131,56,236,.22));
+}
+
+/* rare full outfit swap */
+.hp-alt {
+  background-image: var(--hero-back);
+  filter: var(--hero-photo-filter);
+  opacity: 0;
+  animation: hpSwap 17s infinite steps(1,end);
+}
+@keyframes hpSwap {
+  0%,56% { opacity:0; transform:none }
+  57%    { opacity:1; transform:translate(-6px,6px) }
+  59%    { opacity:1; transform:translate(5px,-5px) }
+  61%    { opacity:0; transform:none }
+  88%    { opacity:1 }
+  89.4%  { opacity:0 }
+}
+
+/* 45° diagonal bands of the back shot */
+.hp-slice {
+  background-image: var(--hero-back);
+  filter: var(--hero-photo-filter);
+  clip-path: polygon(0 0,0 0,0 0,0 0);
+}
+.hp-slice-1 { animation: hpSl1 11s infinite steps(1,end); }
+.hp-slice-2 { animation: hpSl2 14s infinite steps(1,end); }
+.hp-slice-3 { animation: hpSl3 9.5s infinite steps(1,end); }
+
+@keyframes hpSl1 {
+  0%,24% { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
+  25%    { clip-path:polygon(50% -80%,84% -80%,-96% 180%,-130% 180%); transform:translate(-18px,18px) }
+  27%    { clip-path:polygon(96% -80%,124% -80%,-56% 180%,-84% 180%); transform:translate(14px,-14px) }
+  29%    { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
+  66%    { clip-path:polygon(140% -80%,172% -80%,-8% 180%,-40% 180%); transform:translate(11px,-11px) }
+  67.6%  { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
+}
+@keyframes hpSl2 {
+  0%,42% { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
+  43%    { clip-path:polygon(16% -80%,42% -80%,-138% 180%,-164% 180%); transform:translate(20px,-20px) }
+  44.8%  { clip-path:polygon(112% -80%,146% -80%,-34% 180%,-68% 180%); transform:translate(-16px,16px) }
+  47%    { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
+  80%    { clip-path:polygon(64% -80%,88% -80%,-92% 180%,-116% 180%); transform:translate(-9px,9px) }
+  81.4%  { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
+}
+@keyframes hpSl3 {
+  0%,34% { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
+  35%    { clip-path:polygon(126% -80%,156% -80%,-24% 180%,-54% 180%); transform:translate(-24px,24px) }
+  36.6%  { clip-path:polygon(34% -80%,58% -80%,-122% 180%,-146% 180%); transform:translate(17px,-17px) }
+  38.4%  { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
+  92%    { clip-path:polygon(78% -80%,104% -80%,-76% 180%,-102% 180%); transform:translate(8px,-8px) }
+  93.4%  { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
+}
+
+/* RGB split ghosts */
+.hp-chroma { background-image: var(--hero-front); mix-blend-mode: screen; opacity: 0; }
+.hp-chroma-r { filter: url(#hpChR); animation: hpChR 13s infinite steps(1,end); }
+.hp-chroma-c { filter: url(#hpChC); animation: hpChC 13s infinite steps(1,end); }
+@keyframes hpChR {
+  0%,26% { opacity:0; transform:none }
+  27%    { opacity:.9; transform:translate(-11px,11px) }
+  29.5%  { opacity:.9; transform:translate(7px,-7px) }
+  32%    { opacity:0; transform:none }
+  74%    { opacity:.75; transform:translate(-6px,6px) }
+  76%    { opacity:0; transform:none }
+}
+@keyframes hpChC {
+  0%,26% { opacity:0; transform:none }
+  27%    { opacity:.9; transform:translate(11px,-11px) }
+  29.5%  { opacity:.9; transform:translate(-7px,7px) }
+  32%    { opacity:0; transform:none }
+  74%    { opacity:.75; transform:translate(6px,-6px) }
+  76%    { opacity:0; transform:none }
+}
+
+/* slow scanline sweep */
+.hp-scan {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+  -webkit-mask-image: var(--hero-front); mask-image: var(--hero-front);
+  -webkit-mask-size: contain; mask-size: contain;
+  -webkit-mask-position: center bottom; mask-position: center bottom;
+  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
+}
+.hp-scan::after {
+  content: ''; position: absolute; left: -10%; right: -10%; height: 16%;
+  background: linear-gradient(180deg, transparent, rgba(138,201,38,.16) 45%, rgba(58,134,255,.20) 55%, transparent);
+  animation: hpScan 6.5s linear infinite;
+}
+@keyframes hpScan { 0% { top:-20% } 100% { top:110% } }
+
+/* hover tightens the loops */
+.hero-portrait:hover .hp-alt     { animation-duration: 9s; }
+.hero-portrait:hover .hp-slice-1 { animation-duration: 5.5s; }
+.hero-portrait:hover .hp-slice-2 { animation-duration: 7s; }
+.hero-portrait:hover .hp-slice-3 { animation-duration: 4.8s; }
+.hero-portrait:hover .hp-chroma-r,
+.hero-portrait:hover .hp-chroma-c { animation-duration: 6.5s; }
+
+/* ---------- responsive: copy first, portrait after ---------- */
+@media (max-width: 900px) {
+  .hero-section { padding: 4.5rem 1.5rem 3.5rem; min-height: auto; }
+  .hero-inner.hero-split {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    text-align: center;
+    justify-items: center;
+  }
+  .hero-copy { order: 1; }          /* copy first on mobile */
+  .hero-portrait { order: 2; margin: 0 auto; width: min(100%, 340px); }
+  .hero-copy > p { margin-left: auto; margin-right: auto; }
+  .hero-split .hero-actions { justify-content: center; }
+  .hero-name-line { margin-inline: auto; }
+}
+@media (max-width: 540px) {
+  .hero-split .hero-name { font-size: 1.95rem; }
+  .hero-portrait { width: min(100%, 290px); }
+}
+
+/* ---------- accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .hp-alt, .hp-slice, .hp-chroma,
+  .hero-name-line::before, .hero-name-line::after,
+  .hp-scan::after {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
+
+/* --- hero polish: no hard crop at the bottom of the cut-out, and keep the
+       rotating aurora's own edges off-screen --- */
+.hero-section::before { inset: -30%; }
+
+.hero-portrait {
+  -webkit-mask-image: linear-gradient(to bottom, #000 0 74%, rgba(0,0,0,.6) 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0 74%, rgba(0,0,0,.6) 88%, transparent 100%);
+}
+
+/* justified text creates rivers at phone widths */
+@media (max-width: 700px) {
+  .about-body p { text-align: left; }
+}

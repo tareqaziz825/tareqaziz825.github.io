@@ -1,0 +1,187 @@
+/* ============================================================
+   tech-icons.css — animated tech emblems (companion to tech-icons.js)
+   Original geometric artwork, drawn in one visual language.
+   Works on any page that already loads styles.css (uses its palette).
+   ============================================================ */
+
+.tech-badges { margin-top: 2.25rem; }
+
+.tech-badges-label {
+  font-family: var(--font-mono);
+  font-size: .72rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1rem;
+}
+.tech-badges-label::before { content: '// '; color: var(--green); }
+
+.tech-badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .7rem;
+}
+
+/* ---------- the badge ---------- */
+.tech-badge {
+  --ti-accent: var(--blue);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin: 0;
+  padding: .5rem .85rem .5rem .55rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    border-color .25s var(--ease-smooth),
+    background .25s var(--ease-smooth),
+    box-shadow .3s var(--ease-smooth),
+    transform .3s var(--ease-spring);
+}
+.tech-badges-grid.in-view .tech-badge {
+  animation: tiIn .5s var(--ease-smooth) forwards;
+  animation-delay: calc(var(--ti-i, 0) * 55ms);
+}
+@keyframes tiIn { to { opacity: 1; transform: none; } }
+
+/* sheen that sweeps once as the badge appears */
+.tech-badge::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 35%, color-mix(in srgb, var(--ti-accent) 16%, transparent) 50%, transparent 65%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.tech-badges-grid.in-view .tech-badge::after {
+  animation: tiSheen 1.1s var(--ease-smooth) forwards;
+  animation-delay: calc(var(--ti-i, 0) * 55ms + 260ms);
+}
+@keyframes tiSheen { to { transform: translateX(120%); } }
+
+.tech-badge:hover {
+  border-color: color-mix(in srgb, var(--ti-accent) 48%, transparent);
+  background: var(--bg-raised);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--ti-accent) 16%, transparent),
+              0 8px 26px color-mix(in srgb, var(--ti-accent) 20%, transparent);
+  transform: translateY(-3px);
+}
+
+/* ---------- the emblem ---------- */
+.tech-badge-art {
+  display: grid;
+  place-items: center;
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--ti-accent) 11%, transparent);
+  flex-shrink: 0;
+  transition: background .25s var(--ease-smooth);
+}
+.tech-badge:hover .tech-badge-art {
+  background: color-mix(in srgb, var(--ti-accent) 20%, transparent);
+}
+
+.ti {
+  width: 23px; height: 23px;
+  display: block;
+  color: var(--ti-accent);
+  overflow: visible;
+}
+
+/* stroked parts draw themselves in */
+.ti .ti-draw {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 420;
+  stroke-dashoffset: 420;
+}
+.tech-badges-grid.in-view .ti .ti-draw {
+  animation: tiDraw 1.05s var(--ease-smooth) forwards;
+  animation-delay: calc(var(--ti-i, 0) * 55ms + 120ms);
+}
+.ti .ti-draw:nth-of-type(2) { animation-delay: calc(var(--ti-i, 0) * 55ms + 240ms) !important; }
+.ti .ti-draw:nth-of-type(3) { animation-delay: calc(var(--ti-i, 0) * 55ms + 340ms) !important; }
+.ti .ti-draw:nth-of-type(4) { animation-delay: calc(var(--ti-i, 0) * 55ms + 420ms) !important; }
+@keyframes tiDraw { to { stroke-dashoffset: 0; } }
+
+/* filled nodes pop in after the strokes */
+.ti .ti-dot {
+  fill: currentColor;
+  stroke: none;
+  opacity: 0;
+  transform: scale(.2);
+  transform-origin: center;
+  transform-box: fill-box;
+}
+.tech-badges-grid.in-view .ti .ti-dot {
+  animation: tiPop .45s var(--ease-spring) forwards;
+  animation-delay: calc(var(--ti-i, 0) * 55ms + 520ms);
+}
+@keyframes tiPop { to { opacity: 1; transform: scale(1); } }
+
+/* idle drift + a brighter pulse on hover */
+.tech-badges-grid.in-view .ti {
+  animation: tiFloat 5.5s ease-in-out infinite;
+  animation-delay: calc(var(--ti-i, 0) * 180ms + 1.2s);
+}
+@keyframes tiFloat { 0%,100% { transform: translateY(0) } 50% { transform: translateY(-2.5px) } }
+
+.tech-badge:hover .ti {
+  animation: tiPulse 1.3s var(--ease-smooth) infinite;
+  filter: drop-shadow(0 0 6px color-mix(in srgb, var(--ti-accent) 55%, transparent));
+}
+@keyframes tiPulse {
+  0%,100% { transform: scale(1) }
+  45%     { transform: scale(1.12) }
+}
+
+.tech-badge-name {
+  font-family: var(--font-mono);
+  font-size: .76rem;
+  font-weight: 500;
+  color: var(--text-dim);
+  letter-spacing: .01em;
+  white-space: nowrap;
+  transition: color .25s var(--ease-smooth);
+}
+.tech-badge:hover .tech-badge-name { color: var(--ti-accent); }
+
+/* ---------- variants ---------- */
+.tech-badges-grid.is-sm .tech-badge { padding: .35rem .65rem .35rem .4rem; gap: .45rem; border-radius: 8px; }
+.tech-badges-grid.is-sm .tech-badge-art { width: 27px; height: 27px; border-radius: 6px; }
+.tech-badges-grid.is-sm .ti { width: 18px; height: 18px; }
+.tech-badges-grid.is-sm .tech-badge-name { font-size: .7rem; }
+
+.tech-badges-grid.is-plain .tech-badge { background: none; border-color: transparent; padding-left: 0; }
+.tech-badges-grid.is-plain .tech-badge:hover { background: none; box-shadow: none; }
+
+/* ---------- fallback for browsers without color-mix() ---------- */
+@supports not (color: color-mix(in srgb, red 50%, transparent)) {
+  .tech-badge-art { background: var(--bg-raised); }
+  .tech-badge:hover { border-color: var(--ti-accent); box-shadow: var(--shadow); }
+  .tech-badge::after { display: none; }
+}
+
+/* ---------- responsive ---------- */
+@media (max-width: 900px) {
+  .tech-badges-grid { justify-content: center; }
+  .tech-badges-label { text-align: center; }
+}
+
+/* ---------- accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .tech-badge { opacity: 1; transform: none; animation: none !important; }
+  .tech-badge::after { display: none; }
+  .ti .ti-draw { stroke-dashoffset: 0; animation: none !important; }
+  .ti .ti-dot { opacity: 1; transform: none; animation: none !important; }
+  .tech-badges-grid.in-view .ti,
+  .tech-badge:hover .ti { animation: none !important; }
+}
