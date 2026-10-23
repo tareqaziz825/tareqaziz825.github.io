@@ -6,11 +6,11 @@
 
 :root {
   --motif:    #c8d2ea;
-  --motif-op: .085;
+  --motif-op: .048;
 }
 body.light-mode {
   --motif:    #1b2036;
-  --motif-op: .085;
+  --motif-op: .052;
 }
 
 /* the layer spans the whole document, behind content but above
@@ -39,8 +39,13 @@ body { position: relative; }
   will-change: transform;
   overflow: visible;
 }
-.motif .fillx { fill: currentColor; stroke: none; }
-.motif .dim   { opacity: .5; }
+.motif .fillx,
+.motif .ti-dot { fill: currentColor; stroke: none; }
+.motif .dim    { opacity: .5; }
+
+/* the small emblems are drawn on a 48-unit grid, so the diagram stroke
+   weight reads too thin once they are shrunk */
+.motif.glyph { stroke-width: 1.75; }
 
 /* fade the set in once placement is done, staggered */
 .bg-motifs.ready .motif {
@@ -54,7 +59,7 @@ body { position: relative; }
 .bg-motifs.ready .motif.tint-2 { color: var(--purple); animation-name: motifInTint; }
 .bg-motifs.ready .motif.tint-3 { color: var(--green);  animation-name: motifInTint; }
 .bg-motifs.ready .motif.tint-4 { color: var(--orange); animation-name: motifInTint; }
-@keyframes motifInTint { to { opacity: calc(var(--motif-op) * 2); } }
+@keyframes motifInTint { to { opacity: calc(var(--motif-op) * 1.8); } }
 
 /* sections that must stay clean sit on their own opaque background;
    these two are transparent so the drawings read through them */
@@ -62,10 +67,10 @@ body { position: relative; }
 .section-connect { background: transparent; }
 
 @media (max-width: 760px) {
-  :root { --motif-op: .07; }
+  :root { --motif-op: .04; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .bg-motifs.ready .motif { animation: none; opacity: var(--motif-op); }
-  .bg-motifs.ready .motif[class*="tint-"] { opacity: calc(var(--motif-op) * 2); }
+  .bg-motifs.ready .motif[class*="tint-"] { opacity: calc(var(--motif-op) * 1.8); }
 }

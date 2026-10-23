@@ -1,8 +1,10 @@
 /* ============================================================
    bg-motifs.js — animated SVG background drawings
    ------------------------------------------------------------
-   Twenty-six line drawings taken from the stack they stand for:
-   networks, kernels, curves, matrices, trees, pipelines.
+   Twenty-six line drawings taken from the stack they stand for
+   (networks, kernels, curves, matrices, trees, pipelines), mixed
+   with twenty-three smaller marks for the languages, databases
+   and tools.
    Placed deterministically across the whole page (same layout
    on every reload) and drifting on a gentle parallax.
 
@@ -259,6 +261,36 @@
     '<path class="dim" d="M86 34c5 0 6 2.5 6 7s1 6 5 7c-4 1-5 2.5-5 7s-1 7-6 7"/>'}
   ];
 
+  /* Smaller marks for the languages, databases and tools — the same original
+     emblems the Skills page uses (tech-icons.js), extracted from there so the
+     two sets can never drift apart. 48x48 viewBox; tagged .glyph so they get
+     a slightly heavier stroke to hold up at background size. */
+  var GLYPHS = [
+    {id:"python", d:"<path class=\"ti-draw\" d=\"M24 8h-6a6 6 0 0 0-6 6v4h12a6 6 0 0 1 6 6v6\"/><path class=\"ti-draw\" d=\"M24 40h6a6 6 0 0 0 6-6v-4H24a6 6 0 0 1-6-6v-6\"/><circle class=\"ti-dot\" cx=\"17\" cy=\"13.5\" r=\"1.7\"/><circle class=\"ti-dot\" cx=\"31\" cy=\"34.5\" r=\"1.7\"/>"},
+    {id:"cpp", d:"<path class=\"ti-draw\" d=\"M19 9c-4 0-5 2.2-5 6.5S13 22 10 24c3 2 4 4.2 4 8.5S15 39 19 39\"/><path class=\"ti-draw\" d=\"M29 9c4 0 5 2.2 5 6.5S35 22 38 24c-3 2-4 4.2-4 8.5S33 39 29 39\"/><path class=\"ti-draw\" d=\"M24 19v10M19 24h10\"/>"},
+    {id:"java", d:"<path class=\"ti-draw\" d=\"M14 23h18v9a6 6 0 0 1-6 6h-6a6 6 0 0 1-6-6z\"/><path class=\"ti-draw\" d=\"M32 26h3.5a4 4 0 0 1 0 8H32\"/><path class=\"ti-draw\" d=\"M19 17c2.2-2-1-3.8 1-5.8M26 17c2.2-2-1-3.8 1-5.8\"/><path class=\"ti-draw\" d=\"M12 42h22\"/>"},
+    {id:"php", d:"<path class=\"ti-draw\" d=\"M17 16l-7 8 7 8M31 16l7 8-7 8\"/><path class=\"ti-draw\" d=\"M27 13l-6 22\"/>"},
+    {id:"mysql", d:"<ellipse class=\"ti-draw\" cx=\"24\" cy=\"13\" rx=\"12\" ry=\"5\"/><path class=\"ti-draw\" d=\"M12 13v22c0 2.8 5.4 5 12 5s12-2.2 12-5V13\"/><path class=\"ti-draw\" d=\"M12 24c0 2.8 5.4 5 12 5s12-2.2 12-5\"/><path class=\"ti-dot\" d=\"M26 16l-5.5 8H24l-1.5 6 6-8.5h-3.5z\"/>"},
+    {id:"postgresql", d:"<ellipse class=\"ti-draw\" cx=\"24\" cy=\"13\" rx=\"12\" ry=\"5\"/><path class=\"ti-draw\" d=\"M12 13v22c0 2.8 5.4 5 12 5s12-2.2 12-5V13\"/><path class=\"ti-draw\" d=\"M12 21c0 2.8 5.4 5 12 5s12-2.2 12-5\"/><path class=\"ti-draw\" d=\"M12 29c0 2.8 5.4 5 12 5s12-2.2 12-5\"/>"},
+    {id:"pytorch", d:"<path class=\"ti-draw\" d=\"M24 6.5l13.5 7.8v15.4L24 37.5 10.5 29.7V14.3z\"/><path class=\"ti-draw\" d=\"M24 15.5c4 4.2 6 6.4 6 9.2a6 6 0 0 1-12 0c0-2 .9-3.6 2.4-5.2\"/>"},
+    {id:"tensorflow", d:"<path class=\"ti-draw\" d=\"M24 7.5l13 7.5-13 7.5-13-7.5z\"/><path class=\"ti-draw\" d=\"M11 22.5L24 30l13-7.5\"/><path class=\"ti-draw\" d=\"M11 30L24 37.5 37 30\"/>"},
+    {id:"sklearn", d:"<path class=\"ti-draw\" d=\"M9 8v32h32\"/><path class=\"ti-draw\" d=\"M13 35C21 29 26 20 41 13\"/><circle class=\"ti-dot\" cx=\"17\" cy=\"29\" r=\"2.1\"/><circle class=\"ti-dot\" cx=\"23\" cy=\"34\" r=\"2.1\"/><circle class=\"ti-dot\" cx=\"30\" cy=\"17\" r=\"2.1\"/><circle class=\"ti-dot\" cx=\"35\" cy=\"23\" r=\"2.1\"/>"},
+    {id:"numpy", d:"<path class=\"ti-draw\" d=\"M15 10h-5v28h5M33 10h5v28h-5\"/><circle class=\"ti-dot\" cx=\"19\" cy=\"17\" r=\"2.7\"/><circle class=\"ti-dot\" cx=\"29\" cy=\"17\" r=\"2.7\"/><circle class=\"ti-dot\" cx=\"19\" cy=\"24\" r=\"2.7\"/><circle class=\"ti-dot\" cx=\"29\" cy=\"24\" r=\"2.7\"/><circle class=\"ti-dot\" cx=\"19\" cy=\"31\" r=\"2.7\"/><circle class=\"ti-dot\" cx=\"29\" cy=\"31\" r=\"2.7\"/>"},
+    {id:"pandas", d:"<rect class=\"ti-draw\" x=\"8\" y=\"11\" width=\"32\" height=\"26\" rx=\"3.5\"/><path class=\"ti-draw\" d=\"M8 19h32M19 19v18M30 19v18\"/>"},
+    {id:"matplotlib", d:"<path class=\"ti-draw\" d=\"M9 8v32h32\"/><path class=\"ti-draw\" d=\"M14 33l7-10 6 5 10-14\"/><path class=\"ti-draw\" d=\"M15 40v-5M22 40v-9M29 40v-6M36 40v-12\"/>"},
+    {id:"opencv", d:"<circle class=\"ti-draw\" cx=\"24\" cy=\"24\" r=\"14\"/><path class=\"ti-draw\" d=\"M24 10l8 14M38 24H22M30 36l-8-14M24 38l-8-14M10 24h16M18 12l8 14\"/>"},
+    {id:"git", d:"<path class=\"ti-draw\" d=\"M16 15v18\"/><path class=\"ti-draw\" d=\"M16 23h7a5 5 0 0 1 5 5v3\"/><circle class=\"ti-dot\" cx=\"16\" cy=\"11\" r=\"3.4\"/><circle class=\"ti-dot\" cx=\"16\" cy=\"37\" r=\"3.4\"/><circle class=\"ti-dot\" cx=\"28\" cy=\"34.5\" r=\"3.4\"/>"},
+    {id:"docker", d:"<path class=\"ti-draw\" d=\"M11 25h6v6h-6zM19 25h6v6h-6zM27 25h6v6h-6zM19 18h6v6h-6z\"/><path class=\"ti-draw\" d=\"M7 35c3 0 4.5-2 6.5-2s3.5 2 6.5 2 4.5-2 6.5-2 3.5 2 6.5 2 4.5-2 6.5-2\"/>"},
+    {id:"vscode", d:"<rect class=\"ti-draw\" x=\"8\" y=\"10\" width=\"32\" height=\"28\" rx=\"4\"/><path class=\"ti-draw\" d=\"M8 17h32\"/><path class=\"ti-draw\" d=\"M20 23l-4 4.5 4 4.5M28 23l4 4.5-4 4.5\"/>"},
+    {id:"jupyter", d:"<rect class=\"ti-draw\" x=\"8\" y=\"10\" width=\"32\" height=\"28\" rx=\"4\"/><path class=\"ti-draw\" d=\"M15 15.5l4 3-4 3\"/><path class=\"ti-draw\" d=\"M23 18.5h12M15 26h20M15 32h13\"/>"},
+    {id:"colab", d:"<path class=\"ti-draw\" d=\"M16 35a8 8 0 0 1-.7-16 11 11 0 0 1 20.9 2.7A7 7 0 0 1 34 35z\"/><path class=\"ti-draw\" d=\"M21 22l8.5 4.8-8.5 4.8z\"/>"},
+    {id:"gcp", d:"<path class=\"ti-draw\" d=\"M15 32a7 7 0 0 1-.5-13.9 10 10 0 0 1 19 2.3A6 6 0 0 1 32 32z\"/><path class=\"ti-draw\" d=\"M24 32v7M17 39h14\"/><circle class=\"ti-dot\" cx=\"24\" cy=\"24\" r=\"2.6\"/>"},
+    {id:"wordpress", d:"<rect class=\"ti-draw\" x=\"8\" y=\"10\" width=\"32\" height=\"28\" rx=\"4\"/><path class=\"ti-draw\" d=\"M8 17.5h32\"/><rect class=\"ti-draw\" x=\"13\" y=\"22\" width=\"9\" height=\"11\" rx=\"2\"/><path class=\"ti-draw\" d=\"M27 23h8M27 27.5h8M27 32h5\"/>"},
+    {id:"moodle", d:"<path class=\"ti-draw\" d=\"M24 10l15 6.5L24 23 9 16.5z\"/><path class=\"ti-draw\" d=\"M16 20v8.5c0 2.6 3.6 4.5 8 4.5s8-1.9 8-4.5V20\"/><path class=\"ti-draw\" d=\"M39 16.5v10\"/>"},
+    {id:"h5p", d:"<rect class=\"ti-draw\" x=\"8\" y=\"10\" width=\"32\" height=\"22\" rx=\"4\"/><path class=\"ti-draw\" d=\"M20 16l8 5-8 5z\"/><path class=\"ti-draw\" d=\"M24 32v6M16 38h16\"/>"},
+    {id:"kobo", d:"<rect class=\"ti-draw\" x=\"11\" y=\"12\" width=\"26\" height=\"29\" rx=\"4\"/><path class=\"ti-draw\" d=\"M19 8h10a2 2 0 0 1 2 2v5H17v-5a2 2 0 0 1 2-2z\"/><path class=\"ti-draw\" d=\"M17 24l2.5 2.5L24 21M17 33l2.5 2.5L24 30\"/><path class=\"ti-draw\" d=\"M28 24.5h4M28 33.5h4\"/>"}
+  ];
+
   function rng(seed) {
     var s = seed >>> 0 || 1;
     return function () { s ^= s << 13; s ^= s >>> 17; s ^= s << 5; return ((s >>> 0) % 1e5) / 1e5; };
@@ -273,24 +305,38 @@
     if (isNaN(parallax)) parallax = 0.16;
 
     var docH = Math.max(document.documentElement.scrollHeight, window.innerHeight);
-    var rows = Math.max(8, Math.min(44, Math.round(docH / 340)));
+    var rows = Math.max(10, Math.min(60, Math.round(docH / 250)));
     var cols = window.innerWidth < 760 ? 2 : (window.innerWidth > 1400 ? 4 : 3);
     var r = rng(20261023);
 
-    var out = '', i = 0;
+    var out = '', di = 0, gi = 0;
     for (var row = 0; row < rows; row++) {
       for (var col = 0; col < cols; col++) {
-        if (r() > 0.70 * density) continue;                // leave gaps
-        var m    = MOTIFS[i++ % MOTIFS.length];
-        var left = (col * (100 / cols) + 2 + r() * (100 / cols - 14)).toFixed(2);
-        var top  = (row * (100 / rows) + r() * (100 / rows * 0.6)).toFixed(3);
-        var w    = (96 + r() * 140).toFixed(0);
-        var rot  = (r() * 26 - 13).toFixed(1);
+        if (r() > 0.74 * density) continue;                // leave gaps
+
+        // a few small tech marks for every larger diagram
+        var vb, d, w, cls;
+        if (r() < 0.58) {
+          vb  = '0 0 48 48';
+          d   = GLYPHS[gi++ % GLYPHS.length].d;
+          w   = (44 + r() * 44).toFixed(0);
+          cls = 'motif glyph';
+        } else {
+          var m = MOTIFS[di++ % MOTIFS.length];
+          vb  = m.vb;
+          d   = m.d;
+          w   = (96 + r() * 140).toFixed(0);
+          cls = 'motif';
+        }
+
+        var left = (col * (100 / cols) + 2 + r() * (100 / cols - 12)).toFixed(2);
+        var top  = (row * (100 / rows) + r() * (100 / rows * 0.7)).toFixed(3);
+        var rot  = (r() * 30 - 15).toFixed(1);
         var tint = r() > 0.74 ? ' tint-' + (1 + Math.floor(r() * 4)) : '';
         var dep  = (0.05 + r() * 0.22).toFixed(3);
-        out += '<svg class="motif' + tint + '" viewBox="' + m.vb + '" aria-hidden="true" focusable="false"' +
+        out += '<svg class="' + cls + tint + '" viewBox="' + vb + '" aria-hidden="true" focusable="false"' +
                ' style="left:' + left + '%;top:' + top + '%;width:' + w + 'px"' +
-               ' data-rot="' + rot + '" data-depth="' + dep + '">' + m.d + '</svg>';
+               ' data-rot="' + rot + '" data-depth="' + dep + '">' + d + '</svg>';
       }
     }
     host.innerHTML = out;
@@ -329,7 +375,7 @@
     }, { passive: true });
   }
 
-  window.BgMotifs = { build: build, list: MOTIFS };
+  window.BgMotifs = { build: build, diagrams: MOTIFS, glyphs: GLYPHS };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
   else build();
