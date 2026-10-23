@@ -1011,3 +1011,12 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 .edu-grid > .filed > .holder { flex: 1; display: flex; flex-direction: column }
 .edu-grid > .filed > .holder > .edu-card { flex: 1; display: flex; flex-direction: column }
 .edu-grid .edu-card .app-card-body { flex: 1 }
+
+/* ============================================================ 25 · SKILLS
+   One skill per row; the proficiency note sits quietly beside it.   */
+.skill-note {
+  font-family: var(--font-mono); font-size: .66em; font-weight: 500;
+  opacity: .7; letter-spacing: .04em;
+}
+.skill-cat-title i { margin-right: 2px }
+.skills-grid > .filed { align-self: start }
