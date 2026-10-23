@@ -399,11 +399,6 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
     repeating-linear-gradient(to bottom, color-mix(in srgb, currentColor 45%, transparent) 0 1px, transparent 1px var(--cell,14px));
 }
 
-/* MICR cheque routing band */
-.app-micr { display: block; height: 22px; color: var(--ink); opacity: .45 }
-.app-micr svg { display: block; width: 100%; height: 100% }
-.app-micr rect { fill: currentColor }
-
 /* ── scroll progress — a hard bar, no gradient ── */
 .scroll-progress {
   position: fixed; top: 0; left: 0; right: 0; height: 4px; z-index: 1001;
@@ -536,25 +531,28 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
 .open { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px }
 
 /* ============================================================ 10 · FOOTER */
-.foot { margin: 44px 0 20px; padding: 26px 22px 14px; overflow: hidden }
-.foot-grid { display: grid; gap: 26px; grid-template-columns: 1fr; position: relative; z-index: 1 }
-@media (min-width: 760px) { .foot-grid { grid-template-columns: repeat(3,1fr); gap: 30px } }
-.foot-strong { font-size: .95rem; font-weight: 600; margin: 5px 0; text-transform: uppercase; font-family: var(--font-mono) }
-.links { display: grid; gap: 6px; margin-top: 8px }
-.links a {
-  display: inline-flex; align-items: center; gap: 8px; font-size: .78rem;
-  padding: 1px 5px; margin-left: -5px; width: fit-content;
+.foot { margin: 26px auto 20px; padding: 22px 22px 20px; overflow: hidden; text-align: center }
+.foot-lines { position: relative; z-index: 1; display: grid; gap: 7px }
+.foot-line {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px;
+  margin: 0; font-family: var(--font-mono); font-size: .78rem; font-weight: 500;
+  letter-spacing: .04em; color: var(--ink);
+}
+.foot-line .sep { opacity: .55 }
+.foot-line a {
   border-bottom: 2px solid color-mix(in srgb, var(--ink) 35%, transparent);
-  transition: background-color .18s, color .18s, border-color .18s;
-  word-break: break-all; font-family: var(--font-mono);
+  padding: 1px 4px; transition: background-color .18s, color .18s, border-color .18s;
 }
-.links a:hover, .links a:focus-visible {
-  background: var(--stock); color: var(--on-stock); border-bottom-color: var(--on-stock);
+.foot-line a:hover, .foot-line a:focus-visible {
+  background: var(--ink); color: var(--paper); border-bottom-color: var(--ink);
 }
-.foot-note .prose-form { font-size: .82rem; margin-top: 6px; color: var(--ink-soft) }
-.foot-micr { margin-top: 22px; position: relative; z-index: 1 }
-.foot-legal { margin-top: 16px; font-family: var(--font-mono); font-size: .7rem;
-              letter-spacing: .06em; color: var(--ink-soft); position: relative; z-index: 1 }
+
+/* phone: each of the four pieces gets its own row */
+@media (max-width: 639px) {
+  .foot-line { flex-direction: column; gap: 5px }
+  .foot-line .sep { display: none }
+  .foot-lines { gap: 5px }
+}
 
 /* ============================================================ 11 · MOTION */
 .fade-up, .fade-left, .scale-in { opacity: 0; transform: translateY(14px); transition: opacity .35s, transform .35s }
