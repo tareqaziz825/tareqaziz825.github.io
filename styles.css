@@ -970,3 +970,17 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 @media (min-width: 900px) {
   .controls .app-btn.trigger { display: none }
 }
+
+/* ============================================================ 22 · NAV ROW
+   The theme toggle used to sit on the brand's row. Drop it onto the nav
+   row instead, so it shares a baseline and a height with the pills.  */
+@media (min-width: 900px) {
+  .masthead {
+    grid-template-areas: "brand brand" "index toggle";
+    align-items: center;
+  }
+  /* start, not center: when the pills wrap to a second line the toggle
+     must stay level with the FIRST line, not float to the middle */
+  .masthead .controls { justify-self: end; align-self: start }
+  .masthead .index { align-self: start }
+}
