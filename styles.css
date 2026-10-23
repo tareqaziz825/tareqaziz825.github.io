@@ -984,3 +984,9 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
   .masthead .controls { justify-self: end; align-self: start }
   .masthead .index { align-self: start }
 }
+
+/* ============================================================ 23 · PROJECTS
+   The project records stack in a single column rather than a grid, so
+   they had no row gap at all. Match the 36px row rhythm the education
+   and skills grids use.                                              */
+.project-list > .filed + .filed { margin-top: 36px }
