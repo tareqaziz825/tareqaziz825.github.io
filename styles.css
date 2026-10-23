@@ -814,12 +814,6 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
   .hero-portrait { max-width: 230px }
 }
 
-/* hero sits at the top of the sheet and acts as that page's head */
-.sheet > .hero-section {
-  padding: 0 0 30px; margin-bottom: 30px; background: transparent;
-  border-bottom: var(--border-slab) solid var(--on-stock);
-}
-.hero-form { margin-bottom: 12px }
 
 /* project cards keep their two-column inner, so the inverted head
    sits inside the body column and the padding moves one level in */
@@ -914,3 +908,15 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
 /* the footer was pinned left by `margin: 44px 0 20px`, which overrode the
    auto centring from .shell — so it never lined up with the sheet above */
 .foot { margin: 26px auto 20px }
+
+/* ============================================================ 18 · HOME
+   Hero and About Me are two separate sheets now, so the hero no longer
+   needs the rule that used to divide them inside one panel.          */
+.hero-sheet > .hero-section {
+  padding: 0; margin-bottom: 0; border-bottom: none; background: transparent;
+}
+.about-sheet .sec:first-of-type { padding-top: 0; border-top: none; margin-top: 0 }
+
+/* the profile card is gone, so About Me is a single column */
+.about-layout { grid-template-columns: 1fr }
+.about-body { max-width: 78ch }
