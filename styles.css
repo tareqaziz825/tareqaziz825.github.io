@@ -85,8 +85,6 @@
 
   --sel-bg: var(--color-magenta);
   --sel-fg: var(--color-black);
-  --stamp-bg: #fff;
-  --stamp-fg: #000;
 
   --grid-op: .09;
   --marks-op: .14;
@@ -149,8 +147,6 @@
     --sel-bg: #ff4d9e;
     --sel-fg: #0a0a0a;
 
-    --stamp-bg: #ebe7dc;
-    --stamp-fg: #121216;
     --notch-fill: var(--stock);
 
     --grid-op: .05;
@@ -355,28 +351,6 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 }
 .clip svg { display: block; width: 100%; height: auto; transform: rotate(var(--clip-rot)) }
 
-/* ── rubber stamp ── */
-.stamp { position: absolute; right: -6px; bottom: -12px; z-index: 3 }
-@media (min-width: 900px) { .stamp { right: -14px } }
-.app-stamp {
-  display: inline-block; line-height: 0;
-  mix-blend-mode: difference;
-  transform: rotate(var(--rot, -12deg));
-  -webkit-mask-image: var(--grain); mask-image: var(--grain);
-  -webkit-mask-size: 90px 46px; mask-size: 90px 46px;
-  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='90' height='46'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' seed='4'/><feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 0 0 0 1.18'/></filter><rect width='90' height='46' filter='url(%23n)'/></svg>");
-}
-html:not(.light) .app-stamp { mix-blend-mode: normal }
-.app-stamp-box {
-  display: inline-block; font-family: var(--font-mono); font-size: .72rem;
-  font-weight: 700; letter-spacing: .16em; text-transform: uppercase;
-  background: var(--stamp-bg); color: var(--stamp-fg);
-  padding: 5px 11px;
-  border: 2.5px solid var(--stamp-fg);
-  box-shadow: inset 0 0 0 1.5px var(--stamp-bg), inset 0 0 0 3px var(--stamp-fg);
-  border-radius: 2px; white-space: nowrap; line-height: 1.35;
-}
-
 /* ── carbon-copy offset title ── */
 .carbon { position: relative; display: inline-block }
 .carbon::before {
@@ -574,7 +548,6 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
     animation-duration: .01ms !important; animation-iteration-count: 1 !important;
     transition-duration: .01ms !important; scroll-behavior: auto !important;
   }
-  .app-stamp { transform: none !important }
   .fade-up, .fade-left, .scale-in, .stagger-children > * { opacity: 1; transform: none }
 }
 
