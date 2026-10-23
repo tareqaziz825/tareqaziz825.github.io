@@ -920,3 +920,15 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
 /* the profile card is gone, so About Me is a single column */
 .about-layout { grid-template-columns: 1fr }
 .about-body { max-width: 78ch }
+
+/* ============================================================ 19 · HOME FIXES
+   1 · About Me prose was capped at 78ch, which left a wide empty gutter
+       on the right of a full-width panel. Let it fill the sheet.      */
+.about-body { max-width: none }
+
+/* 2 · the hero sheet inherited .sheet's asymmetric 34px/44px block
+       padding, so the portrait sat off-centre. Make it symmetric and
+       let the panel height follow its content.                        */
+.hero-sheet { padding-top: 30px; padding-bottom: 30px }
+@media (min-width: 760px) { .hero-sheet { padding-top: 36px; padding-bottom: 36px } }
+.hero-sheet .hero-inner.hero-split { align-items: center }
