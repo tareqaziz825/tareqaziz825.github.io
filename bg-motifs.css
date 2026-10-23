@@ -59,10 +59,9 @@ body { position: relative; }
 .bg-motifs.ready .motif.tint-4 { color: var(--orange); animation-name: motifInTint; }
 @keyframes motifInTint { to { opacity: calc(var(--motif-op) * 1.8); } }
 
-/* sections that must stay clean sit on their own opaque background;
-   these two are transparent so the drawings read through them */
-.hero-section,
-.section-connect { background: transparent; }
+/* the hero is transparent so the drawings read through it; Connect is
+   its own opaque panel now, so it is no longer in this list */
+.hero-section { background: transparent; }
 
 @media (max-width: 760px) {
   :root { --motif-op: calc(var(--marks-op, .13) * .8); }

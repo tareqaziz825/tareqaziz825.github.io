@@ -333,22 +333,7 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 
 /* ============================================================ 6 · FILED CARD
    tab above, plate behind, notch cut, clip and stamp on top.   */
-.filed { position: relative; align-self: start }
-.tab {
-  display: inline-flex; align-items: baseline; gap: 10px;
-  margin-left: 18px; margin-bottom: calc(var(--border-card) * -1);
-  padding: 5px 15px 7px;
-  background: var(--stock); color: var(--on-stock);
-  border: var(--border-card) solid var(--edge); border-bottom: none;
-  border-radius: 5px 5px 0 0;
-  position: relative; z-index: 2;
-}
-.tab .num { font-size: .7rem; font-weight: 700; letter-spacing: .1em }
-.tab-kind {
-  font-family: var(--font-mono); font-size: .56rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .1em; opacity: .8;
-}
-
+.filed { position: relative; align-self: start; padding-top: 10px }
 .holder { position: relative }
 .plate {
   position: absolute; inset: 0; z-index: 0;
@@ -641,20 +626,6 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
 }
 .btn-hero-outline:active { box-shadow: none; transform: translate(var(--press), var(--press)) }
 
-/* ── portrait, now a filed print ── */
-.hero-portrait {
-  position: relative; width: min(100%, 420px); margin-left: auto;
-  aspect-ratio: 1/1; isolation: isolate;
-  border: var(--border-card) solid var(--edge);
-  background: color-mix(in srgb, var(--on-stock) 8%, var(--stock));
-  -webkit-mask-image: none; mask-image: none;
-}
-.hero-portrait::before { content: none }
-.hp-layer { position: absolute; inset: 0; background-size: contain; background-position: center bottom; background-repeat: no-repeat }
-.hp-base { background-image: var(--hero-front); filter: none }
-.hp-alt  { background-image: var(--hero-back) }
-.hp-slice{ background-image: var(--hero-back) }
-
 @media (max-width: 900px) {
   .hero-inner.hero-split { grid-template-columns: 1fr; gap: 2.2rem; text-align: left }
   .hero-copy { order: 1 }
@@ -808,7 +779,6 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
                   letter-spacing: .1em; margin-bottom: 8px }
 
 /* connect */
-.section-connect { background: transparent }
 .connect-bg-glow { display: none }
 .connect-label { font-family: var(--font-mono); font-size: .68rem; font-weight: 700; text-transform: uppercase;
                  letter-spacing: .14em; margin-bottom: 12px; color: var(--on-stock) }
@@ -880,13 +850,6 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
   .tech-badge:hover .ti { filter: none }
 }
 
-/* ============================================================ 16 · FIXES
-   url() in a stylesheet resolves against the stylesheet, so these
-   work from blogs/ too.                                          */
-:root {
-  --hero-front: url("images/HEROformal-cut.webp");
-  --hero-back:  url("images/HEROcasual-cut.webp");
-}
 
 /* Inverted surfaces: the block paints ink and the text must take the
    stock colour. Element selectors like `.about-body p` out-rank a bare
@@ -921,3 +884,33 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
 /* the glance cards head with an h4, not an h3 */
 .glance-card :is(h3,h4) { font-size: .95rem; line-height: 1.25; font-family: var(--font-display);
                           font-weight: 800; text-transform: uppercase; letter-spacing: -.02em }
+
+/* ============================================================ 17 · REVISIONS
+   The hero is a single print now — no layers, no glitch. The cut-out
+   has a transparent background, so it sits straight on the stock.   */
+.hero-portrait {
+  display: block; margin: 0 0 0 auto;
+  width: min(100%, 420px); aspect-ratio: 1 / 1;
+  border: var(--border-card) solid var(--edge);
+  background: color-mix(in srgb, var(--on-stock) 8%, var(--stock));
+  overflow: hidden;
+}
+.hero-portrait picture, .hero-portrait img {
+  display: block; width: 100%; height: 100%;
+  object-fit: contain; object-position: center bottom;
+}
+
+/* Connect is its own sheet now, painted on the footer stock so the two
+   read as one block at the bottom of every page. */
+.connect-panel {
+  margin: 26px auto 0;
+  padding: 26px 22px 30px;
+  overflow: hidden;
+}
+@media (min-width: 760px) { .connect-panel { padding: 30px 30px 34px } }
+.connect-panel > .fade-up { position: relative; z-index: 1 }
+.connect-panel .sec-head { margin-bottom: 20px }
+
+/* the footer was pinned left by `margin: 44px 0 20px`, which overrode the
+   auto centring from .shell — so it never lined up with the sheet above */
+.foot { margin: 26px auto 20px }

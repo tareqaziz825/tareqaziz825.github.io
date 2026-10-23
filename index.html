@@ -134,15 +134,13 @@
                     </div>
 
                     <!-- ── glitch portrait (right) ── -->
-                    <div class="hero-portrait" aria-label="Portrait of Mohammod Tareq Aziz Justice" role="img">
-                        <div class="hp-layer hp-base"></div>
-                        <div class="hp-layer hp-alt"></div>
-
-                        <div class="hp-layer hp-slice hp-slice-1"></div>
-                        <div class="hp-layer hp-slice hp-slice-2"></div>
-                        <div class="hp-layer hp-slice hp-slice-3"></div>
-
-                    </div>
+                    <figure class="hero-portrait">
+                    <picture>
+                        <source srcset="images/HEROformal.webp" type="image/webp">
+                        <img src="images/HEROformal.png" width="1000" height="1000"
+                             alt="Portrait of Mohammod Tareq Aziz Justice">
+                    </picture>
+                </figure>
 
                 </div>
             </section>
@@ -155,9 +153,7 @@
 
                         <!-- Sidebar -->
                         <div class="filed stock-cobalt fade-up">
-                            <span class="tab"><span class="num">AB-0001</span><span
-                                    class="tab-kind">subject</span></span>
-                            <div class="holder">
+                                                <div class="holder">
                                 <span class="plate" aria-hidden="true"></span>
                                 <aside class="app-card app-notch profile-sidebar">
                                     <div class="app-card-head">
@@ -185,13 +181,7 @@
                                         </div>
                                     </div>
                                 </aside>
-                                <span class="clip" aria-hidden="true"><svg viewBox="0 -3 34 77">
-                                        <path
-                                            d="M11 68 V16 a6 6 0 0 1 12 0 V60 a10 10 0 0 1-20 0 V14 a14 14 0 0 1 28 0 V62"
-                                            fill="none" stroke="currentColor" stroke-width="4.5"
-                                            stroke-linecap="round" />
-                                    </svg></span>
-                            </div>
+                        </div>
                         </div>
 
                         <!-- Body -->
@@ -254,12 +244,11 @@
                 </div>
             </section>
             <!-- ╚══════════════════════════════════════════════════╝ -->
-
-            <!-- ╔══════════════════════ CONNECT (shared component) ══════════════════════╗ -->
-            <div id="connect-placeholder"></div>
             <!-- ╚══════════════════════════════════════════════════════════════════════╝ -->
 
         </section>
+
+        <div id="connect-placeholder"></div>
     </main>
 
     <footer class="foot app-panel shell stock-cream">
