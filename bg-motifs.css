@@ -57,8 +57,9 @@ body { position: relative; }
 @keyframes motifInTint { to { opacity: calc(var(--motif-op) * 2); } }
 
 /* sections that must stay clean sit on their own opaque background;
-   the hero is transparent so the drawings read through it */
-.hero-section { background: transparent; }
+   these two are transparent so the drawings read through them */
+.hero-section,
+.section-connect { background: transparent; }
 
 @media (max-width: 760px) {
   :root { --motif-op: .07; }

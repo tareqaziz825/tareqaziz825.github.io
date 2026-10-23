@@ -325,11 +325,7 @@ body.light-mode .hero-section::after {
 .about-body p { color:var(--text-dim); margin-bottom:1.25rem; line-height:1.85; text-align:justify; }
 
 /* ============================================================ CONNECT */
-.section-connect { background:var(--bg-mid); position:relative; overflow:hidden; }
-.connect-bg-glow {
-  position:absolute; inset:0; pointer-events:none;
-  background:radial-gradient(ellipse 50% 60% at 0% 100%,rgba(131,56,236,.08) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 100% 0%,rgba(58,134,255,.07) 0%,transparent 55%);
-}
+.section-connect { position:relative; overflow:hidden; }
 .connect-label {
   font-family:var(--font-mono); font-size:.73rem; color:var(--text-faint);
   margin-bottom:.85rem; font-weight:500; letter-spacing:.07em; text-transform:uppercase;
@@ -354,10 +350,6 @@ body.light-mode .hero-section::after {
 .soc-btn.facebook:hover  { background:rgba(90,159,255,.2); border-color:#5a9fff; transform:translateY(-2px); }
 .soc-btn.instagram { color:#ff6da0; border-color:rgba(255,109,160,.35); background:rgba(255,109,160,.06); }
 .soc-btn.instagram:hover { background:rgba(255,109,160,.2); border-color:#ff6da0; transform:translateY(-2px); }
-.soc-btn.contact-info { cursor:default; color:var(--text-dim); border-color:var(--border); background:var(--bg-raised); }
-.soc-btn.contact-info a { color:var(--text-dim); }
-.soc-btn.contact-info:hover { background:var(--blue-lt); border-color:var(--blue); color:var(--blue); transform:translateY(-2px); }
-.soc-btn.contact-info:hover a { color:var(--blue); }
 
 /* ============================================================ PROJECTS */
 .project-card {
