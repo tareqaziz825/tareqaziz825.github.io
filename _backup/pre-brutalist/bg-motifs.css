@@ -1,0 +1,76 @@
+/* ============================================================
+   bg-motifs.css — companion to bg-motifs.js
+   Line drawings of the stack, sitting behind every section.
+   Uses the palette already defined in styles.css.
+   ============================================================ */
+
+:root {
+  --motif:    #c8d2ea;
+  --motif-op: .048;
+}
+body.light-mode {
+  --motif:    #1b2036;
+  --motif-op: .052;
+}
+
+/* the layer spans the whole document, behind content but above
+   the page background and the dot grid. body must be a positioned
+   ancestor or this would size to the viewport instead. */
+body { position: relative; }
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint;
+}
+.bg-motifs { position: absolute; inset: 0; }
+
+.motif {
+  position: absolute;
+  color: var(--motif);
+  opacity: 0;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.15;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  will-change: transform;
+  overflow: visible;
+}
+.motif .fillx,
+.motif .ti-dot { fill: currentColor; stroke: none; }
+.motif .dim    { opacity: .5; }
+
+/* the small emblems are drawn on a 48-unit grid, so the diagram stroke
+   weight reads too thin once they are shrunk */
+.motif.glyph { stroke-width: 1.75; }
+
+/* fade the set in once placement is done, staggered */
+.bg-motifs.ready .motif {
+  animation: motifIn 1.1s var(--ease-smooth, ease) forwards;
+  animation-delay: calc(var(--m-i, 0) * 42ms + 180ms);
+}
+@keyframes motifIn { to { opacity: var(--motif-op); } }
+
+/* a handful carry a whisper of accent */
+.bg-motifs.ready .motif.tint-1 { color: var(--blue);   animation-name: motifInTint; }
+.bg-motifs.ready .motif.tint-2 { color: var(--purple); animation-name: motifInTint; }
+.bg-motifs.ready .motif.tint-3 { color: var(--green);  animation-name: motifInTint; }
+.bg-motifs.ready .motif.tint-4 { color: var(--orange); animation-name: motifInTint; }
+@keyframes motifInTint { to { opacity: calc(var(--motif-op) * 1.8); } }
+
+/* sections that must stay clean sit on their own opaque background;
+   these two are transparent so the drawings read through them */
+.hero-section,
+.section-connect { background: transparent; }
+
+@media (max-width: 760px) {
+  :root { --motif-op: .04; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-motifs.ready .motif { animation: none; opacity: var(--motif-op); }
+  .bg-motifs.ready .motif[class*="tint-"] { opacity: calc(var(--motif-op) * 1.8); }
+}

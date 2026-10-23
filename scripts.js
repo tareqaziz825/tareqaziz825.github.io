@@ -6,8 +6,11 @@
   const toggle = document.getElementById('themeToggle');
   const icon   = document.getElementById('themeIcon');
   function applyTheme(isLight) {
+    // the token sheet keys off <html class="light">; dark is the default
+    document.documentElement.classList.toggle('light', isLight);
     document.body.classList.toggle('light-mode', isLight);
     if (icon) icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+    if (toggle) toggle.setAttribute('aria-pressed', String(!isLight));
   }
   const saved = localStorage.getItem('theme');
   applyTheme(saved === 'light');
@@ -17,14 +20,6 @@
       applyTheme(isLight);
       localStorage.setItem('theme', isLight ? 'light' : 'dark');
     });
-  }
-
-  /* ── Navbar scroll effect ── */
-  const nav = document.querySelector('.site-nav');
-  if (nav) {
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 30);
-    }, { passive: true });
   }
 
   /* ── Scroll progress bar ── */
@@ -41,21 +36,20 @@
     progressBar.style.transform = `scaleX(${pct})`;
   }, { passive: true });
 
-  /* ── Hamburger ── */
+  /* ── Index sheet (mobile) ── */
   const ham   = document.getElementById('navHam');
   const mmenu = document.getElementById('mobileNav');
+  const mclose= document.getElementById('navClose');
+  function setMenu(open) {
+    if (!mmenu) return;
+    mmenu.classList.toggle('open', open);
+    if (ham) { ham.classList.toggle('open', open); ham.setAttribute('aria-expanded', String(open)); }
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
   if (ham && mmenu) {
-    ham.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const open = mmenu.classList.toggle('open');
-      ham.classList.toggle('open', open);
-    });
-    document.addEventListener('click', (e) => {
-      if (!mmenu.contains(e.target) && !ham.contains(e.target)) {
-        mmenu.classList.remove('open');
-        ham.classList.remove('open');
-      }
-    });
+    ham.addEventListener('click', (e) => { e.stopPropagation(); setMenu(!mmenu.classList.contains('open')); });
+    if (mclose) mclose.addEventListener('click', () => setMenu(false));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
   }
 
   /* ── Intersection Observer for all scroll animations ── */
@@ -189,26 +183,5 @@
     overlay.style.opacity = '0';
     overlay.style.pointerEvents = 'none';
   });
-
-  /* ── Subtle cursor glow on desktop ── */
-  if (window.matchMedia('(pointer: fine)').matches) {
-    const glow = document.createElement('div');
-    glow.className = 'cursor-glow';
-    document.body.appendChild(glow);
-    document.addEventListener('mousemove', (e) => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top  = e.clientY + 'px';
-    }, { passive: true });
-  }
-
-  /* ── Hero orbs (inject if missing) ── */
-  const heroSection = document.querySelector('.hero-section');
-  if (heroSection && !heroSection.querySelector('.hero-orb')) {
-    [1,2,3].forEach(n => {
-      const orb = document.createElement('div');
-      orb.className = `hero-orb hero-orb-${n}`;
-      heroSection.appendChild(orb);
-    });
-  }
 
 })();

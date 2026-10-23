@@ -20,80 +20,148 @@
 
     <div class="bg" aria-hidden="true"><div class="bg-motifs" id="bgMotifs"></div></div>
 
-    <nav class="site-nav">
-        <div class="nav-container">
-            <a class="nav-brand" href="index.html">Mohammod Tareq Aziz</a>
-            <ul class="nav-menu">
-                <li><a href="index.html">About</a></li>
-                <li><a href="02project.html">Projects</a></li>
-                <li><a href="03education.html">Education</a></li>
-                <li><a href="04skills.html">Skills</a></li>
-                <li><a href="05experience.html">Experience</a></li>
-                <li><a href="06blog.html">Blog</a></li>
-                <li><a href="07ataglance.html" class="active">At a Glance</a></li>
-            </ul>
-            <div class="nav-right">
-                <button id="themeToggle" title="Toggle dark mode"><i class="fas fa-moon" id="themeIcon"></i></button>
-                <button class="nav-hamburger" id="navHam"
-                    aria-label="Open menu"><span></span><span></span><span></span></button>
-            </div>
-        </div>
-    </nav>
-    <nav class="nav-mobile" id="mobileNav">
-        <a href="index.html">About</a>
-        <a href="02project.html">Projects</a>
-        <a href="03education.html">Education</a>
-        <a href="04skills.html">Skills</a>
-        <a href="05experience.html">Experience</a>
-        <a href="06blog.html">Blog</a>
-        <a href="07ataglance.html" class="active">At a Glance</a>
-    </nav>
+    <a class="skip-link" href="#main">skip to content</a>
 
-    <header class="page-header">
-        <h1>At a Glance</h1>
-        <p><span class="typewriter-text" data-strings='["A quick view curated for recruiters &amp; collaborators"]'>A
-                quick view curated for recruiters &amp; collaborators</span></p>
+    <!-- ╔══════════════════════ MASTHEAD ══════════════════════╗ -->
+    <header class="masthead app-panel shell stock-cream">
+        <div class="app-grid" style="--cell:13px" aria-hidden="true"></div>
+        <div class="brand">
+            <a class="brand-name carbon" data-text="Mohammod Tareq Aziz" href="index.html"><span class="top">Mohammod Tareq Aziz</span></a>
+        </div>
+        <nav class="index" aria-label="Sections">
+            <ul>
+                    <li><a class="part stock-cream" href="index.html"><span class="swatch" aria-hidden="true"></span><span class="part-label">About</span></a></li>
+                    <li><a class="part stock-cobalt" href="02project.html"><span class="swatch" aria-hidden="true"></span><span class="part-label">Projects</span></a></li>
+                    <li><a class="part stock-yellow" href="03education.html"><span class="swatch" aria-hidden="true"></span><span class="part-label">Education</span></a></li>
+                    <li><a class="part stock-lime" href="04skills.html"><span class="swatch" aria-hidden="true"></span><span class="part-label">Skills</span></a></li>
+                    <li><a class="part stock-violet" href="05experience.html"><span class="swatch" aria-hidden="true"></span><span class="part-label">Experience</span></a></li>
+                    <li><a class="part stock-magenta" href="06blog.html"><span class="swatch" aria-hidden="true"></span><span class="part-label">Blog</span></a></li>
+                    <li><a class="part stock-orange on" href="07ataglance.html" aria-current="page"><span class="swatch" aria-hidden="true"></span><span class="part-label">At a Glance</span></a></li>
+            </ul>
+        </nav>
+        <div class="controls">
+            <button class="app-btn" id="themeToggle" aria-pressed="false" aria-label="Dark mode" title="Toggle dark mode">
+                <i class="fas fa-moon" id="themeIcon"></i><span class="toggle-label">theme</span>
+            </button>
+            <button class="app-btn trigger" id="navHam" aria-haspopup="dialog" aria-expanded="false" aria-label="Open index">
+                <i class="fas fa-bars"></i><span>index</span>
+            </button>
+        </div>
     </header>
+    <!-- ╚══════════════════════════════════════════════════════╝ -->
+
+    <nav class="nav-mobile" id="mobileNav" aria-label="Index of records">
+        <div class="bar">
+            <span class="lbl">form NV-00 &middot; index of records</span>
+            <button class="close" id="navClose" aria-label="Close index"><i class="fas fa-times"></i></button>
+        </div>
+        <ul>
+            <li><a class="row stock-cream" href="index.html"><span class="swatch" aria-hidden="true"></span>About<span class="go" aria-hidden="true">&rarr;</span></a></li>
+            <li><a class="row stock-cobalt" href="02project.html"><span class="swatch" aria-hidden="true"></span>Projects<span class="go" aria-hidden="true">&rarr;</span></a></li>
+            <li><a class="row stock-yellow" href="03education.html"><span class="swatch" aria-hidden="true"></span>Education<span class="go" aria-hidden="true">&rarr;</span></a></li>
+            <li><a class="row stock-lime" href="04skills.html"><span class="swatch" aria-hidden="true"></span>Skills<span class="go" aria-hidden="true">&rarr;</span></a></li>
+            <li><a class="row stock-violet" href="05experience.html"><span class="swatch" aria-hidden="true"></span>Experience<span class="go" aria-hidden="true">&rarr;</span></a></li>
+            <li><a class="row stock-magenta" href="06blog.html"><span class="swatch" aria-hidden="true"></span>Blog<span class="go" aria-hidden="true">&rarr;</span></a></li>
+            <li><a class="row stock-orange on" href="07ataglance.html" aria-current="page"><span class="swatch" aria-hidden="true"></span>At a Glance<span class="go" aria-hidden="true">&rarr;</span></a></li>
+        </ul>
+    </nav>
+    <main id="main" tabindex="-1" class="shell">
+        <section class="sheet app-panel stock-orange">
+            <div class="app-grid" style="--cell:15px" aria-hidden="true"></div>
+            <div class="head"><div class="head-inner">
+                <p class="lbl">form AG-06</p>
+                <h1 class="title carbon" data-text="At a Glance"><span class="top">At a Glance</span></h1>
+                <p class="lede"><span class="typewriter-text" data-strings='["A quick view curated for recruiters &amp; collaborators"]'>A
+                quick view curated for recruiters &amp; collaborators</span></p>
+            </div></div>
+
+
+
+    
 
     <!-- ── WHO I AM ── -->
-    <section class="section">
+    <section class="sec">
         <div class="wrap">
             <div class="sec-head fade-up">
                 <h2 class="sec-title">Who I Am</h2>
                 <div class="sec-line"></div>
             </div>
             <div class="glance-grid">
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-user-graduate"></i></div>
-                    <h4>Background</h4>
+                <div class="filed slot stock-cream fade-up">
+                        <span class="tab"><span class="num">AG-0001</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-user-graduate"></i></div><h4>Background</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p><strong>B.Sc. Computer Science graduate from BRAC University, Dhaka</strong><br>Specialization in
                         Machine Learning, Deep Learning, Computer Vision &amp; Prompt Engineering.</p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-map-marker-alt"></i></div>
-                    <h4>Location &amp; Status</h4>
+                            </div>
+                            <span class="clip" aria-hidden="true"><svg viewBox="0 -3 34 77"><path d="M11 68 V16 a6 6 0 0 1 12 0 V60 a10 10 0 0 1-20 0 V14 a14 14 0 0 1 28 0 V62" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></svg></span>
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-lime fade-up">
+                        <span class="tab"><span class="num">AG-0002</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-map-marker-alt"></i></div><h4>Location &amp; Status</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>Based in <strong>Dhaka, Bangladesh</strong>.<br>Fresh graduate, actively open to ML engineering
                         roles, AI research positions, and collaborative projects — local and remote.</p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-bullseye"></i></div>
-                    <h4>Career Goal</h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-cobalt fade-up">
+                        <span class="tab"><span class="num">AG-0003</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-bullseye"></i></div><h4>Career Goal</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>Seeking entry level roles in a software company where I can contribute meaningful work and
                         continue growing as a researcher and engineer.</p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-envelope"></i></div>
-                    <h4>Contact</h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-violet fade-up">
+                        <span class="tab"><span class="num">AG-0004</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-envelope"></i></div><h4>Contact</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p><a href="mailto:mohammodtareqaziz@gmail.com">mohammodtareqaziz@gmail.com</a><br><a
                             href="mailto:write2justice@gmail.com">write2justice@gmail.com</a><br>📞 +88
                         01922-667040<br>📞 +88 01575-616172<br>📍 Merul Badda, Dhaka-1212</p>
                 </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
 
     <!-- ── EXPERIENCE ── -->
-    <section class="section section-muted">
+    <section class="sec">
         <div class="wrap">
             <div class="sec-head fade-up">
                 <h2 class="sec-title">Experience</h2>
@@ -145,51 +213,101 @@
     </section>
 
     <!-- ── EDUCATION ── -->
-    <section class="section">
+    <section class="sec">
         <div class="wrap">
             <div class="sec-head fade-up">
                 <h2 class="sec-title">Education</h2>
                 <div class="sec-line"></div>
             </div>
             <div class="glance-grid">
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-university"></i></div>
-                    <h4>B.Sc. Computer Science</h4>
+                <div class="filed slot stock-orange fade-up">
+                        <span class="tab"><span class="num">AG-0005</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-university"></i></div><h4>B.Sc. Computer Science</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>BRAC University, Dhaka<br>Focus: Machine Learning, Deep Learning, Artificial
                         Intelligence<br>Thesis: Zero-Shot Anomaly Detection in Surveillance</p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-school"></i></div>
-                    <h4>Higher Secondary School</h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-teal fade-up">
+                        <span class="tab"><span class="num">AG-0006</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-school"></i></div><h4>Higher Secondary School</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>Govt. Michael Madhusudan College, Jashore<br>Major: Science<br>Board: Jashore Education Board</p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-school"></i></div>
-                    <h4>Secondary School</h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-yellow fade-up">
+                        <span class="tab"><span class="num">AG-0007</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-school"></i></div><h4>Secondary School</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>Daud Public School and College, Jashore<br>Major: Science<br>Board: Jashore Education Board</p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-school"></i></div>
-                    <h4>Primary School</h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-magenta fade-up">
+                        <span class="tab"><span class="num">AG-0008</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-school"></i></div><h4>Primary School</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>Jashore English School and College, Jashore<br>Major: General<br>Board: Jashore Education Board
                     </p>
                 </div>
+                            </div>
+                            <span class="clip" aria-hidden="true"><svg viewBox="0 -3 34 77"><path d="M11 68 V16 a6 6 0 0 1 12 0 V60 a10 10 0 0 1-20 0 V14 a14 14 0 0 1 28 0 V62" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></svg></span>
+                            
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
 
     <!-- ── PROJECTS ── -->
-    <section class="section section-muted">
+    <section class="sec">
         <div class="wrap">
             <div class="sec-head fade-up">
                 <h2 class="sec-title">Key Projects</h2>
                 <div class="sec-line"></div>
             </div>
             <div class="glance-grid">
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-video"></i></div>
-                    <h4>Zero-Shot Anomaly Detection <span style="font-size:.73rem;color:var(--muted);font-weight:400;">—
-                            Thesis</span></h4>
+                <div class="filed slot stock-cream fade-up">
+                        <span class="tab"><span class="num">AG-0009</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-video"></i></div><h4>Zero-Shot Anomaly Detection <span style="font-size:.73rem;color:var(--muted);font-weight:400;">—
+                            Thesis</span></h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <ul>
                         <li>Dual-stream spatiotemporal framework</li>
                         <li>TimeSformer + CLIP + DPC-RNN</li>
@@ -197,10 +315,21 @@
                         <li>Published to ArXiv</li>
                     </ul>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-glasses"></i></div>
-                    <h4>Blue-Light Glasses via ML <span style="font-size:.73rem;color:var(--muted);font-weight:400;">—
-                            CSE 424</span></h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-lime fade-up">
+                        <span class="tab"><span class="num">AG-0010</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-glasses"></i></div><h4>Blue-Light Glasses via ML <span style="font-size:.73rem;color:var(--muted);font-weight:400;">—
+                            CSE 424</span></h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <ul>
                         <li>Spectrophotometric data, 50 lenses</li>
                         <li>KNN model: 91.4% R² score</li>
@@ -208,10 +337,21 @@
                         <li>IEEE-format paper</li>
                     </ul>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-wine-glass"></i></div>
-                    <h4>Clustering &amp; Stability Analysis <span
-                            style="font-size:.73rem;color:var(--muted);font-weight:400;">— CSE 425</span></h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-cobalt fade-up">
+                        <span class="tab"><span class="num">AG-0011</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-wine-glass"></i></div><h4>Clustering &amp; Stability Analysis <span
+                            style="font-size:.73rem;color:var(--muted);font-weight:400;">— CSE 425</span></h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <ul>
                         <li>Novel VAE-inspired SCNN architecture</li>
                         <li>Compared K-Means, GMM, SOM</li>
@@ -219,10 +359,21 @@
                         <li>Multi-seed stability analysis</li>
                     </ul>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-money-bill-wave"></i></div>
-                    <h4>Loan Eligibility Prediction <span style="font-size:.73rem;color:var(--muted);font-weight:400;">—
-                            CSE 427</span></h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-violet fade-up">
+                        <span class="tab"><span class="num">AG-0012</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-money-bill-wave"></i></div><h4>Loan Eligibility Prediction <span style="font-size:.73rem;color:var(--muted);font-weight:400;">—
+                            CSE 427</span></h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <ul>
                         <li>5 ML classifiers benchmarked</li>
                         <li>RF &amp; MLP: 89.29% accuracy</li>
@@ -230,12 +381,17 @@
                         <li>Full preprocessing pipeline</li>
                     </ul>
                 </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
 
     <!-- ── SKILLS ── -->
-<section class="section">
+<section class="sec">
     <div class="wrap">
         <div class="sec-head fade-up">
             <h2 class="sec-title">Skills</h2>
@@ -313,67 +469,144 @@
 </section>
 
     <!-- ── RESEARCH INTERESTS ── -->
-    <section class="section section-muted">
+    <section class="sec">
         <div class="wrap">
             <div class="sec-head fade-up">
                 <h2 class="sec-title">Research Interests</h2>
                 <div class="sec-line"></div>
             </div>
             <div class="glance-grid">
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-search"></i></div>
-                    <h4>Zero-Shot &amp; Self-Supervised Learning</h4>
+                <div class="filed slot stock-orange fade-up">
+                        <span class="tab"><span class="num">AG-0013</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-search"></i></div><h4>Zero-Shot &amp; Self-Supervised Learning</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>Building models that generalize to unseen classes without explicit supervision — through
                         contrastive and predictive learning.</p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-film"></i></div>
-                    <h4>Spatiotemporal Video Understanding</h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-teal fade-up">
+                        <span class="tab"><span class="num">AG-0014</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-film"></i></div><h4>Spatiotemporal Video Understanding</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>Architectures that model both spatial structure and temporal dynamics in video — applied to
                         surveillance, behavior analysis, and anomaly detection.</p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-comments"></i></div>
-                    <h4>Vision-Language Models</h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-yellow fade-up">
+                        <span class="tab"><span class="num">AG-0015</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-comments"></i></div><h4>Vision-Language Models</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>Multi-modal learning that aligns visual and linguistic signals for richer semantic scene
                         understanding — as demonstrated in my use of CLIP.</p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-heartbeat"></i></div>
-                    <h4>Applied ML &amp; Data-Driven Diagnostics</h4>
+                            </div>
+                            <span class="clip" aria-hidden="true"><svg viewBox="0 -3 34 77"><path d="M11 68 V16 a6 6 0 0 1 12 0 V60 a10 10 0 0 1-20 0 V14 a14 14 0 0 1 28 0 V62" fill="none" stroke="currentColor" stroke-width="4.5" stroke-linecap="round"/></svg></span>
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-magenta fade-up">
+                        <span class="tab"><span class="num">AG-0016</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-heartbeat"></i></div><h4>Applied ML &amp; Data-Driven Diagnostics</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>Using ML for real-world problems in health informatics, anomaly detection, and financial
                         prediction — where reliability and interpretability matter.</p>
                 </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
 
     <!-- ── BLOG HIGHLIGHTS ── -->
-    <section class="section">
+    <section class="sec">
         <div class="wrap">
             <div class="sec-head fade-up">
                 <h2 class="sec-title">Recent Writings</h2>
                 <div class="sec-line"></div>
             </div>
             <div class="glance-grid">
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-pen-nib"></i></div>
-                    <h4>Understanding Zero-Shot Learning</h4>
+                <div class="filed slot stock-cream fade-up">
+                        <span class="tab"><span class="num">AG-0017</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-pen-nib"></i></div><h4>Understanding Zero-Shot Learning</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>How AI recognizes what it has never seen — intuition, mechanics, and lessons from my thesis. <a
                             href="06blog.html">Read →</a></p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-pen-nib"></i></div>
-                    <h4>Vision Transformers vs. CNNs</h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-lime fade-up">
+                        <span class="tab"><span class="num">AG-0018</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-pen-nib"></i></div><h4>Vision Transformers vs. CNNs</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>What changed, why it matters, and a practical comparison for real-world use. <a
                             href="06blog.html">Read →</a></p>
                 </div>
-                <div class="glance-card fade-up">
-                    <div class="glance-icon"><i class="fas fa-pen-nib"></i></div>
-                    <h4>My Final Year Thesis Experience</h4>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                <div class="filed slot stock-cobalt fade-up">
+                        <span class="tab"><span class="num">AG-0019</span><span class="tab-kind">note</span></span>
+                        <div class="holder">
+                            <span class="plate" aria-hidden="true"></span>
+                            <div class="app-card app-notch glance-card">
+                                <div class="app-card-head"><div class="glance-icon"><i class="fas fa-pen-nib"></i></div><h4>My Final Year Thesis Experience</h4></div>
+                                <div class="app-card-body">
+                    
+                    
                     <p>From idea to 84.5% AUC — the honest story of research, failures, and breakthroughs. <a
                             href="06blog.html">Read →</a></p>
                 </div>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
             </div>
         </div>
     </section>
@@ -382,8 +615,20 @@
     <div id="connect-placeholder"></div>
     <!-- ╚══════════════════════════════════════════════════════════════════════╝ -->
 
-    <footer class="site-footer">
-        <p>&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
+            </section>
+    </main>
+
+    <footer class="foot app-panel shell stock-cream">
+        <div class="app-grid" style="--cell:13px" aria-hidden="true"></div>
+        <div class="foot-grid">
+            <div class="foot-note">
+                <p class="lbl">form ZZ-99 &middot; end of record</p>
+                <p class="foot-strong">&copy; 2026 Mohammod Tareq Aziz Justice &nbsp;&middot;&nbsp; All rights reserved.</p>
+            </div>
+        </div>
+        <div class="app-micr foot-micr">
+            <svg preserveAspectRatio="none" role="img" viewBox="0 0 640 22" aria-label="Routing band tareqaziz825"><rect x="2" y="8" width="3" height="12"/><rect x="11" y="8" width="3" height="12"/><rect x="17" y="8" width="5" height="12"/><rect x="25" y="2" width="5" height="18"/><rect x="33" y="8" width="2" height="12"/><rect x="41" y="8" width="3" height="12"/><rect x="50" y="2" width="3" height="18"/><rect x="57" y="8" width="2" height="12"/><rect x="63" y="2" width="3" height="18"/><rect x="69" y="2" width="2" height="18"/><rect x="75" y="2" width="2" height="18"/><rect x="81" y="2" width="3" height="18"/><rect x="88" y="2" width="3" height="18"/><rect x="94" y="2" width="3" height="18"/><rect x="100" y="8" width="2" height="12"/><rect x="108" y="8" width="5" height="12"/><rect x="119" y="2" width="5" height="18"/><rect x="130" y="8" width="3" height="12"/><rect x="136" y="2" width="5" height="18"/><rect x="147" y="2" width="5" height="18"/><rect x="156" y="8" width="5" height="12"/><rect x="167" y="2" width="5" height="18"/><rect x="176" y="2" width="3" height="18"/><rect x="182" y="2" width="2" height="18"/><rect x="190" y="2" width="5" height="18"/><rect x="199" y="2" width="3" height="18"/><rect x="206" y="2" width="5" height="18"/><rect x="214" y="2" width="5" height="18"/><rect x="223" y="8" width="3" height="12"/><rect x="230" y="2" width="5" height="18"/><rect x="241" y="2" width="5" height="18"/><rect x="252" y="2" width="2" height="18"/><rect x="260" y="2" width="2" height="18"/><rect x="265" y="8" width="3" height="12"/><rect x="272" y="2" width="2" height="18"/><rect x="277" y="8" width="5" height="12"/><rect x="288" y="8" width="5" height="12"/><rect x="296" y="8" width="2" height="12"/><rect x="301" y="2" width="3" height="18"/><rect x="308" y="2" width="3" height="18"/><rect x="315" y="2" width="3" height="18"/><rect x="324" y="8" width="5" height="12"/><rect x="335" y="8" width="5" height="12"/><rect x="343" y="8" width="5" height="12"/><rect x="352" y="2" width="5" height="18"/><rect x="361" y="8" width="2" height="12"/><rect x="367" y="8" width="2" height="12"/><rect x="373" y="2" width="5" height="18"/><rect x="381" y="2" width="2" height="18"/><rect x="389" y="8" width="2" height="12"/><rect x="397" y="2" width="2" height="18"/><rect x="405" y="2" width="3" height="18"/><rect x="411" y="2" width="2" height="18"/><rect x="419" y="2" width="2" height="18"/><rect x="425" y="8" width="3" height="12"/><rect x="431" y="2" width="5" height="18"/><rect x="442" y="2" width="2" height="18"/><rect x="450" y="2" width="2" height="18"/><rect x="455" y="8" width="5" height="12"/><rect x="463" y="2" width="2" height="18"/><rect x="468" y="2" width="5" height="18"/><rect x="476" y="8" width="3" height="12"/><rect x="483" y="2" width="3" height="18"/><rect x="489" y="2" width="5" height="18"/><rect x="497" y="8" width="5" height="12"/><rect x="505" y="2" width="3" height="18"/><rect x="514" y="8" width="3" height="12"/><rect x="521" y="8" width="2" height="12"/><rect x="526" y="2" width="2" height="18"/><rect x="534" y="8" width="3" height="12"/><rect x="540" y="8" width="5" height="12"/><rect x="549" y="2" width="2" height="18"/><rect x="555" y="8" width="5" height="12"/><rect x="564" y="8" width="3" height="12"/><rect x="570" y="2" width="3" height="18"/><rect x="577" y="2" width="5" height="18"/><rect x="586" y="2" width="2" height="18"/><rect x="592" y="8" width="2" height="12"/><rect x="598" y="2" width="2" height="18"/><rect x="604" y="8" width="3" height="12"/><rect x="610" y="2" width="3" height="18"/><rect x="616" y="2" width="2" height="18"/><rect x="624" y="8" width="5" height="12"/><rect x="632" y="2" width="5" height="18"/></svg>
+        </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>

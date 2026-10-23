@@ -5,12 +5,10 @@
    ============================================================ */
 
 :root {
-  --motif:    #c8d2ea;
-  --motif-op: .048;
-}
-body.light-mode {
-  --motif:    #1b2036;
-  --motif-op: .052;
+  /* the marks layer now rides the brutalist ink token; the opacity
+     comes from --marks-op, which the theme sheet halves in dark */
+  --motif:    var(--ink);
+  --motif-op: var(--marks-op, .13);
 }
 
 /* the layer spans the whole document, behind content but above
@@ -33,9 +31,9 @@ body { position: relative; }
   opacity: 0;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.15;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke-width: 1.6;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
   will-change: transform;
   overflow: visible;
 }
@@ -67,7 +65,7 @@ body { position: relative; }
 .section-connect { background: transparent; }
 
 @media (max-width: 760px) {
-  :root { --motif-op: .04; }
+  :root { --motif-op: calc(var(--marks-op, .13) * .8); }
 }
 
 @media (prefers-reduced-motion: reduce) {
