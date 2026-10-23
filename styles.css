@@ -964,3 +964,11 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
   .controls { gap: 10px }
   .controls .app-btn { height: var(--nav-btn-h); padding: 6px 14px; font-size: .72rem }
 }
+
+/* The equal-height rule above sets `display: inline-flex` on
+   `.controls .app-btn` (0,2,0), which out-ranked the plain `.trigger`
+   hide rule (0,1,0) and brought INDEX back on desktop. State it with
+   enough weight to win: the index sheet is a phone-only control.   */
+@media (min-width: 900px) {
+  .controls .app-btn.trigger { display: none }
+}
