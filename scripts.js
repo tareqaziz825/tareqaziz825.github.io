@@ -93,47 +93,12 @@
         } else {
           newFadeEls.forEach(el => el.classList.add('in-view'));
         }
-        // Re-init EmailJS form after injection if on pages without full form
-        initEmailJS();
       })
       .catch(() => {
         // fallback: hide placeholder gracefully
         if (placeholder) placeholder.remove();
       });
   }
-
-  /* ── EmailJS init ── */
-  function initEmailJS() {
-    const form = document.getElementById('contactForm');
-    if (!form) return;
-    if (typeof emailjs === 'undefined') return;
-    emailjs.init('y3EFG7KJvU0XqX380');
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      const btn = document.getElementById('sendBtn');
-      const status = document.getElementById('formStatus');
-      btn.disabled = true;
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending…';
-      status.textContent = '';
-      status.className = 'form-status';
-      emailjs.sendForm('service_write2justice', 'template_write2justice', this)
-        .then(() => {
-          status.textContent = '✓ Message sent! I\'ll get back to you soon.';
-          status.className = 'form-status success';
-          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-          btn.disabled = false;
-          this.reset();
-        }, (error) => {
-          status.textContent = '✗ Something went wrong. Please try emailing directly.';
-          status.className = 'form-status error';
-          btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-          btn.disabled = false;
-          console.error(error);
-        });
-    });
-  }
-  // Also run immediately in case connect section is already in DOM (index.html)
-  initEmailJS();
 
   /* ── Typewriter animation for hero ── */
   function typewriter(el, strings, speed = 80, pause = 2200) {

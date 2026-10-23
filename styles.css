@@ -766,49 +766,11 @@ body.light-mode .hero-portrait::before {
   93.4%  { clip-path:polygon(0 0,0 0,0 0,0 0); transform:none }
 }
 
-/* RGB split ghosts */
-.hp-chroma { background-image: var(--hero-front); mix-blend-mode: screen; opacity: 0; }
-.hp-chroma-r { filter: url(#hpChR); animation: hpChR 13s infinite steps(1,end); }
-.hp-chroma-c { filter: url(#hpChC); animation: hpChC 13s infinite steps(1,end); }
-@keyframes hpChR {
-  0%,26% { opacity:0; transform:none }
-  27%    { opacity:.9; transform:translate(-11px,11px) }
-  29.5%  { opacity:.9; transform:translate(7px,-7px) }
-  32%    { opacity:0; transform:none }
-  74%    { opacity:.75; transform:translate(-6px,6px) }
-  76%    { opacity:0; transform:none }
-}
-@keyframes hpChC {
-  0%,26% { opacity:0; transform:none }
-  27%    { opacity:.9; transform:translate(11px,-11px) }
-  29.5%  { opacity:.9; transform:translate(-7px,7px) }
-  32%    { opacity:0; transform:none }
-  74%    { opacity:.75; transform:translate(6px,-6px) }
-  76%    { opacity:0; transform:none }
-}
-
-/* slow scanline sweep */
-.hp-scan {
-  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
-  -webkit-mask-image: var(--hero-front); mask-image: var(--hero-front);
-  -webkit-mask-size: contain; mask-size: contain;
-  -webkit-mask-position: center bottom; mask-position: center bottom;
-  -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat;
-}
-.hp-scan::after {
-  content: ''; position: absolute; left: -10%; right: -10%; height: 16%;
-  background: linear-gradient(180deg, transparent, rgba(138,201,38,.16) 45%, rgba(58,134,255,.20) 55%, transparent);
-  animation: hpScan 6.5s linear infinite;
-}
-@keyframes hpScan { 0% { top:-20% } 100% { top:110% } }
-
 /* hover tightens the loops */
 .hero-portrait:hover .hp-alt     { animation-duration: 9s; }
 .hero-portrait:hover .hp-slice-1 { animation-duration: 5.5s; }
 .hero-portrait:hover .hp-slice-2 { animation-duration: 7s; }
 .hero-portrait:hover .hp-slice-3 { animation-duration: 4.8s; }
-.hero-portrait:hover .hp-chroma-r,
-.hero-portrait:hover .hp-chroma-c { animation-duration: 6.5s; }
 
 /* ---------- responsive: copy first, portrait after ---------- */
 @media (max-width: 900px) {
@@ -832,8 +794,7 @@ body.light-mode .hero-portrait::before {
 
 /* ---------- accessibility ---------- */
 @media (prefers-reduced-motion: reduce) {
-  .hp-alt, .hp-slice, .hp-chroma,
-  .hp-scan::after {
+  .hp-alt, .hp-slice {
     animation: none !important;
     opacity: 0 !important;
   }
@@ -841,7 +802,21 @@ body.light-mode .hero-portrait::before {
 
 /* --- hero polish: no hard crop at the bottom of the cut-out, and keep the
        rotating aurora's own edges off-screen --- */
-.hero-section::before { inset: -30%; }
+/* The original `aurora` animation rotated this gradient layer. Once the hero
+   background went transparent, that rotation swept the layer's own corners
+   across the section as hard diagonal edges — worst on narrow screens, where
+   no amount of oversizing covers every angle. Drift it instead: same moving
+   colour, no edges ever. */
+.hero-section::before {
+  inset: -30%;
+  animation: heroDrift 26s ease-in-out infinite alternate;
+}
+@keyframes heroDrift {
+  0%   { transform: translate3d(0, 0, 0) scale(1); }
+  33%  { transform: translate3d(-2.4%, 1.8%, 0) scale(1.06); }
+  66%  { transform: translate3d(2%, -1.6%, 0) scale(1.03); }
+  100% { transform: translate3d(-1.2%, 2.4%, 0) scale(1.07); }
+}
 
 .hero-portrait {
   -webkit-mask-image: linear-gradient(to bottom, #000 0 74%, rgba(0,0,0,.6) 88%, transparent 100%);

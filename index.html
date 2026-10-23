@@ -19,11 +19,13 @@
         href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Oxanium:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="tech-icons.css">
+    <link rel="stylesheet" href="bg-motifs.css">
     <link rel="preload" as="image" href="images/HEROformal-cut.webp">
 </head>
 
 <body>
+
+    <div class="bg" aria-hidden="true"><div class="bg-motifs" id="bgMotifs"></div></div>
 
     <!-- ╔══════════════════════ NAVBAR ══════════════════════╗ -->
     <nav class="site-nav">
@@ -56,16 +58,6 @@
     </nav>
     <!-- ╚════════════════════════════════════════════════════╝ -->
 
-    <!-- RGB channel-isolation filters used by the hero glitch -->
-    <svg width="0" height="0" class="hero-glitch-filters" aria-hidden="true" focusable="false">
-        <filter id="hpChR" color-interpolation-filters="sRGB">
-            <feColorMatrix type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0" />
-        </filter>
-        <filter id="hpChC" color-interpolation-filters="sRGB">
-            <feColorMatrix type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1 0" />
-        </filter>
-    </svg>
-
     <!-- ╔══════════════════════ HERO ══════════════════════╗ -->
     <section class="hero-section">
         <div class="hero-inner hero-split">
@@ -89,12 +81,9 @@
                 </p>
 
                 <div class="hero-actions">
-                    <a href="https://drive.google.com/file/d/18-EJMd4ZEY19qzb8TtFbWwLTiuhSI0vC/view?usp=sharing"
-                        class="btn-hero-outline" target="_blank" rel="noopener">
-                        <i class="fas fa-file-alt"></i> Download Resume
-                    </a>
-                    <a href="02project.html" class="btn-hero-outline">
-                        <i class="fas fa-layer-group"></i> View Projects
+                    <a href="mailto:mohammodtareqaziz@gmail.com?subject=Resume%20Request%20-%20Mohammod%20Tareq%20Aziz%20Justice&amp;body=Hello%20Tareq%2C%0D%0A%0D%0AI%20came%20across%20your%20portfolio%20and%20would%20like%20to%20request%20a%20copy%20of%20your%20resume.%0D%0A%0D%0AA%20little%20about%20me%3A%0D%0A-%20Name%3A%0D%0A-%20Organisation%20%2F%20Company%3A%0D%0A-%20Role%3A%0D%0A-%20Reason%20for%20the%20request%3A%0D%0A%0D%0AThank%20you%2C%0D%0A"
+                        class="btn-hero-outline">
+                        <i class="fas fa-envelope-open-text"></i> Request Resume
                     </a>
                     <a href="07ataglance.html" class="btn-hero-outline">
                         <i class="fas fa-binoculars"></i> At a Glance
@@ -111,10 +100,6 @@
                 <div class="hp-layer hp-slice hp-slice-2"></div>
                 <div class="hp-layer hp-slice hp-slice-3"></div>
 
-                <div class="hp-layer hp-chroma hp-chroma-r"></div>
-                <div class="hp-layer hp-chroma hp-chroma-c"></div>
-
-                <div class="hp-scan"></div>
             </div>
 
         </div>
@@ -182,8 +167,6 @@
                         software engineering role building reliable software systems.
                     </p>
 
-                    <div class="tech-badges" data-tech-badges="python,cpp,java,mysql,postgresql,pytorch,tensorflow,sklearn,numpy,pandas,opencv,git,docker,wordpress,moodle,kobo,gcp,colab"
-                        data-badge-label="Technologies I work with"></div>
                 </article>
 
             </div>
@@ -200,8 +183,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-    <script src="tech-icons.js"></script>
+    <script src="bg-motifs.js"></script>
     <script src="scripts.js"></script>
 </body>
 
