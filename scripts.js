@@ -5,12 +5,19 @@
   /* ── Theme ── */
   const toggle = document.getElementById('themeToggle');
   const icon   = document.getElementById('themeIcon');
+  const label = document.getElementById('themeLabel');
   function applyTheme(isLight) {
     // the token sheet keys off <html class="light">; dark is the default
     document.documentElement.classList.toggle('light', isLight);
     document.body.classList.toggle('light-mode', isLight);
-    if (icon) icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
-    if (toggle) toggle.setAttribute('aria-pressed', String(!isLight));
+    // the button names the mode you are IN, and the icon matches it
+    if (icon)  icon.className = isLight ? 'fas fa-sun' : 'fas fa-moon';
+    if (label) label.textContent = isLight ? 'light' : 'dark';
+    if (toggle) {
+      toggle.setAttribute('aria-pressed', String(!isLight));
+      toggle.setAttribute('aria-label', isLight ? 'Light mode — switch to dark' : 'Dark mode — switch to light');
+      toggle.setAttribute('title', isLight ? 'Switch to dark mode' : 'Switch to light mode');
+    }
   }
   const saved = localStorage.getItem('theme');
   applyTheme(saved === 'light');

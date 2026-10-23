@@ -930,3 +930,23 @@ html:not(.light) .app-stamp { mix-blend-mode: normal }
 .hero-sheet { padding-top: 30px; padding-bottom: 30px }
 @media (min-width: 760px) { .hero-sheet { padding-top: 36px; padding-bottom: 36px } }
 .hero-sheet .hero-inner.hero-split { align-items: center }
+
+/* ============================================================ 20 · MASTHEAD
+   1 · the brand's carbon shadow, opened up so it reads as a deliberate
+       offset at display size rather than a smudge.
+   3 · JetBrains Mono carries ~2px of left side bearing at this size, so
+       the brand's glyphs sat 2px right of the nav pills even though both
+       boxes started on the same pixel. Pull the ink back into line.    */
+.brand-name { margin-left: -.05em }
+.brand-name.carbon::before { transform: translate(3px, 3px); opacity: .34 }
+
+/* 4 · the theme toggle and the nav pills share one height */
+:root { --nav-btn-h: 34px }
+.part,
+.controls .app-btn {
+  min-height: var(--nav-btn-h);
+  align-items: center;
+  box-sizing: border-box;
+}
+.controls .app-btn { padding: 6px 13px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700 }
+.controls .app-btn i { width: 1em; text-align: center }
