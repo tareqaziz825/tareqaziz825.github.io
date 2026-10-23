@@ -990,3 +990,24 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
    they had no row gap at all. Match the 36px row rhythm the education
    and skills grids use.                                              */
 .project-list > .filed + .filed { margin-top: 36px }
+
+/* ============================================================ 24 · EDUCATION
+   1 · bigger institution logos on the card head                      */
+.app-card-head .edu-logo { width: 74px; height: 74px; margin-bottom: 12px }
+
+/* 2 · the institution name now sits in the body, one step larger and
+       set as written rather than in small caps                       */
+.edu-card .app-card-body .edu-inst {
+  font-family: var(--font-mono); font-size: .86rem; font-weight: 700;
+  text-transform: none; letter-spacing: .01em; line-height: 1.35;
+  margin: 0 0 2px; padding-bottom: 8px; color: var(--on-stock);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent);
+}
+
+/* 4 · every education box the same height and width: the grid rows are
+       equal, and each card stretches to fill its cell                 */
+.edu-grid { grid-auto-rows: 1fr }
+.edu-grid > .filed { align-self: stretch; display: flex; flex-direction: column }
+.edu-grid > .filed > .holder { flex: 1; display: flex; flex-direction: column }
+.edu-grid > .filed > .holder > .edu-card { flex: 1; display: flex; flex-direction: column }
+.edu-grid .edu-card .app-card-body { flex: 1 }
