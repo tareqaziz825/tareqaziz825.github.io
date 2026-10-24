@@ -75,12 +75,13 @@
     animTargets.forEach(el => el.classList.add('in-view'));
   }
 
+  /* ── Shared partials: base path (blogs/ lives one level down) ── */
+  const partialBase = window.location.pathname.includes('/blogs/') ? '../' : '';
+
   /* ── Load shared connect section ── */
   const placeholder = document.getElementById('connect-placeholder');
   if (placeholder) {
-    // Detect if we're in a subdirectory (blogs/) and adjust path accordingly
-    const connectPath = window.location.pathname.includes('/blogs/') ? '../connect.html' : 'connect.html';
-    fetch(connectPath)
+    fetch(partialBase + 'connect.html')
       .then(r => r.text())
       .then(html => {
         placeholder.outerHTML = html;
@@ -100,6 +101,15 @@
         // fallback: hide placeholder gracefully
         if (placeholder) placeholder.remove();
       });
+  }
+
+  /* ── Load shared site footer ── */
+  const footSlot = document.getElementById('footer-placeholder');
+  if (footSlot) {
+    fetch(partialBase + 'footer.html')
+      .then(r => r.text())
+      .then(html => { footSlot.outerHTML = html; })
+      .catch(() => { footSlot.remove(); });
   }
 
   /* ── Typewriter animation for hero ── */
