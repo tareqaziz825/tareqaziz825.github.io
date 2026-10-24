@@ -1058,3 +1058,23 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
   letter-spacing: .02em; text-transform: none;
   color: color-mix(in srgb, var(--on-stock) 78%, var(--stock));
 }
+
+/* ============================================================ 28 · BLOG NOTE
+   2 · give the sign-off real air below the last record           */
+.blog-note {
+  margin-top: 52px;
+  display: flex; align-items: baseline; gap: 10px;
+  font-family: var(--font-mono); font-size: .78rem; font-weight: 500;
+  line-height: 1.6; letter-spacing: .02em;
+  color: color-mix(in srgb, var(--on-stock) 80%, var(--stock));
+  border-top: 3px solid color-mix(in srgb, var(--on-stock) 25%, transparent);
+  padding-top: 22px;
+}
+.blog-note i { flex: 0 0 auto; opacity: .7 }
+.blog-note strong { color: var(--on-stock); font-weight: 700 }
+.blog-note a {
+  color: var(--on-stock); font-weight: 700;
+  border-bottom: 2px solid color-mix(in srgb, var(--on-stock) 40%, transparent);
+}
+.blog-note a:hover { background: var(--on-stock); color: var(--stock) }
+@media (max-width: 639px) { .blog-note { margin-top: 38px; padding-top: 18px } }
