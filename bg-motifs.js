@@ -309,12 +309,15 @@
   }
 
 
+  /* every opaque panel that is tall enough to hold a drawing */
+  var PANEL_SEL = '.sheet.app-panel, .masthead, .connect-panel, .foot';
+
   /* ---- a sparse set inside each page sheet ----
      Count and size both follow the panel's own box, so a tall sheet
      gets more marks than a short one and every mark keeps its
      proportion to the screen. */
   function buildPanels() {
-    var sheets = document.querySelectorAll('.sheet.app-panel');
+    var sheets = document.querySelectorAll(PANEL_SEL);
     var pr = rng(20261025);
 
     for (var p = 0; p < sheets.length; p++) {
@@ -324,8 +327,18 @@
 
       var h = sheet.offsetHeight, w = sheet.offsetWidth;
       if (!h || !w) continue;
-      // roughly one mark per 260x300 of panel, capped so it stays quiet
-      var n = Math.max(2, Math.min(14, Math.round((h * w) / 95000)));
+      // A short, wide band — masthead, connect, footer — wants its marks
+      // spread along the strip and scaled to its height. A tall sheet
+      // wants them spread down the column at full size.
+      var isBand = h < 240;
+      var n, fit;
+      if (isBand) {
+        n   = Math.max(2, Math.min(7, Math.round(w / 260)));
+        fit = Math.max(0.50, Math.min(0.90, h / 230));
+      } else {
+        n   = Math.max(2, Math.min(14, Math.round((h * w) / 95000)));
+        fit = 1;
+      }
 
       var html = '', k = 0;
       for (var i = 0; i < n; i++) {
@@ -333,16 +346,22 @@
         if (pr() < 0.5) {
           vb = '0 0 48 48';
           d = GLYPHS[(gpi++) % GLYPHS.length].d;
-          base = 52 + pr() * 40;
+          base = (52 + pr() * 40) * fit;
           cls = 'motif glyph';
         } else {
           var m = MOTIFS[(dpi++) % MOTIFS.length];
           vb = m.vb; d = m.d;
-          base = 110 + pr() * 120;
+          base = (110 + pr() * 120) * fit;
           cls = 'motif';
         }
-        var left = (3 + pr() * 82).toFixed(2);
-        var top  = (2 + (i / n) * 94 + pr() * (70 / n)).toFixed(2);
+        var left, top;
+        if (isBand) {
+          left = (2 + (i / n) * 90 + pr() * (55 / n)).toFixed(2);
+          top  = (pr() * 52).toFixed(2);
+        } else {
+          left = (3 + pr() * 82).toFixed(2);
+          top  = (2 + (i / n) * 94 + pr() * (70 / n)).toFixed(2);
+        }
         var rot  = (pr() * 26 - 13).toFixed(1);
         html += '<svg class="' + cls + '" viewBox="' + vb + '" aria-hidden="true" focusable="false"' +
                 ' style="left:' + left + '%;top:' + top + '%;width:' + sizeFor(base) +
@@ -441,7 +460,7 @@
     }, { passive: true });
   }
 
-  window.BgMotifs = { build: build, diagrams: MOTIFS, glyphs: GLYPHS };
+  window.BgMotifs = { build: build, panels: buildPanels, diagrams: MOTIFS, glyphs: GLYPHS };
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', build);
   else build();

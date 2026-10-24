@@ -113,4 +113,13 @@ body { position: relative; }
 }
 
 /* content must sit above both decorative layers */
-.sheet > *:not(.app-grid):not(.panel-motifs) { position: relative; z-index: 1 }
+.sheet > *:not(.app-grid):not(.panel-motifs),
+.masthead > *:not(.app-grid):not(.panel-motifs),
+.connect-panel > *:not(.app-grid):not(.panel-motifs),
+.foot > *:not(.app-grid):not(.panel-motifs) { position: relative; z-index: 1 }
+
+/* the bands hold small marks, which read fainter than a big diagram at
+   the same alpha, so lift them a touch to match the sheets */
+.masthead .panel-motifs,
+.connect-panel .panel-motifs,
+.foot .panel-motifs { --motif-op: calc(var(--panel-motif-op) * 1.15) }
