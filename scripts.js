@@ -51,17 +51,6 @@
   /* ── Shared partials: base path (blogs/ lives one level down) ── */
   const partialBase = window.location.pathname.includes('/blogs/') ? '../' : '';
 
-  /* Connect and the footer are fetched in after bg-motifs.js has already
-     placed its panel layers, so each fragment asks for a repaint once it
-     lands. Coalesced, because the two can arrive together. */
-  let motifTimer;
-  function paintMotifs() {
-    clearTimeout(motifTimer);
-    motifTimer = setTimeout(() => {
-      if (window.BgMotifs && window.BgMotifs.panels) window.BgMotifs.panels();
-    }, 60);
-  }
-
   /* ── Load shared connect section ── */
   const placeholder = document.getElementById('connect-placeholder');
   if (placeholder) {
@@ -80,7 +69,6 @@
           newFadeEls.forEach(el => el.classList.add('in-view'));
         }
         applyMailFallback();   // the Email button arrives with this fragment
-        paintMotifs();         // this panel did not exist when they were placed
       })
       .catch(() => {
         // fallback: hide placeholder gracefully
@@ -93,7 +81,7 @@
   if (footSlot) {
     fetch(partialBase + 'footer.html')
       .then(r => r.text())
-      .then(html => { footSlot.outerHTML = html; paintMotifs(); })
+      .then(html => { footSlot.outerHTML = html; })
       .catch(() => { footSlot.remove(); });
   }
 

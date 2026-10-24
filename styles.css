@@ -182,9 +182,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 main:focus { outline: none }
 
 /* ============================================================ 4 · COMPAT
-   bg-motifs.css and tech-icons.css were written against the v3
-   token names. Alias them onto the new system rather than
-   maintaining two vocabularies.                                */
+   tech-icons.css was written against the v3 token names. Alias
+   them onto the new system rather than maintaining two
+   vocabularies.                                                */
 :root {
   --yellow: var(--color-yellow);  --orange: var(--color-orange);
   --purple: var(--color-violet);  --blue:   var(--color-cobalt);
