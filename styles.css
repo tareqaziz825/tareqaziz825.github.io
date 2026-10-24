@@ -1072,9 +1072,4 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 }
 .blog-note i { flex: 0 0 auto; opacity: .7 }
 .blog-note strong { color: var(--on-stock); font-weight: 700 }
-.blog-note a {
-  color: var(--on-stock); font-weight: 700;
-  border-bottom: 2px solid color-mix(in srgb, var(--on-stock) 40%, transparent);
-}
-.blog-note a:hover { background: var(--on-stock); color: var(--stock) }
 @media (max-width: 639px) { .blog-note { margin-top: 38px; padding-top: 18px } }
