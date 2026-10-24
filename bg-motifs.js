@@ -296,6 +296,67 @@
     return function () { s ^= s << 13; s ^= s >>> 17; s ^= s << 5; return ((s >>> 0) % 1e5) / 1e5; };
   }
 
+  /* Widths are authored against a ~1280px-wide viewport, then expressed
+     as a vw ratio so every drawing grows and shrinks with the screen.
+     The clamp keeps it between half and 1.5x the authored size, so the
+     set still reads on a 360px phone and never bloats on an ultrawide. */
+  var REF_W = 1280;
+  function sizeFor(base) {
+    var vw  = (base / REF_W * 100).toFixed(2);
+    var lo  = (base * 0.52).toFixed(0);
+    var hi  = (base * 1.5).toFixed(0);
+    return 'clamp(' + lo + 'px, ' + vw + 'vw, ' + hi + 'px)';
+  }
+
+
+  /* ---- a sparse set inside each page sheet ----
+     Count and size both follow the panel's own box, so a tall sheet
+     gets more marks than a short one and every mark keeps its
+     proportion to the screen. */
+  function buildPanels() {
+    var sheets = document.querySelectorAll('.sheet.app-panel');
+    var pr = rng(20261025);
+
+    for (var p = 0; p < sheets.length; p++) {
+      var sheet = sheets[p];
+      var old = sheet.querySelector(':scope > .panel-motifs');
+      if (old) old.parentNode.removeChild(old);
+
+      var h = sheet.offsetHeight, w = sheet.offsetWidth;
+      if (!h || !w) continue;
+      // roughly one mark per 260x300 of panel, capped so it stays quiet
+      var n = Math.max(2, Math.min(14, Math.round((h * w) / 95000)));
+
+      var html = '', k = 0;
+      for (var i = 0; i < n; i++) {
+        var vb, d, base, cls;
+        if (pr() < 0.5) {
+          vb = '0 0 48 48';
+          d = GLYPHS[(gpi++) % GLYPHS.length].d;
+          base = 52 + pr() * 40;
+          cls = 'motif glyph';
+        } else {
+          var m = MOTIFS[(dpi++) % MOTIFS.length];
+          vb = m.vb; d = m.d;
+          base = 110 + pr() * 120;
+          cls = 'motif';
+        }
+        var left = (3 + pr() * 82).toFixed(2);
+        var top  = (2 + (i / n) * 94 + pr() * (70 / n)).toFixed(2);
+        var rot  = (pr() * 26 - 13).toFixed(1);
+        html += '<svg class="' + cls + '" viewBox="' + vb + '" aria-hidden="true" focusable="false"' +
+                ' style="left:' + left + '%;top:' + top + '%;width:' + sizeFor(base) +
+                ';--m-i:' + (k++) + ';transform:rotate(' + rot + 'deg)">' + d + '</svg>';
+      }
+      var layer = document.createElement('div');
+      layer.className = 'panel-motifs';
+      layer.setAttribute('aria-hidden', 'true');
+      layer.innerHTML = html;
+      sheet.insertBefore(layer, sheet.firstChild);
+    }
+  }
+  var gpi = 7, dpi = 3;   // offset so panels don't echo the page layer
+
   function build() {
     var host = document.getElementById('bgMotifs');
     if (!host) return;
@@ -315,19 +376,22 @@
         if (r() > 0.74 * density) continue;                // leave gaps
 
         // a few small tech marks for every larger diagram
-        var vb, d, w, cls;
+        var vb, d, base, cls;
         if (r() < 0.58) {
-          vb  = '0 0 48 48';
-          d   = GLYPHS[gi++ % GLYPHS.length].d;
-          w   = (44 + r() * 44).toFixed(0);
-          cls = 'motif glyph';
+          vb   = '0 0 48 48';
+          d    = GLYPHS[gi++ % GLYPHS.length].d;
+          base = 44 + r() * 44;            // reads well at ~1280px wide
+          cls  = 'motif glyph';
         } else {
           var m = MOTIFS[di++ % MOTIFS.length];
-          vb  = m.vb;
-          d   = m.d;
-          w   = (96 + r() * 140).toFixed(0);
-          cls = 'motif';
+          vb   = m.vb;
+          d    = m.d;
+          base = 96 + r() * 140;
+          cls  = 'motif';
         }
+        // size is a ratio of the viewport, bounded so it never gets
+        // lost on a phone or cartoonish on an ultrawide
+        var w = sizeFor(base);
 
         var left = (col * (100 / cols) + 2 + r() * (100 / cols - 12)).toFixed(2);
         var top  = (row * (100 / rows) + r() * (100 / rows * 0.7)).toFixed(3);
@@ -335,11 +399,13 @@
         var tint = r() > 0.74 ? ' tint-' + (1 + Math.floor(r() * 4)) : '';
         var dep  = (0.05 + r() * 0.22).toFixed(3);
         out += '<svg class="' + cls + tint + '" viewBox="' + vb + '" aria-hidden="true" focusable="false"' +
-               ' style="left:' + left + '%;top:' + top + '%;width:' + w + 'px"' +
+               ' style="left:' + left + '%;top:' + top + '%;width:' + w + '"' +
                ' data-rot="' + rot + '" data-depth="' + dep + '">' + d + '</svg>';
       }
     }
     host.innerHTML = out;
+
+    buildPanels();
 
     els = [].slice.call(host.querySelectorAll('.motif'));
     els.forEach(function (el, n) {

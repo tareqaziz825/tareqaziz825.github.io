@@ -8,9 +8,8 @@
    Display face is Oxanium and body prose is Outfit (kept from
    v3); every label, number, tag and button is JetBrains Mono.
 
-   Theme: DARK is the default. `html.light` switches to the
-   cream paper palette, which is also what print uses, because
-   the dark block is wrapped in @media screen.
+   Theme: DARK only. The light palette and its toggle were
+   removed; every token below is the dark value.
    ============================================================ */
 
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Oxanium:wght@300;400;500;600;700;800&display=swap');
@@ -55,111 +54,62 @@
   --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
   --font-display: 'Oxanium', 'Outfit', system-ui, sans-serif;
 
-  /* ── LIGHT theme — the base, and what print uses ── */
-  --tint-cream: var(--color-cream);   --deep-cream:   var(--color-cream);
-  --tint-yellow: var(--color-yellow); --deep-yellow:  var(--color-yellow);
-  --tint-magenta:var(--color-magenta);--deep-magenta: var(--color-magenta);
-  --tint-teal:   var(--color-teal);   --deep-teal:    var(--color-teal);
-  --tint-cobalt: var(--color-cobalt); --deep-cobalt:  var(--color-cobalt);
-  --tint-lime:   var(--color-lime);   --deep-lime:    var(--color-lime);
-  --tint-violet: var(--color-violet); --deep-violet:  var(--color-violet);
-  --tint-orange: var(--color-orange); --deep-orange:  var(--color-orange);
+  /* ── palette — dark is the only theme ── */
+  --tint-cream:   #1c1c22;
+  --tint-yellow:  #d9c400;
+  --tint-magenta: #e0568f;
+  --tint-teal:    #38c9bb;
+  --tint-cobalt:  #7a93e0;
+  --tint-lime:    #9ccf33;
+  --tint-violet:  #a481d9;
+  --tint-orange:  #d98736;
 
-  --on-cream: var(--color-black);  --on-yellow: var(--color-black);
-  --on-magenta: var(--color-black);--on-teal:   var(--color-black);
-  --on-lime: var(--color-black);   --on-violet: var(--color-black);
-  --on-orange: var(--color-black); --on-cobalt: var(--color-paper);
+  --deep-cream:   #1c1c22;
+  --deep-yellow:  #2e2714;
+  --deep-magenta: #2f1623;
+  --deep-teal:    #122a28;
+  --deep-cobalt:  #171d3a;
+  --deep-lime:    #1d2a14;
+  --deep-violet:  #241a35;
+  --deep-orange:  #2f2014;
 
-  --on-deep-cream: var(--color-black);  --on-deep-yellow: var(--color-black);
-  --on-deep-magenta: var(--color-black);--on-deep-teal:   var(--color-black);
-  --on-deep-lime: var(--color-black);   --on-deep-violet: var(--color-black);
-  --on-deep-orange: var(--color-black); --on-deep-cobalt: var(--color-paper);
+  --on-cream:   #ebe7dc;
+  --on-yellow:  #15130a;
+  --on-magenta: #16090f;
+  --on-teal:    #08100f;
+  --on-cobalt:  #0a0d18;
+  --on-lime:    #111806;
+  --on-violet:  #120d1b;
+  --on-orange:  #180f06;
 
-  --paper:    var(--color-cream);
-  --ground:   var(--color-cream);
-  --stock:    var(--color-paper);
-  --ink:      var(--color-black);
-  --on-stock: var(--color-black);
-  --edge:     var(--color-black);
-  --ink-soft: #4a4653;
+  --on-deep-cream:   #ebe7dc;  --on-deep-yellow:  #efe8d2;
+  --on-deep-magenta: #f2dde6;  --on-deep-teal:    #d8efec;
+  --on-deep-cobalt:  #dde3f7;  --on-deep-lime:    #e2efd4;
+  --on-deep-violet:  #e8def5;  --on-deep-orange:  #f2e2d2;
 
-  --sel-bg: var(--color-magenta);
-  --sel-fg: var(--color-black);
+  --paper:  #121216;
+  --ground: #121216;
+  --stock:    var(--tint-cream);
+  --ink:      #ebe7dc;
+  --ink-soft: #b7b2a6;
+  --on-stock: var(--on-cream);
+  --edge:        #cfcabb;
+  --edge-shadow: #000000;
 
-  --grid-op: .09;
-  --marks-op: .14;
+  --sel-bg: #ff4d9e;
+  --sel-fg: #0a0a0a;
+
+  --notch-fill: var(--stock);
+
+  --grid-op: .05;
+  --marks-op: .16;
+
+  color-scheme: dark;
 }
 
-/* ── DARK theme — the default on screen (§12.3 improved tokens) ──
-   Wrapped in @media screen so printing always uses the light
-   palette above. Applies unless the visitor has chosen light.   */
-@media screen {
-  html:not(.light) {
-    --paper:  #121216;
-    --ground: #121216;
-
-    --ink:      #ebe7dc;
-    --ink-soft: #b7b2a6;
-
-    /* borders stay visible; shadows go back to being DARKER than
-       the ground, which is what makes them read as depth         */
-    --edge:        #cfcabb;
-    --edge-shadow: #000000;
-    --border-hair: 2px;
-    --border-card: 3px;
-    --border-slab: 4px;
-
-    --tint-cream:   #1c1c22;
-    --tint-yellow:  #d9c400;
-    --tint-magenta: #e0568f;
-    --tint-teal:    #38c9bb;
-    --tint-cobalt:  #7a93e0;
-    --tint-lime:    #9ccf33;
-    --tint-violet:  #a481d9;
-    --tint-orange:  #d98736;
-
-    --deep-cream:   #1c1c22;
-    --deep-yellow:  #2e2714;
-    --deep-magenta: #2f1623;
-    --deep-teal:    #122a28;
-    --deep-cobalt:  #171d3a;
-    --deep-lime:    #1d2a14;
-    --deep-violet:  #241a35;
-    --deep-orange:  #2f2014;
-
-    --on-cream:   #ebe7dc;
-    --on-yellow:  #15130a;
-    --on-magenta: #16090f;
-    --on-teal:    #08100f;
-    --on-cobalt:  #0a0d18;
-    --on-lime:    #111806;
-    --on-violet:  #120d1b;
-    --on-orange:  #180f06;
-
-    --on-deep-cream:   #ebe7dc;  --on-deep-yellow:  #efe8d2;
-    --on-deep-magenta: #f2dde6;  --on-deep-teal:    #d8efec;
-    --on-deep-cobalt:  #dde3f7;  --on-deep-lime:    #e2efd4;
-    --on-deep-violet:  #e8def5;  --on-deep-orange:  #f2e2d2;
-
-    --stock:    var(--tint-cream);
-    --on-stock: var(--on-cream);
-
-    --sel-bg: #ff4d9e;
-    --sel-fg: #0a0a0a;
-
-    --notch-fill: var(--stock);
-
-    --grid-op: .05;
-    --marks-op: .09;
-
-    color-scheme: dark;
-  }
-  /* high-contrast visitors get the original hard white edges back */
-  @media (prefers-contrast: more) {
-    html:not(.light) {
-      --edge: #f7f4ea; --border-hair: 3px; --border-card: 4px; --border-slab: 6px;
-    }
-  }
+/* high-contrast visitors get hard white edges */
+@media (prefers-contrast: more) {
+  :root { --edge: #f7f4ea; --border-hair: 3px; --border-card: 4px; --border-slab: 6px }
 }
 
 /* ============================================================ 2 · STOCKS
@@ -281,7 +231,7 @@ main:focus { outline: none }
   background: var(--stock);
   color: var(--on-stock);
 }
-html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
+.app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 
 .app-card-head {
   background: var(--on-stock); color: var(--stock);
@@ -405,11 +355,11 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 
 .index { grid-area: index; position: relative; z-index: 1 }
 @media (max-width: 899px) { .index { display: none } }
-.index ul { display: flex; flex-wrap: wrap; gap: 8px }
+.index ul { display: flex; flex-wrap: wrap; gap: clamp(10px, 1.9vw, 30px) }
 
 .part {
-  display: flex; align-items: center; gap: 8px;
-  padding: 6px 12px 6px 8px;
+  display: flex; align-items: center; gap: 9px;
+  padding: 6px 14px 6px 11px;
   border: var(--border-hair) solid var(--ink);
   background: var(--paper); color: var(--ink);
   font-family: var(--font-mono); text-transform: lowercase;
@@ -779,23 +729,19 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 .soc-btn.github    { --brand:#24292F; --on-brand:#fff }
 .soc-btn.email     { --brand:#EA4335; --on-brand:#fff }
 .soc-btn.phone     { --brand:#1EBE5D; --on-brand:#06240F }
-.soc-btn.twitter   { --brand:#000000; --on-brand:#fff }
+.soc-btn.twitter   { --brand:#1DA1F2; --on-brand:#fff }
 .soc-btn.youtube   { --brand:#FF0000; --on-brand:#fff }
 .soc-btn.facebook  { --brand:#1877F2; --on-brand:#fff }
 .soc-btn.instagram { --brand:#DD2A7B; --on-brand:#fff }
 
-/* GitHub and X are achromatic, so flip them in dark mode or they vanish
-   into the panel */
-@media screen {
-  html:not(.light) .soc-btn.github  { --brand:#E6EDF3; --on-brand:#0D1117 }
-  html:not(.light) .soc-btn.twitter { --brand:#E7E9EA; --on-brand:#0F1419 }
-}
+/* GitHub is achromatic, so lift it or it vanishes into the panel */
+.soc-btn.github { --brand:#E6EDF3; --on-brand:#0D1117 }
 
 /* ============================================================ 14 · PRINT */
 @media print {
   @page { margin: 12mm }
-  html { print-color-adjust: exact; font-size: 13px; background: var(--color-paper) }
-  body { padding: 0; background: var(--color-paper) }
+  html { print-color-adjust: exact; font-size: 13px }
+  body { padding: 0 }
   html, body { overflow: visible }
   .app-grid, .bg, .scroll-progress, .page-transition, .controls,
   .nav-mobile, .clip, .plate, .index { display: none !important }

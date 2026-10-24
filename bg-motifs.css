@@ -5,10 +5,10 @@
    ============================================================ */
 
 :root {
-  /* the marks layer now rides the brutalist ink token; the opacity
-     comes from --marks-op, which the theme sheet halves in dark */
+  /* the marks layer rides the brutalist ink token; --marks-op in
+     styles.css sets how loudly the drawings read */
   --motif:    var(--ink);
-  --motif-op: var(--marks-op, .13);
+  --motif-op: var(--marks-op, .16);
 }
 
 /* the layer spans the whole document, behind content but above
@@ -63,11 +63,54 @@ body { position: relative; }
    its own opaque panel now, so it is no longer in this list */
 .hero-section { background: transparent; }
 
+/* stroke weight is a ratio too, so the line keeps its proportion to the
+   drawing as the drawing scales with the viewport */
+.motif       { stroke-width: calc(1.6 * var(--motif-stroke, 1)); }
+.motif.glyph { stroke-width: calc(1.75 * var(--motif-stroke, 1)); }
+
 @media (max-width: 760px) {
-  :root { --motif-op: calc(var(--marks-op, .13) * .8); }
+  :root { --motif-op: calc(var(--marks-op, .16) * .85); --motif-stroke: 1.15; }
+}
+@media (min-width: 1800px) {
+  :root { --motif-stroke: .88; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .bg-motifs.ready .motif { animation: none; opacity: var(--motif-op); }
   .bg-motifs.ready .motif[class*="tint-"] { opacity: calc(var(--motif-op) * 1.8); }
 }
+
+
+/* ============================================================
+   PANEL LAYER
+   The document layer above sits behind the sheets, which are
+   opaque, so on a full-bleed page almost none of it reaches the
+   eye. This second layer lives *inside* each sheet, next to the
+   dot grid and under the content, and paints in the sheet's own
+   ink so it reads on coloured stock as well as on cream.
+   ============================================================ */
+.panel-motifs {
+  position: absolute; inset: 0; z-index: 0;
+  overflow: hidden; pointer-events: none;
+  color: var(--on-stock);
+}
+.panel-motifs .motif {
+  color: inherit;
+  opacity: 0;
+  animation: motifIn 1.1s var(--ease-smooth, ease) forwards;
+  animation-delay: calc(var(--m-i, 0) * 60ms + 260ms);
+}
+:root { --panel-motif-op: .11 }
+.panel-motifs { --motif-op: var(--panel-motif-op) }
+.panel-motifs .motif.tint-1,
+.panel-motifs .motif.tint-2,
+.panel-motifs .motif.tint-3,
+.panel-motifs .motif.tint-4 { animation-name: motifIn }
+
+@media (max-width: 760px) { :root { --panel-motif-op: .085 } }
+@media (prefers-reduced-motion: reduce) {
+  .panel-motifs .motif { animation: none; opacity: var(--panel-motif-op) }
+}
+
+/* content must sit above both decorative layers */
+.sheet > *:not(.app-grid):not(.panel-motifs) { position: relative; z-index: 1 }
