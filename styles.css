@@ -676,9 +676,8 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 }
 
 /* education */
-.edu-grid, .skills-grid, .glance-grid { display: grid; gap: 36px 26px; grid-template-columns: 1fr }
-@media (min-width: 900px) { .edu-grid, .skills-grid, .glance-grid { grid-template-columns: 1fr 1fr } }
-@media (min-width: 1100px) { .glance-grid { grid-template-columns: 1fr 1fr 1fr } }
+.edu-grid, .skills-grid { display: grid; gap: 36px 26px; grid-template-columns: 1fr }
+@media (min-width: 900px) { .edu-grid, .skills-grid { grid-template-columns: 1fr 1fr } }
 .edu-logo { width: 54px; height: 54px; object-fit: contain; margin-bottom: 10px; filter: grayscale(1) contrast(1.1) }
 .edu-degree { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 1rem; line-height: 1.15; letter-spacing: -.02em }
 .edu-inst { font-family: var(--font-mono); font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; margin-top: 5px }
@@ -712,12 +711,6 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 .blog-excerpt { font-size: .9rem; line-height: 1.6; color: var(--on-stock); margin-top: 10px }
 .blog-meta-row, .blog-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px }
 .blog-date { font-family: var(--font-mono); font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em }
-
-/* at a glance */
-.glance-icon { font-size: 1.1rem; margin-bottom: 8px; color: inherit }
-.glance-card h3 { font-size: .95rem; line-height: 1.25 }
-.glance-card p { font-size: .86rem; line-height: 1.55; color: var(--on-stock) }
-.stats-grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)) }
 
 /* blog articles */
 .article-wrap { max-width: 74ch; margin: 0 auto; position: relative; z-index: 1 }
@@ -870,10 +863,6 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
   opacity: .92; width: 46px; height: 46px; margin-bottom: 8px;
 }
 .app-card-head .proj-badge { display: block }
-
-/* the glance cards head with an h4, not an h3 */
-.glance-card :is(h3,h4) { font-size: .95rem; line-height: 1.25; font-family: var(--font-display);
-                          font-weight: 800; text-transform: uppercase; letter-spacing: -.02em }
 
 /* ============================================================ 17 · REVISIONS
    The hero is a single print now — no layers, no glitch. The cut-out
@@ -1073,3 +1062,51 @@ html:not(.light) .app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
 .blog-note i { flex: 0 0 auto; opacity: .7 }
 .blog-note strong { color: var(--on-stock); font-weight: 700 }
 @media (max-width: 639px) { .blog-note { margin-top: 38px; padding-top: 18px } }
+
+/* ============================================================ 29 · HOME RECORDS
+   The At a Glance page is gone. Its recruiter-facing records live on the
+   home page now, in sheets of their own under About Me: Snapshot, Key
+   Projects, Core Skills, Research Interests. Home carries no paperclip,
+   so these cards are holder + plate only.                            */
+.home-grid { display: grid; gap: 36px 26px; grid-template-columns: 1fr; grid-auto-rows: 1fr }
+@media (min-width: 900px)  { .home-grid { grid-template-columns: 1fr 1fr } }
+@media (min-width: 1100px) { .home-grid { grid-template-columns: 1fr 1fr 1fr } }
+/* four-card sections read better two-up than 3 + 1 */
+.home-grid.two-up { grid-template-columns: 1fr }
+@media (min-width: 900px) { .home-grid.two-up { grid-template-columns: 1fr 1fr } }
+
+/* every card in a row is the same height */
+.home-grid > .filed { align-self: stretch; display: flex; flex-direction: column }
+.home-grid > .filed > .holder { flex: 1; display: flex; flex-direction: column }
+.home-grid > .filed > .holder > .home-card { flex: 1; display: flex; flex-direction: column }
+.home-grid > .filed > .holder > .home-card > .app-card-body { flex: 1 }
+
+.home-icon { font-size: 1.05rem; margin-bottom: 8px; color: inherit }
+.home-card :is(h3, h4) {
+  font-size: .95rem; line-height: 1.25; font-family: var(--font-display);
+  font-weight: 800; text-transform: uppercase; letter-spacing: -.02em;
+}
+.home-sub { font-family: var(--font-mono); font-size: .68rem; font-weight: 500; letter-spacing: .04em; opacity: .75 }
+.home-card p { font-size: .86rem; line-height: 1.55; color: var(--on-stock) }
+.home-card .app-card-body ul { display: grid; gap: 0; list-style: none; margin: 0; padding: 0 }
+.home-card .app-card-body li {
+  display: flex; gap: 9px; padding: 6px 0;
+  font-family: var(--font-mono); font-size: .76rem; font-weight: 500; line-height: 1.45;
+  color: var(--on-stock);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent);
+}
+.home-card .app-card-body li::before { content: "\2014"; flex: 0 0 auto; opacity: .5 }
+.home-card .app-card-body li:last-child { border-bottom: none }
+
+/* the skills digest: one labelled band of pills per domain */
+.skill-band { position: relative; z-index: 1 }
+.skill-band + .skill-band { margin-top: 22px }
+.skill-band-label {
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase; margin: 0;
+  color: color-mix(in srgb, var(--on-stock) 72%, var(--stock));
+}
+.skill-band .pill-cloud { margin-top: 9px }
+
+/* a section head that carries a link keeps the two ends apart */
+.sec-head .btn-sm-outline { flex: 0 0 auto }
