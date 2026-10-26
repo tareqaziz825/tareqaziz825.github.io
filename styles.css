@@ -54,50 +54,58 @@
   --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
   --font-display: 'Oxanium', 'Outfit', system-ui, sans-serif;
 
-  /* ── palette — dark is the only theme ── */
-  --tint-cream:   #1c1c22;
-  --tint-yellow:  #d9c400;
-  --tint-magenta: #e0568f;
-  --tint-teal:    #38c9bb;
-  --tint-cobalt:  #7a93e0;
-  --tint-lime:    #9ccf33;
-  --tint-violet:  #a481d9;
-  --tint-orange:  #d98736;
+  /* ── palette — INSTRUMENT ──
+     Dark is the only theme. Every accent is pulled to the same
+     perceived lightness band so no page shouts over another, and
+     the neutrals sit slightly cool to separate chrome from accent.
+     Teal is the hero and Connect stock. On-tint is one shared
+     near-black: a single text colour across seven accents is what
+     makes them read as one family.                                */
+  --tint-cream:   #181A20;   /* the neutral surface: chrome + About */
+  --tint-teal:    #4ECEC0;
+  --tint-cobalt:  #7D9BF2;
+  --tint-yellow:  #E0C651;
+  --tint-lime:    #A4CC5B;
+  --tint-violet:  #AE8AE0;
+  --tint-magenta: #E86CA1;
+  --tint-orange:  #E19455;
 
-  --deep-cream:   #1c1c22;
-  --deep-yellow:  #2e2714;
-  --deep-magenta: #2f1623;
-  --deep-teal:    #122a28;
-  --deep-cobalt:  #171d3a;
-  --deep-lime:    #1d2a14;
-  --deep-violet:  #241a35;
-  --deep-orange:  #2f2014;
+  --deep-cream:   #181A20;
+  --deep-teal:    #0F2622;
+  --deep-cobalt:  #151B31;
+  --deep-yellow:  #292411;
+  --deep-lime:    #1B2613;
+  --deep-violet:  #211833;
+  --deep-magenta: #2C1522;
+  --deep-orange:  #2A1D12;
 
-  --on-cream:   #ebe7dc;
-  --on-yellow:  #15130a;
-  --on-magenta: #16090f;
-  --on-teal:    #08100f;
-  --on-cobalt:  #0a0d18;
-  --on-lime:    #111806;
-  --on-violet:  #120d1b;
-  --on-orange:  #180f06;
+  --on-cream:   #E9E7E2;
+  --on-teal:    #0C0D11;
+  --on-cobalt:  #0C0D11;
+  --on-yellow:  #0C0D11;
+  --on-lime:    #0C0D11;
+  --on-violet:  #0C0D11;
+  --on-magenta: #0C0D11;
+  --on-orange:  #0C0D11;
 
-  --on-deep-cream:   #ebe7dc;  --on-deep-yellow:  #efe8d2;
-  --on-deep-magenta: #f2dde6;  --on-deep-teal:    #d8efec;
-  --on-deep-cobalt:  #dde3f7;  --on-deep-lime:    #e2efd4;
-  --on-deep-violet:  #e8def5;  --on-deep-orange:  #f2e2d2;
+  --on-deep-cream:   #E9E7E2;  --on-deep-teal:    #D4EEEA;
+  --on-deep-cobalt:  #DCE3F8;  --on-deep-yellow:  #EFE7D0;
+  --on-deep-lime:    #E1EFD2;  --on-deep-violet:  #E7DDF5;
+  --on-deep-magenta: #F2DCE6;  --on-deep-orange:  #F2E3D2;
 
-  --paper:  #121216;
-  --ground: #121216;
+  --paper:  #0E0F13;
+  --ground: #0E0F13;
   --stock:    var(--tint-cream);
-  --ink:      #ebe7dc;
-  --ink-soft: #b7b2a6;
+  --ink:      #E9E7E2;
+  --ink-soft: #A9A79F;
   --on-stock: var(--on-cream);
-  --edge:        #cfcabb;
+  --edge:        #C8CBD3;
   --edge-shadow: #000000;
 
-  --sel-bg: #ff4d9e;
-  --sel-fg: #0a0a0a;
+  /* selection takes the Request Resume button's own colours —
+     the button paints with --on-deep-teal on the teal hero        */
+  --sel-bg: #D4EEEA;
+  --sel-fg: #0F2622;
 
   --notch-fill: var(--stock);
 
@@ -127,6 +135,10 @@
 /* a full-page panel uses the muted deep variant so the vivid
    cards inside it still read as the loudest thing on the sheet */
 .sheet { --stock: var(--deep); --on-stock: var(--on-deep); }
+
+/* Connect closes every page, so it takes the hero's stock and the same
+   muted deep treatment — the two teal panels bracket the whole site */
+.connect-panel { --stock: var(--deep); --on-stock: var(--on-deep); }
 
 /* ============================================================ 3 · BASE */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -186,9 +198,9 @@ main:focus { outline: none }
    them onto the new system rather than maintaining two
    vocabularies.                                                */
 :root {
-  --yellow: var(--color-yellow);  --orange: var(--color-orange);
-  --purple: var(--color-violet);  --blue:   var(--color-cobalt);
-  --green:  var(--color-lime);
+  --yellow: var(--tint-yellow);  --orange: var(--tint-orange);
+  --purple: var(--tint-violet);  --blue:   var(--tint-cobalt);
+  --green:  var(--tint-lime);
   --bg: var(--paper); --bg-mid: var(--paper); --bg-card: var(--stock);
   --bg-raised: var(--stock); --bg-hover: var(--stock);
   --border: var(--edge); --border-lt: var(--edge);

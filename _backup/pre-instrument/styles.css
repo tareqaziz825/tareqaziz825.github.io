@@ -1,0 +1,1073 @@
+/* ============================================================
+   MOHAMMOD TAREQ AZIZ — Portfolio Stylesheet v4
+   Brutalist "manila folder / bank form" system.
+
+   Every mark here is drawn in CSS or SVG. The one deliberate
+   exception is the hero portrait.
+
+   Display face is Oxanium and body prose is Outfit (kept from
+   v3); every label, number, tag and button is JetBrains Mono.
+
+   Theme: DARK only. The light palette and its toggle were
+   removed; every token below is the dark value.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Oxanium:wght@300;400;500;600;700;800&display=swap');
+
+/* ============================================================ 1 · TOKENS */
+:root {
+  /* ── base palette (verbatim) ── */
+  --color-black:    #0a0a0a;
+  --color-cream:    #fff8e5;
+  --color-paper:    #fffdf5;
+  --color-yellow:   #ffee00;
+  --color-magenta:  #ff0080;
+  --color-teal:     #00ffe0;
+  --color-cobalt:   #0033ff;
+  --color-lime:     #aaff00;
+  --color-violet:   #b366ff;
+  --color-orange:   #ff9500;
+  --color-phosphor: #39ff88;
+
+  /* ── geometry ── */
+  --border-hair: 3px;
+  --border-card: 4px;
+  --border-slab: 6px;
+
+  --offset-sm:  5px;
+  --offset-md:  9px;
+  --offset-lg: 13px;
+
+  --edge-shadow: var(--edge);
+  --shadow-sm: var(--offset-sm) var(--offset-sm) 0 var(--edge-shadow);
+  --shadow-md: var(--offset-md) var(--offset-md) 0 var(--edge-shadow);
+  --shadow-lg: var(--offset-lg) var(--offset-lg) 0 var(--edge-shadow);
+
+  --rot-1:  1.7deg;
+  --rot-2: -1.19deg;
+  --press: 4px;
+
+  --nav-h: auto;
+
+  /* ── type ── */
+  --font-sans:    'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-display: 'Oxanium', 'Outfit', system-ui, sans-serif;
+
+  /* ── palette — dark is the only theme ── */
+  --tint-cream:   #1c1c22;
+  --tint-yellow:  #d9c400;
+  --tint-magenta: #e0568f;
+  --tint-teal:    #38c9bb;
+  --tint-cobalt:  #7a93e0;
+  --tint-lime:    #9ccf33;
+  --tint-violet:  #a481d9;
+  --tint-orange:  #d98736;
+
+  --deep-cream:   #1c1c22;
+  --deep-yellow:  #2e2714;
+  --deep-magenta: #2f1623;
+  --deep-teal:    #122a28;
+  --deep-cobalt:  #171d3a;
+  --deep-lime:    #1d2a14;
+  --deep-violet:  #241a35;
+  --deep-orange:  #2f2014;
+
+  --on-cream:   #ebe7dc;
+  --on-yellow:  #15130a;
+  --on-magenta: #16090f;
+  --on-teal:    #08100f;
+  --on-cobalt:  #0a0d18;
+  --on-lime:    #111806;
+  --on-violet:  #120d1b;
+  --on-orange:  #180f06;
+
+  --on-deep-cream:   #ebe7dc;  --on-deep-yellow:  #efe8d2;
+  --on-deep-magenta: #f2dde6;  --on-deep-teal:    #d8efec;
+  --on-deep-cobalt:  #dde3f7;  --on-deep-lime:    #e2efd4;
+  --on-deep-violet:  #e8def5;  --on-deep-orange:  #f2e2d2;
+
+  --paper:  #121216;
+  --ground: #121216;
+  --stock:    var(--tint-cream);
+  --ink:      #ebe7dc;
+  --ink-soft: #b7b2a6;
+  --on-stock: var(--on-cream);
+  --edge:        #cfcabb;
+  --edge-shadow: #000000;
+
+  --sel-bg: #ff4d9e;
+  --sel-fg: #0a0a0a;
+
+  --notch-fill: var(--stock);
+
+  --grid-op: .05;
+  --marks-op: .16;
+
+  color-scheme: dark;
+}
+
+/* high-contrast visitors get hard white edges */
+@media (prefers-contrast: more) {
+  :root { --edge: #f7f4ea; --border-hair: 3px; --border-card: 4px; --border-slab: 6px }
+}
+
+/* ============================================================ 2 · STOCKS
+   A stock is a coloured paper. It rebinds four variables and
+   every component paints with them, never with a named colour. */
+.stock-cream  { --stock:var(--tint-cream);  --on-stock:var(--on-cream);  --deep:var(--deep-cream);  --on-deep:var(--on-deep-cream) }
+.stock-yellow { --stock:var(--tint-yellow); --on-stock:var(--on-yellow); --deep:var(--deep-yellow); --on-deep:var(--on-deep-yellow) }
+.stock-magenta{ --stock:var(--tint-magenta);--on-stock:var(--on-magenta);--deep:var(--deep-magenta);--on-deep:var(--on-deep-magenta) }
+.stock-teal   { --stock:var(--tint-teal);   --on-stock:var(--on-teal);   --deep:var(--deep-teal);   --on-deep:var(--on-deep-teal) }
+.stock-cobalt { --stock:var(--tint-cobalt); --on-stock:var(--on-cobalt); --deep:var(--deep-cobalt); --on-deep:var(--on-deep-cobalt) }
+.stock-lime   { --stock:var(--tint-lime);   --on-stock:var(--on-lime);   --deep:var(--deep-lime);   --on-deep:var(--on-deep-lime) }
+.stock-violet { --stock:var(--tint-violet); --on-stock:var(--on-violet); --deep:var(--deep-violet); --on-deep:var(--on-deep-violet) }
+.stock-orange { --stock:var(--tint-orange); --on-stock:var(--on-orange); --deep:var(--deep-orange); --on-deep:var(--on-deep-orange) }
+
+/* a full-page panel uses the muted deep variant so the vivid
+   cards inside it still read as the loudest thing on the sheet */
+.sheet { --stock: var(--deep); --on-stock: var(--on-deep); }
+
+/* ============================================================ 3 · BASE */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  scroll-behavior: smooth;
+  background: var(--paper);
+  overflow-x: clip;
+  scroll-padding-top: 24px;
+}
+body {
+  padding: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.55;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+@media (min-width: 426px) { body { padding: 22px } }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  line-height: .98;
+  text-transform: uppercase;
+  letter-spacing: -.03em;
+}
+a { color: inherit; text-decoration: none }
+img { display: block; max-width: 100% }
+ul, ol { list-style: none; margin: 0; padding: 0 }   /* element-level: `*` loses to framework `ul` rules */
+
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
+  outline: var(--border-slab) solid var(--on-stock);
+  outline-offset: 3px;
+  border-radius: 0;
+}
+::selection { background: var(--sel-bg); color: var(--sel-fg) }
+.sel-reverse ::selection { background: var(--on-stock); color: var(--stock) }
+
+.skip-link {
+  position: absolute; left: -9999px;
+  font-family: var(--font-mono); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em;
+  background: var(--ink); color: var(--paper);
+  padding: 10px 14px; z-index: 200;
+}
+.skip-link:focus { left: 8px; top: 8px }
+
+.shell { max-width: 1240px; margin: 0 auto }
+main:focus { outline: none }
+
+/* ============================================================ 4 · COMPAT
+   tech-icons.css was written against the v3 token names. Alias
+   them onto the new system rather than maintaining two
+   vocabularies.                                                */
+:root {
+  --yellow: var(--color-yellow);  --orange: var(--color-orange);
+  --purple: var(--color-violet);  --blue:   var(--color-cobalt);
+  --green:  var(--color-lime);
+  --bg: var(--paper); --bg-mid: var(--paper); --bg-card: var(--stock);
+  --bg-raised: var(--stock); --bg-hover: var(--stock);
+  --border: var(--edge); --border-lt: var(--edge);
+  --text: var(--ink); --text-dim: var(--ink-soft);
+  --text-faint: color-mix(in srgb, var(--ink) 55%, transparent);
+  --navy: var(--ink);
+  --radius: 0; --radius-lg: 0; --radius-xl: 0;
+  --shadow: var(--shadow-sm); --shadow-lg-legacy: var(--shadow-lg);
+  --ease-spring: cubic-bezier(.34,1.56,.64,1);
+  --ease-smooth: cubic-bezier(.4,0,.2,1);
+  --transition: .2s cubic-bezier(.4,0,.2,1);
+}
+
+/* ============================================================ 5 · PRIMITIVES */
+.lbl {
+  font-family: var(--font-mono); text-transform: uppercase;
+  letter-spacing: .14em; font-size: .68rem; font-weight: 700;
+  color: var(--on-stock);
+}
+.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; letter-spacing: .02em }
+.prose-form {
+  font-family: var(--font-sans); font-size: .95rem; line-height: 1.6;
+  color: var(--on-stock); text-transform: none; font-weight: 400;
+}
+
+/* ── the outer sheet ── */
+.app-panel {
+  border: var(--border-slab) solid var(--edge);
+  box-shadow: var(--shadow-lg);
+  border-radius: 0;
+  background: var(--stock);
+  color: var(--on-stock);
+  position: relative;
+}
+
+/* ── card ── */
+.app-card {
+  position: relative; z-index: 1;
+  border: var(--border-card) solid var(--edge);
+  background: var(--stock);
+  color: var(--on-stock);
+}
+.app-card { box-shadow: inset 0 1px 0 rgb(255 255 255 / .06) }
+
+.app-card-head {
+  background: var(--on-stock); color: var(--stock);
+  padding: 14px 16px;
+}
+.app-card-body { padding: 16px }
+@media (min-width: 640px) { .app-card-body { padding: 20px } }
+
+.app-notch::before {
+  content: ''; position: absolute; top: 0; right: 0;
+  width: 30px; height: 30px; z-index: 2; pointer-events: none;
+  background: linear-gradient(225deg,
+    var(--notch-fill, var(--paper)) 0 46%, var(--edge) 46% 58%, transparent 58%);
+}
+
+/* ── tag ── */
+.app-tag {
+  display: inline-block; font-family: var(--font-mono);
+  font-size: .63rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  padding: 3px 8px; line-height: 1.3;
+  border: var(--border-hair) solid var(--on-stock);
+  background: var(--on-stock); color: var(--stock);
+  rotate: var(--rot-2);
+}
+.app-tag:nth-child(3n+2) { rotate: var(--rot-1) }
+.app-tag:nth-child(3n+3) { rotate: 0deg }
+@media (max-width: 639px) { .app-tag { rotate: 0deg !important } }
+
+/* ── button ── */
+.app-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: .7rem; font-weight: 600;
+  text-transform: capitalize; letter-spacing: .06em;
+  padding: 7px 14px;
+  background: var(--ground); color: var(--ink);
+  border: var(--border-hair) solid var(--ink);
+  transition: box-shadow .2s, transform .2s;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .app-btn:hover { box-shadow: var(--shadow-sm); transform: translate(-1px,-1px); color: var(--ink) }
+}
+.app-btn:active { box-shadow: none; transform: translate(var(--press), var(--press)) }
+.app-btn i { font-size: .9em }
+
+/* ============================================================ 6 · FILED CARD
+   tab above, plate behind, notch cut, clip and stamp on top.   */
+.filed { position: relative; align-self: start; padding-top: 10px }
+.holder { position: relative }
+.plate {
+  position: absolute; inset: 0; z-index: 0;
+  translate: var(--offset-md) var(--offset-md);
+  background: var(--edge-shadow); pointer-events: none;
+  transition: translate .18s steps(3);
+}
+@media (hover: hover) {
+  .filed:hover .plate { translate: calc(var(--offset-md)*2) calc(var(--offset-md)*2) }
+}
+
+/* ── paperclip ── */
+.clip {
+  position: absolute; top: -22px; right: 44px; z-index: 5;
+  display: block; width: 26px; color: var(--ink); pointer-events: none;
+  --clip-shadow: color-mix(in srgb, var(--stock) 50%, #000);
+  --clip-rot: 14deg;
+  filter: drop-shadow(2px 2px 0 var(--clip-shadow));
+}
+.clip svg { display: block; width: 100%; height: auto; transform: rotate(var(--clip-rot)) }
+
+/* ── carbon-copy offset title ── */
+.carbon { position: relative; display: inline-block }
+.carbon::before {
+  content: attr(data-text); position: absolute; inset: 0;
+  transform: translate(2px, 2px);
+  color: var(--on-stock); opacity: .32;
+  user-select: none; pointer-events: none;
+}
+.carbon > .top { position: relative }
+
+/* ============================================================ 7 · ATMOSPHERE */
+/* graph paper */
+.app-grid {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  color: var(--ink); opacity: var(--grid-op);
+  background-image:
+    repeating-linear-gradient(to right,  currentColor 0 1px, transparent 1px calc(var(--cell,14px) * var(--major,5))),
+    repeating-linear-gradient(to bottom, currentColor 0 1px, transparent 1px calc(var(--cell,14px) * var(--major,5))),
+    repeating-linear-gradient(to right,  color-mix(in srgb, currentColor 45%, transparent) 0 1px, transparent 1px var(--cell,14px)),
+    repeating-linear-gradient(to bottom, color-mix(in srgb, currentColor 45%, transparent) 0 1px, transparent 1px var(--cell,14px));
+}
+
+/* ── scroll progress — a hard bar, no gradient ── */
+.scroll-progress {
+  position: fixed; top: 0; left: 0; right: 0; height: 4px; z-index: 1001;
+  pointer-events: none; background: var(--ink);
+  transform-origin: left; transform: scaleX(0); transition: transform .1s linear;
+}
+
+/* ============================================================ 8 · MASTHEAD */
+.masthead {
+  margin-top: 18px; padding: 20px 22px;
+  display: grid; gap: 18px;
+  grid-template-columns: 1fr;
+  grid-template-areas: "brand" "index" "toggle";
+  overflow: hidden;
+}
+@media (min-width: 900px) {
+  .masthead {
+    grid-template-columns: minmax(0,1fr) auto;
+    grid-template-areas: "brand toggle" "index index";
+    align-items: center; gap: 20px 26px;
+  }
+}
+.brand { grid-area: brand; position: relative; z-index: 1 }
+.brand-name {
+  display: inline-block; font-family: var(--font-mono);
+  font-size: clamp(1.55rem, 5.4vw, 2.6rem); font-weight: 700;
+  letter-spacing: -.02em; line-height: 1.1; text-transform: lowercase;
+  color: var(--on-stock);
+}
+
+.index { grid-area: index; position: relative; z-index: 1 }
+@media (max-width: 899px) { .index { display: none } }
+.index ul { display: flex; flex-wrap: wrap; gap: clamp(10px, 1.9vw, 30px) }
+
+.part {
+  display: flex; align-items: center; gap: 9px;
+  padding: 6px 14px 6px 11px;
+  border: var(--border-hair) solid var(--ink);
+  background: var(--paper); color: var(--ink);
+  font-family: var(--font-mono); text-transform: lowercase;
+  transition: box-shadow .2s, transform .2s;
+}
+.part-label { font-size: .7rem; font-weight: 600; letter-spacing: .06em }
+.nav-ico {
+  flex: 0 0 auto; width: 1.05em; font-size: .84rem; line-height: 1;
+  text-align: center; opacity: .78;
+}
+@media (hover: hover) { .part:hover { box-shadow: var(--shadow-sm); transform: translate(-1px,-1px) } }
+.part.on { background: var(--stock); color: var(--on-stock); box-shadow: var(--shadow-sm) }
+.part.on .nav-ico { opacity: 1 }
+
+.controls {
+  grid-area: toggle; z-index: 60; justify-self: start;
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.trigger { display: inline-flex }
+@media (min-width: 900px) { .trigger { display: none } }
+
+/* ── mobile index sheet ── */
+.nav-mobile {
+  position: fixed; inset: 0; z-index: 100; overflow: auto;
+  padding: 18px 16px 28px;
+  background: var(--stock); color: var(--on-stock);
+  display: none;
+}
+.nav-mobile.open { display: block }
+.nav-mobile .bar {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  border-bottom: var(--border-slab) solid var(--on-stock);
+  padding-bottom: 14px; margin-bottom: 22px;
+}
+.nav-mobile .close {
+  display: inline-flex; margin-left: auto; padding: 10px;
+  border: var(--border-card) solid var(--on-stock);
+  background: none; color: inherit; cursor: pointer; font-size: 1rem;
+}
+.nav-mobile ul { display: grid; gap: 14px }
+.nav-mobile .row {
+  display: flex; align-items: center; gap: 14px; padding: 16px;
+  border: var(--border-card) solid var(--edge); box-shadow: var(--shadow-md);
+  background: var(--stock); color: var(--on-stock);
+  font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700;
+  text-transform: lowercase; letter-spacing: .02em;
+}
+.nav-mobile .row .nav-ico { font-size: 1.1rem; width: 1.25em; opacity: .82 }
+.nav-mobile .row.on .nav-ico { opacity: 1 }
+.nav-mobile .row:active { box-shadow: 0 0 0 var(--edge); translate: var(--press) var(--press) }
+.nav-mobile .go { margin-left: auto }
+
+/* ============================================================ 9 · PAGE SHEET */
+.sheet {
+  padding: 26px 20px 34px; overflow: hidden;
+  background: var(--stock); --paper: var(--stock);
+  margin-top: 26px;
+}
+@media (min-width: 760px) { .sheet { padding: 34px 30px 44px } }
+
+.head {
+  position: relative; z-index: 1;
+  border-bottom: var(--border-slab) solid var(--on-stock);
+  padding-bottom: 20px; margin-bottom: 30px;
+}
+.head-inner { max-width: 62ch }
+.title { font-size: clamp(2rem, 7vw, 3.4rem); line-height: .95; margin: 10px 0 0; letter-spacing: -.03em }
+.lede {
+  margin: 14px 0 0; max-width: 56ch;
+  color: color-mix(in srgb, var(--on-stock) 86%, var(--stock));
+  font-size: 1rem;
+}
+
+/* ── sections ── */
+.sec { padding-top: 30px; border-top: 3px solid var(--on-stock); margin-top: 34px; position: relative; z-index: 1 }
+.sec:first-of-type { padding-top: 0; border-top: none; margin-top: 0 }
+.sec-head {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  gap: 16px; flex-wrap: wrap; margin-bottom: 26px;
+}
+.sec-h { font-size: clamp(1.3rem, 4.4vw, 1.9rem); letter-spacing: -.02em; margin-top: 8px }
+.sec-grid { display: grid; gap: 36px 26px; grid-template-columns: 1fr }
+@media (min-width: 900px) { .sec-grid { grid-template-columns: 1fr 1fr } }
+.sec-grid.one-up { grid-template-columns: 1fr }
+.slot { position: relative; align-self: start; padding-bottom: 12px }
+
+/* ── card inner text ── */
+.i-t { font-size: 1rem; line-height: 1.25; letter-spacing: .01em }
+.i-p {
+  font-family: var(--font-mono); font-size: .64rem; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase; margin: 6px 0 0;
+}
+.i-d { margin: 0 0 10px }
+.i-b { margin: 0 }
+.tags { display: flex; flex-wrap: wrap; gap: 5px; margin: 16px 0 0 }
+.open { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px }
+
+/* ============================================================ 10 · FOOTER */
+.foot { margin: 26px auto 20px; padding: 22px 22px 20px; overflow: hidden; text-align: center }
+.foot-lines { position: relative; z-index: 1; display: grid; gap: 7px }
+.foot-line {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px;
+  margin: 0; font-family: var(--font-mono); font-size: .78rem; font-weight: 500;
+  letter-spacing: .04em; color: var(--ink);
+}
+.foot-line .sep { opacity: .55 }
+
+/* phone: each of the four pieces gets its own row */
+@media (max-width: 639px) {
+  .foot-line { flex-direction: column; gap: 5px }
+  .foot-line .sep { display: none }
+  .foot-lines { gap: 5px }
+}
+
+/* ============================================================ 11 · MOTION */
+.fade-up, .fade-left, .scale-in { opacity: 0; transform: translateY(14px); transition: opacity .35s, transform .35s }
+.fade-up.in-view, .fade-left.in-view, .scale-in.in-view { opacity: 1; transform: none }
+.stagger-children > * { opacity: 0; transform: translateY(10px); transition: opacity .3s, transform .3s }
+.stagger-children.in-view > * { opacity: 1; transform: none }
+.stagger-children.in-view > *:nth-child(2) { transition-delay: .05s }
+.stagger-children.in-view > *:nth-child(3) { transition-delay: .1s }
+.stagger-children.in-view > *:nth-child(4) { transition-delay: .15s }
+.stagger-children.in-view > *:nth-child(5) { transition-delay: .2s }
+
+.page-transition {
+  position: fixed; inset: 0; background: var(--paper); z-index: 9999;
+  opacity: 0; pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: .01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important; scroll-behavior: auto !important;
+  }
+  .fade-up, .fade-left, .scale-in, .stagger-children > * { opacity: 1; transform: none }
+}
+
+/* ============================================================ 12 · HERO
+   The one place a photograph is allowed. No glow, no aurora,
+   no halo — the portrait is a print clipped to the sheet.      */
+.hero-section {
+  position: relative; overflow: hidden;
+  padding: 30px 20px 34px; background: var(--stock); --paper: var(--stock);
+}
+@media (min-width: 760px) { .hero-section { padding: 40px 30px 46px } }
+
+.hero-inner { position: relative; z-index: 1 }
+.hero-inner.hero-split {
+  display: grid; grid-template-columns: minmax(0,1.06fr) minmax(0,.94fr);
+  gap: clamp(2rem,5vw,4rem); align-items: center; text-align: left;
+}
+.hero-copy { min-width: 0 }
+
+.hero-eyebrow {
+  display: inline-block; font-family: var(--font-mono);
+  font-size: .63rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em;
+  padding: 5px 10px; margin-bottom: 18px;
+  border: var(--border-hair) solid var(--on-stock);
+  background: var(--on-stock); color: var(--stock);
+  rotate: var(--rot-2);
+}
+.hero-name { font-size: clamp(2rem, 6.4vw, 3.9rem); line-height: .94; margin-bottom: 16px }
+.hero-name-line { display: block; width: fit-content; position: relative }
+.hero-name-gradient { background: none; -webkit-text-fill-color: currentColor; color: var(--on-stock) }
+.hero-copy > p { font-size: 1rem; max-width: 46ch; margin: 0 0 24px; color: var(--on-stock) }
+.typewriter-text {
+  font-family: var(--font-mono); font-weight: 700; color: var(--on-stock);
+  border-right: 3px solid var(--on-stock); display: inline;
+}
+.hero-actions { display: flex; gap: 10px; flex-wrap: wrap }
+.btn-hero-outline {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: .72rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; padding: 10px 16px;
+  background: var(--on-stock); color: var(--stock);
+  border: var(--border-hair) solid var(--on-stock);
+  transition: box-shadow .2s, transform .2s;
+}
+@media (hover: hover) {
+  .btn-hero-outline:hover { color: var(--stock); box-shadow: var(--shadow-sm); transform: translate(-1px,-1px) }
+}
+.btn-hero-outline:active { box-shadow: none; transform: translate(var(--press), var(--press)) }
+
+@media (max-width: 900px) {
+  .hero-inner.hero-split { grid-template-columns: 1fr; gap: 2.2rem; text-align: left }
+  .hero-copy { order: 1 }
+  .hero-portrait { order: 2; margin: 0 auto; width: min(100%, 330px) }
+}
+
+/* ============================================================ 13 · PAGE PARTS */
+.page-header { display: none }                 /* replaced by .head inside the sheet */
+.wrap { max-width: none; margin: 0; padding: 0 }
+.section { padding: 0 }
+.section-muted { background: transparent }
+.sec-title { font-size: clamp(1.3rem,4.4vw,1.9rem); letter-spacing: -.02em; color: var(--on-stock) }
+.sec-title::before, .sec-title::after { content: none }
+.sec-line { display: none }
+.sec-sub { font-family: var(--font-mono); font-size: .7rem; text-transform: uppercase; letter-spacing: .12em; color: var(--on-stock) }
+
+/* about */
+.about-layout { display: grid; grid-template-columns: 300px 1fr; gap: 36px; align-items: start }
+@media (max-width: 900px) { .about-layout { grid-template-columns: 1fr } }
+.profile-sidebar { position: relative }   /* must stay positioned: see .plate */
+.profile-sidebar h2 { font-size: 1.05rem; text-align: left; color: var(--stock) }
+.profile-sidebar .role {
+  font-family: var(--font-mono); font-size: .62rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; color: var(--stock); margin-top: 4px;
+}
+.profile-info { display: grid; gap: 4px; margin-top: 4px }
+.profile-info-row {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-family: var(--font-mono); font-size: .72rem; font-weight: 500;
+  padding: 5px 0; color: var(--on-stock); border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent);
+}
+.profile-info-row i { width: 15px; flex: 0 0 auto; margin-top: .2em }
+.about-lead {
+  font-size: 1rem; font-weight: 500; margin-bottom: 18px; line-height: 1.6;
+  padding: 14px 16px; background: var(--on-stock); color: var(--stock);
+  border: none; border-radius: 0;
+}
+.about-body p { color: var(--on-stock); margin-bottom: 16px; line-height: 1.65; text-align: left; font-size: .97rem }
+.about-body p:last-child { margin-bottom: 0 }
+
+/* projects */
+.project-inner { display: grid; grid-template-columns: 240px 1fr; gap: 0 }
+@media (max-width: 760px) { .project-inner { grid-template-columns: 1fr } }
+.project-thumb { border-right: var(--border-card) solid var(--edge); overflow: hidden; background: var(--on-stock) }
+@media (max-width: 760px) { .project-thumb { border-right: none; border-bottom: var(--border-card) solid var(--edge); max-height: 220px } }
+.project-thumb img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.15) }
+.project-body { padding: 16px }
+@media (min-width: 640px) { .project-body { padding: 20px } }
+.proj-badge {
+  display: inline-block; font-family: var(--font-mono); font-size: .6rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .1em; margin-bottom: 6px; color: inherit;
+}
+.proj-title { font-size: 1rem; line-height: 1.25 }
+.proj-sup { font-family: var(--font-mono); font-size: .68rem; margin: 0 0 12px; color: var(--on-stock) }
+.proj-divider { border: none; border-top: 3px solid var(--on-stock); margin: 14px 0 }
+.project-body p { font-size: .9rem; line-height: 1.6; margin-bottom: 10px; color: var(--on-stock) }
+.proj-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px }
+
+/* tags, chips and pills all become stuck-on labels */
+.tag, .chip, .skill-pill, .badge-cat, .read-time, .edu-year {
+  display: inline-block; font-family: var(--font-mono);
+  font-size: .63rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em;
+  padding: 3px 8px; line-height: 1.3;
+  border: var(--border-hair) solid var(--on-stock);
+  background: var(--on-stock); color: var(--stock);
+  rotate: var(--rot-2);
+}
+.tag:nth-child(3n+2), .chip:nth-child(3n+2), .skill-pill:nth-child(3n+2) { rotate: var(--rot-1) }
+.tag:nth-child(3n+3), .chip:nth-child(3n+3), .skill-pill:nth-child(3n+3) { rotate: 0deg }
+@media (max-width: 639px) { .tag, .chip, .skill-pill { rotate: 0deg !important } }
+.tag-list, .pill-cloud { display: flex; flex-wrap: wrap; gap: 5px; margin: 12px 0 0 }
+.btn-sm-outline, .btn-read, .back-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .08em; padding: 8px 13px;
+  background: var(--stock); color: var(--on-stock);
+  border: var(--border-hair) solid var(--on-stock);
+  transition: box-shadow .2s, transform .2s;
+}
+@media (hover: hover) {
+  .btn-sm-outline:hover, .btn-read:hover, .back-btn:hover {
+    color: var(--on-stock); box-shadow: var(--offset-sm) var(--offset-sm) 0 var(--on-stock); transform: translate(-1px,-1px);
+  }
+}
+
+/* education */
+.edu-grid, .skills-grid { display: grid; gap: 36px 26px; grid-template-columns: 1fr }
+@media (min-width: 900px) { .edu-grid, .skills-grid { grid-template-columns: 1fr 1fr } }
+.edu-logo { width: 54px; height: 54px; object-fit: contain; margin-bottom: 10px; filter: grayscale(1) contrast(1.1) }
+.edu-degree { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 1rem; line-height: 1.15; letter-spacing: -.02em }
+.edu-inst { font-family: var(--font-mono); font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; margin-top: 5px }
+.edu-info { display: grid; gap: 4px; margin-top: 12px }
+.edu-info-row { display: flex; gap: 9px; align-items: flex-start; font-size: .84rem; color: var(--on-stock);
+                padding: 5px 0; border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent) }
+.edu-info-row i { width: 15px; flex: 0 0 auto; margin-top: .25em }
+
+/* skills */
+.skill-cat-title { font-size: 1rem; line-height: 1.25; display: flex; align-items: center; gap: 9px }
+.skill-list { display: grid; gap: 2px }
+.skill-row {
+  display: flex; align-items: center; gap: 9px; padding: 6px 0;
+  font-family: var(--font-mono); font-size: .76rem; font-weight: 500; color: var(--on-stock);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent);
+}
+.skill-row i { width: 15px; flex: 0 0 auto }
+
+/* experience */
+.timeline { display: grid; gap: 36px 26px; grid-template-columns: 1fr }
+@media (min-width: 900px) { .timeline { grid-template-columns: 1fr 1fr } }
+.tl-item { position: relative }
+.tl-item::before, .tl-item::after { content: none }
+.tl-date { font-family: var(--font-mono); font-size: .64rem; font-weight: 700; text-transform: uppercase;
+           letter-spacing: .1em; margin-bottom: 8px; color: var(--on-stock) }
+.tl-card h3 { font-size: 1rem; line-height: 1.25 }
+.tl-card p { font-size: .9rem; line-height: 1.6; color: var(--on-stock) }
+
+/* blog */
+.blog-title { font-size: 1rem; line-height: 1.25 }
+.blog-excerpt { font-size: .9rem; line-height: 1.6; color: var(--on-stock); margin-top: 10px }
+.blog-meta-row, .blog-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px }
+.blog-date { font-family: var(--font-mono); font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em }
+
+/* blog articles */
+.article-wrap { max-width: 74ch; margin: 0 auto; position: relative; z-index: 1 }
+.article-title { font-size: clamp(1.7rem,5.4vw,2.8rem); line-height: .98; margin-bottom: 14px }
+.article-meta-row, .article-author-row { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 14px }
+.author-avatar { width: 44px; height: 44px; object-fit: cover; border: var(--border-hair) solid var(--on-stock); filter: grayscale(1) }
+.author-name { font-family: var(--font-mono); font-size: .8rem; font-weight: 700 }
+.author-role { font-family: var(--font-mono); font-size: .66rem; text-transform: uppercase; letter-spacing: .1em; color: var(--on-stock) }
+.article-body { font-size: 1rem; line-height: 1.7; color: var(--on-stock) }
+.article-body h2 { font-size: 1.35rem; margin: 30px 0 12px; padding-bottom: 8px; border-bottom: 3px solid var(--on-stock) }
+.article-body h3 { font-size: 1.05rem; margin: 22px 0 10px }
+.article-body p { margin-bottom: 14px }
+.article-body ul, .article-body ol { margin: 0 0 14px 1.2rem; list-style: disc }
+.article-body ol { list-style: decimal }
+.article-body li { margin-bottom: 6px }
+.article-body a { border-bottom: 2px solid currentColor }
+.article-body blockquote { border-left: var(--border-slab) solid var(--on-stock); padding: 6px 0 6px 16px; margin: 0 0 14px }
+.article-body code { font-family: var(--font-mono); font-size: .85em; background: var(--on-stock); color: var(--stock); padding: 1px 5px }
+.article-body pre { background: var(--on-stock); color: var(--stock); padding: 14px; overflow-x: auto; margin-bottom: 14px }
+.article-body pre code { background: none; color: inherit; padding: 0 }
+.info-box { border: var(--border-card) solid var(--on-stock); padding: 14px 16px; margin: 0 0 16px }
+.info-box-title { font-family: var(--font-mono); font-size: .68rem; font-weight: 700; text-transform: uppercase;
+                  letter-spacing: .1em; margin-bottom: 8px }
+
+/* connect */
+.connect-bg-glow, .connect-label { display: none }
+
+/* all eight buttons share the width of the box */
+.social-row {
+  display: grid; gap: 8px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));   /* phones: two per row */
+}
+@media (min-width: 640px)  { .social-row { grid-template-columns: repeat(4, minmax(0, 1fr)) } }
+@media (min-width: 1100px) { .social-row { grid-template-columns: repeat(8, minmax(0, 1fr)) } }
+
+.soc-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 7px;
+  font-family: var(--font-mono); font-size: .7rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .07em; padding: 9px 10px;
+  white-space: nowrap; min-width: 0;
+  border: var(--border-hair) solid var(--on-stock);
+  background: var(--stock); color: var(--on-stock);
+  transition: box-shadow .2s, transform .2s, background-color .2s, color .2s, border-color .2s;
+}
+
+/* on hover each button takes its own service colour; the hard offset
+   shadow stays as it was */
+@media (hover: hover) {
+  .soc-btn:hover, .soc-btn:focus-visible {
+    background: var(--brand, var(--on-stock));
+    color: var(--on-brand, var(--stock));
+    border-color: var(--brand, var(--on-stock));
+    box-shadow: var(--offset-sm) var(--offset-sm) 0 var(--on-stock);
+    transform: translate(-1px, -1px);
+  }
+  .soc-btn.instagram:hover, .soc-btn.instagram:focus-visible {
+    background: linear-gradient(45deg, #F58529, #DD2A7B 45%, #8134AF 75%, #515BD4);
+    border-color: #DD2A7B;
+  }
+}
+
+.soc-btn.linkedin  { --brand:#0A66C2; --on-brand:#fff }
+.soc-btn.github    { --brand:#24292F; --on-brand:#fff }
+.soc-btn.email     { --brand:#EA4335; --on-brand:#fff }
+.soc-btn.phone     { --brand:#1EBE5D; --on-brand:#06240F }
+.soc-btn.twitter   { --brand:#1DA1F2; --on-brand:#fff }
+.soc-btn.youtube   { --brand:#FF0000; --on-brand:#fff }
+.soc-btn.facebook  { --brand:#1877F2; --on-brand:#fff }
+.soc-btn.instagram { --brand:#DD2A7B; --on-brand:#fff }
+
+/* GitHub is achromatic, so lift it or it vanishes into the panel */
+.soc-btn.github { --brand:#E6EDF3; --on-brand:#0D1117 }
+
+/* ============================================================ 14 · PRINT */
+@media print {
+  @page { margin: 12mm }
+  html { print-color-adjust: exact; font-size: 13px }
+  body { padding: 0 }
+  html, body { overflow: visible }
+  .app-grid, .bg, .scroll-progress, .page-transition, .controls,
+  .nav-mobile, .clip, .plate, .index { display: none !important }
+  .app-panel, .app-card { box-shadow: none !important }
+  .sheet, .masthead, .foot { overflow: visible }
+  .slot, .filed { break-inside: avoid }
+  .sec-head, .holder { break-after: avoid }
+  .hero-portrait { max-width: 230px }
+}
+
+
+/* project cards keep their two-column inner, so the inverted head
+   sits inside the body column and the padding moves one level in */
+.project-body { padding: 0 }
+.pb-inner { padding: 16px }
+@media (min-width: 640px) { .pb-inner { padding: 20px } }
+
+/* ============================================================ 15 · TECH MARKS
+   tech-icons.css predates this sheet; square it off to match.   */
+.tech-badges-label { font-family: var(--font-mono); color: var(--on-stock); letter-spacing: .14em }
+.tech-badges-label::before { content: '// '; opacity: .55 }
+.tech-badge {
+  border-radius: 0 !important;
+  border: var(--border-hair) solid var(--on-stock) !important;
+  background: var(--stock) !important;
+  box-shadow: none !important;
+}
+.tech-badge::after { display: none !important }
+.tech-badge-art { border-radius: 0 !important; background: color-mix(in srgb, var(--on-stock) 10%, transparent) !important }
+.tech-badge-name { color: var(--on-stock) !important; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: .66rem }
+.ti { color: var(--on-stock) }
+@media (hover: hover) {
+  .tech-badge:hover {
+    transform: translate(-1px,-1px);
+    box-shadow: var(--offset-sm) var(--offset-sm) 0 var(--on-stock) !important;
+    background: var(--stock) !important;
+  }
+  .tech-badge:hover .ti { filter: none }
+}
+
+
+/* Inverted surfaces: the block paints ink and the text must take the
+   stock colour. Element selectors like `.about-body p` out-rank a bare
+   `.about-lead`, so state it on the children explicitly.          */
+.app-card-head,
+.app-card-head :is(h1,h2,h3,h4,p,span,div,li,strong,em,i,a) { color: var(--stock) }
+.about-lead,
+.about-lead :is(p,span,strong,em,a) { color: var(--stock) }
+.hero-eyebrow, .hero-eyebrow :is(span,strong,em) { color: var(--stock) }
+.app-tag, .tag, .chip, .skill-pill, .badge-cat, .read-time, .edu-year { color: var(--stock) }
+
+/* the inverted head sets its own background, so a nested title must
+   not repaint it */
+.app-card-head .proj-badge { opacity: .75 }
+
+/* `.about-body p` is (0,1,1) and out-ranks a bare `.about-lead`, so the
+   lead was painting its text in the same colour as its own background. */
+.about-body p.about-lead { color: var(--stock) }
+.about-body p.about-lead :is(strong,em,a,span) { color: var(--stock) }
+
+/* belt and braces: a filed card is always above its own plate */
+.filed .app-card { position: relative; z-index: 1 }
+
+/* institution logos sit on the inverted card head, which is near-black in
+   both themes, so knock them out to a single light colour */
+.app-card-head .edu-logo {
+  filter: grayscale(1) brightness(0) invert(1);
+  opacity: .92; width: 46px; height: 46px; margin-bottom: 8px;
+}
+.app-card-head .proj-badge { display: block }
+
+/* ============================================================ 17 · REVISIONS
+   The hero is a single print now — no layers, no glitch. The cut-out
+   has a transparent background, so it sits straight on the stock.   */
+.hero-portrait {
+  display: block; margin: 0 0 0 auto;
+  width: min(100%, 420px); aspect-ratio: 1 / 1;
+  border: var(--border-card) solid var(--edge);
+  background: color-mix(in srgb, var(--on-stock) 8%, var(--stock));
+  overflow: hidden;
+}
+.hero-portrait picture, .hero-portrait img {
+  display: block; width: 100%; height: 100%;
+  object-fit: contain; object-position: center bottom;
+}
+
+/* Connect is its own sheet now, painted on the footer stock so the two
+   read as one block at the bottom of every page. */
+.connect-panel {
+  margin: 26px auto 0;
+  padding: 26px 22px 30px;
+  overflow: hidden;
+}
+@media (min-width: 760px) { .connect-panel { padding: 30px 30px 34px } }
+.connect-panel > .fade-up { position: relative; z-index: 1 }
+.connect-panel .sec-head { margin-bottom: 20px }
+
+/* the footer was pinned left by `margin: 44px 0 20px`, which overrode the
+   auto centring from .shell — so it never lined up with the sheet above */
+.foot { margin: 26px auto 20px }
+
+/* ============================================================ 18 · HOME
+   Hero and About Me are two separate sheets now, so the hero no longer
+   needs the rule that used to divide them inside one panel.          */
+.hero-sheet > .hero-section {
+  padding: 0; margin-bottom: 0; border-bottom: none; background: transparent;
+}
+.about-sheet .sec:first-of-type { padding-top: 0; border-top: none; margin-top: 0 }
+
+/* the profile card is gone, so About Me is a single column */
+.about-layout { grid-template-columns: 1fr }
+.about-body { max-width: 78ch }
+
+/* ============================================================ 19 · HOME FIXES
+   1 · About Me prose was capped at 78ch, which left a wide empty gutter
+       on the right of a full-width panel. Let it fill the sheet.      */
+.about-body { max-width: none }
+
+/* 2 · the hero sheet inherited .sheet's asymmetric 34px/44px block
+       padding, so the portrait sat off-centre. Make it symmetric and
+       let the panel height follow its content.                        */
+.hero-sheet { padding-top: 30px; padding-bottom: 30px }
+@media (min-width: 760px) { .hero-sheet { padding-top: 36px; padding-bottom: 36px } }
+.hero-sheet .hero-inner.hero-split { align-items: center }
+
+/* ============================================================ 20 · MASTHEAD
+   1 · the brand's carbon shadow, opened up so it reads as a deliberate
+       offset at display size rather than a smudge.
+   3 · JetBrains Mono carries ~2px of left side bearing at this size, so
+       the brand's glyphs sat 2px right of the nav pills even though both
+       boxes started on the same pixel. Pull the ink back into line.    */
+/* No optical nudge on the brand: the real indent was a framework `ul`
+   rule, now fixed. Brand and pills share the same left edge.          */
+.brand-name.carbon::before { transform: translate(3px, 3px); opacity: .34 }
+
+/* 4 · the theme toggle and the nav pills share one height */
+:root { --nav-btn-h: 34px }
+.part,
+.controls .app-btn {
+  height: var(--nav-btn-h);
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  line-height: 1;
+}
+.controls .app-btn { padding: 6px 13px; text-transform: uppercase; letter-spacing: .1em; font-weight: 700 }
+.controls .app-btn i { width: 1em; text-align: center }
+
+/* ============================================================ 21 · NAV BOX
+   The nav list was indented because a framework `ul` rule out-ranked the
+   universal reset. Pin it explicitly so the pills start on the brand.  */
+.index ul, .nav-mobile ul { margin: 0; padding: 0; list-style: none }
+
+/* mobile: the two control buttons match each other and the pills */
+@media (max-width: 899px) {
+  .controls { gap: 10px }
+  .controls .app-btn { height: var(--nav-btn-h); padding: 6px 14px; font-size: .72rem }
+}
+
+/* The equal-height rule above sets `display: inline-flex` on
+   `.controls .app-btn` (0,2,0), which out-ranked the plain `.trigger`
+   hide rule (0,1,0) and brought INDEX back on desktop. State it with
+   enough weight to win: the index sheet is a phone-only control.   */
+@media (min-width: 900px) {
+  .controls .app-btn.trigger { display: none }
+}
+
+/* ============================================================ 22 · NAV ROW
+   The theme toggle used to sit on the brand's row. Drop it onto the nav
+   row instead, so it shares a baseline and a height with the pills.  */
+@media (min-width: 900px) {
+  .masthead {
+    grid-template-areas: "brand brand" "index toggle";
+    align-items: center;
+  }
+  /* start, not center: when the pills wrap to a second line the toggle
+     must stay level with the FIRST line, not float to the middle */
+  .masthead .controls { justify-self: end; align-self: start }
+  .masthead .index { align-self: start }
+}
+
+/* ============================================================ 23 · PROJECTS
+   The project records stack in a single column rather than a grid, so
+   they had no row gap at all. Match the 36px row rhythm the education
+   and skills grids use.                                              */
+.project-list > .filed + .filed { margin-top: 36px }
+
+/* ============================================================ 24 · EDUCATION
+   1 · bigger institution logos on the card head                      */
+.app-card-head .edu-logo { width: 74px; height: 74px; margin-bottom: 12px }
+
+/* 2 · the institution name now sits in the body, one step larger and
+       set as written rather than in small caps                       */
+.edu-card .app-card-body .edu-inst {
+  font-family: var(--font-mono); font-size: .86rem; font-weight: 700;
+  text-transform: none; letter-spacing: .01em; line-height: 1.35;
+  margin: 0 0 2px; padding-bottom: 8px; color: var(--on-stock);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent);
+}
+
+/* 4 · every education box the same height and width: the grid rows are
+       equal, and each card stretches to fill its cell                 */
+.edu-grid { grid-auto-rows: 1fr }
+.edu-grid > .filed { align-self: stretch; display: flex; flex-direction: column }
+.edu-grid > .filed > .holder { flex: 1; display: flex; flex-direction: column }
+.edu-grid > .filed > .holder > .edu-card { flex: 1; display: flex; flex-direction: column }
+.edu-grid .edu-card .app-card-body { flex: 1 }
+
+/* ============================================================ 25 · SKILLS
+   One skill per row; the proficiency note sits quietly beside it.   */
+.skill-note {
+  font-family: var(--font-mono); font-size: .66em; font-weight: 500;
+  opacity: .7; letter-spacing: .04em;
+}
+.skill-cat-title i { margin-right: 2px }
+.skills-grid > .filed { align-self: start }
+
+/* ============================================================ 26 · SKILLS GRID
+   The groups hold 2–10 items each, so a row-based grid left ragged
+   bottoms and big dead gaps. Pack them into balanced columns instead:
+   each card keeps its natural height and the columns even themselves
+   out, so there is no wasted vertical space.                        */
+.skills-grid {
+  display: block;
+  columns: 1;
+  column-gap: 26px;
+}
+@media (min-width: 900px) { .skills-grid { columns: 2 } }
+
+.skills-grid > .filed {
+  break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  page-break-inside: avoid;
+  display: block;
+  margin: 0 0 34px;
+}
+.skills-grid > .filed:last-child { margin-bottom: 0 }
+
+/* ============================================================ 27 · EXPERIENCE
+   1 · one record per row, so the box is the full width of the sheet —
+       the same width a blog record gets.
+   3 · height follows the content; nothing stretches it.            */
+.timeline { grid-template-columns: 1fr; align-items: start }
+@media (min-width: 900px) { .timeline { grid-template-columns: 1fr } }
+.timeline > .filed { align-self: start }
+
+/* 2 · the building address sits a step below the organisation name */
+.tl-card h4 { font-size: .95rem; line-height: 1.4; font-weight: 700; margin-bottom: 10px }
+.tl-address {
+  display: inline-block; margin-top: 4px;
+  font-family: var(--font-mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .02em; text-transform: none;
+  color: color-mix(in srgb, var(--on-stock) 78%, var(--stock));
+}
+
+/* ============================================================ 28 · BLOG NOTE
+   2 · give the sign-off real air below the last record           */
+.blog-note {
+  margin-top: 52px;
+  display: flex; align-items: baseline; gap: 10px;
+  font-family: var(--font-mono); font-size: .78rem; font-weight: 500;
+  line-height: 1.6; letter-spacing: .02em;
+  color: color-mix(in srgb, var(--on-stock) 80%, var(--stock));
+  border-top: 3px solid color-mix(in srgb, var(--on-stock) 25%, transparent);
+  padding-top: 22px;
+}
+.blog-note i { flex: 0 0 auto; opacity: .7 }
+.blog-note strong { color: var(--on-stock); font-weight: 700 }
+@media (max-width: 639px) { .blog-note { margin-top: 38px; padding-top: 18px } }
+
+/* ============================================================ 29 · HOME RECORDS
+   The At a Glance page is gone. Its recruiter-facing records live on the
+   home page now, in sheets of their own under About Me: Snapshot, Key
+   Projects, Core Skills, Research Interests. Home carries no paperclip,
+   so these cards are holder + plate only.                            */
+.home-grid { display: grid; gap: 36px 26px; grid-template-columns: 1fr; grid-auto-rows: 1fr }
+@media (min-width: 900px)  { .home-grid { grid-template-columns: 1fr 1fr } }
+@media (min-width: 1100px) { .home-grid { grid-template-columns: 1fr 1fr 1fr } }
+/* four-card sections read better two-up than 3 + 1 */
+.home-grid.two-up { grid-template-columns: 1fr }
+@media (min-width: 900px) { .home-grid.two-up { grid-template-columns: 1fr 1fr } }
+
+/* every card in a row is the same height */
+.home-grid > .filed { align-self: stretch; display: flex; flex-direction: column }
+.home-grid > .filed > .holder { flex: 1; display: flex; flex-direction: column }
+.home-grid > .filed > .holder > .home-card { flex: 1; display: flex; flex-direction: column }
+.home-grid > .filed > .holder > .home-card > .app-card-body { flex: 1 }
+
+.home-icon { font-size: 1.05rem; margin-bottom: 8px; color: inherit }
+.home-card :is(h3, h4) {
+  font-size: .95rem; line-height: 1.25; font-family: var(--font-display);
+  font-weight: 800; text-transform: uppercase; letter-spacing: -.02em;
+}
+.home-sub { font-family: var(--font-mono); font-size: .68rem; font-weight: 500; letter-spacing: .04em; opacity: .75 }
+.home-card p { font-size: .86rem; line-height: 1.55; color: var(--on-stock) }
+.home-card .app-card-body ul { display: grid; gap: 0; list-style: none; margin: 0; padding: 0 }
+.home-card .app-card-body li {
+  display: flex; gap: 9px; padding: 6px 0;
+  font-family: var(--font-mono); font-size: .76rem; font-weight: 500; line-height: 1.45;
+  color: var(--on-stock);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent);
+}
+.home-card .app-card-body li::before { content: "\2014"; flex: 0 0 auto; opacity: .5 }
+.home-card .app-card-body li:last-child { border-bottom: none }
+
+/* The skills digest reads as a form: the domain is the field label on
+   the left, its pills are the entry that fills the rest of the line, and
+   a hairline rules the full width of the sheet. Stacking the label above
+   the pills left a wide void on the right of every short group.      */
+.skills-digest { position: relative; z-index: 1; border-top: 3px solid var(--on-stock) }
+.skill-band {
+  display: grid; grid-template-columns: 1fr; gap: 8px;
+  padding: 14px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 22%, transparent);
+}
+.skill-band:last-child { border-bottom: none; padding-bottom: 0 }
+@media (min-width: 760px) {
+  .skill-band { grid-template-columns: 184px minmax(0, 1fr); gap: 10px 20px; align-items: start }
+}
+.skill-band-label {
+  font-family: var(--font-mono); font-size: .68rem; font-weight: 700;
+  letter-spacing: .09em; text-transform: uppercase; margin: 0;
+  line-height: 1.9;
+  color: color-mix(in srgb, var(--on-stock) 72%, var(--stock));
+}
+.skill-band .pill-cloud { margin: 0; gap: 6px }
+
+/* a section head that carries a link keeps the two ends apart */
+.sec-head .btn-sm-outline { flex: 0 0 auto }
