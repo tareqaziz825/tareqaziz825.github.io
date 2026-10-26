@@ -42,7 +42,11 @@
   function setMenu(open) {
     if (!mmenu) return;
     mmenu.classList.toggle('open', open);
-    if (ham) { ham.classList.toggle('open', open); ham.setAttribute('aria-expanded', String(open)); }
+    // NB: the button gets `is-open`, not `open`. A leftover utility rule
+    // `.open { margin-top: 18px; ... }` (styles.css §9) matched the bare class
+    // and pushed the button down, stretching the masthead by exactly 18px
+    // every time the index was opened. `is-open` collides with nothing.
+    if (ham) { ham.classList.toggle('is-open', open); ham.setAttribute('aria-expanded', String(open)); }
     if (open) placeMenu();
   }
 

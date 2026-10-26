@@ -963,13 +963,15 @@ main:focus { outline: none }
   .controls .app-btn { height: var(--nav-btn-h); padding: 6px 14px; font-size: .72rem }
 
   /* INDEX shares the brand's row and sits at the right edge, centred on it,
-     instead of stacking underneath. `.index` is hidden here, so its grid row
-     collapses and the masthead stays a single line.                      */
+     instead of stacking underneath. Declare ONE row only: naming the hidden
+     `index` area left a 0px second row behind, and the 14px row gap in front
+     of it still counted — that was the extra space under the brand, so the
+     padding read 26px above and 40px below. One row, no gap, even margins. */
   .masthead {
     grid-template-columns: minmax(0,1fr) auto;
-    grid-template-areas: "brand toggle" "index index";
+    grid-template-areas: "brand toggle";
     align-items: center;
-    gap: 14px 16px;
+    gap: 0 16px;
   }
   .controls { justify-self: end; align-self: center }
 }
