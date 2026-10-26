@@ -16,20 +16,47 @@
     progressBar.style.transform = `scaleX(${pct})`;
   }, { passive: true });
 
-  /* ── Index sheet (mobile) ── */
+  /* ── Index dropdown (mobile) ──
+     The panel is a dropdown anchored under the INDEX button, not a
+     full-screen sheet, so the page stays put behind it: no scroll lock, and
+     the panel is placed in DOCUMENT coordinates so it scrolls with the
+     header rather than floating over the content.                       */
   const ham   = document.getElementById('navHam');
   const mmenu = document.getElementById('mobileNav');
   const mclose= document.getElementById('navClose');
+
+  function placeMenu() {
+    if (!ham || !mmenu) return;
+    const b = ham.getBoundingClientRect();
+    const gutter = 14;
+    const w = mmenu.offsetWidth;
+    // right-align the panel with the button, then keep it inside the viewport
+    let left = b.right + window.scrollX - w;
+    const min = window.scrollX + gutter;
+    const max = window.scrollX + document.documentElement.clientWidth - w - gutter;
+    left = Math.max(min, Math.min(left, max));
+    mmenu.style.top  = (b.bottom + window.scrollY + 8) + 'px';
+    mmenu.style.left = left + 'px';
+  }
+
   function setMenu(open) {
     if (!mmenu) return;
     mmenu.classList.toggle('open', open);
     if (ham) { ham.classList.toggle('open', open); ham.setAttribute('aria-expanded', String(open)); }
-    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) placeMenu();
   }
+
   if (ham && mmenu) {
     ham.addEventListener('click', (e) => { e.stopPropagation(); setMenu(!mmenu.classList.contains('open')); });
     if (mclose) mclose.addEventListener('click', () => setMenu(false));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+    // tapping the page behind the dropdown closes it
+    document.addEventListener('click', (e) => {
+      if (mmenu.classList.contains('open') && !mmenu.contains(e.target)) setMenu(false);
+    });
+    window.addEventListener('resize', () => {
+      if (mmenu.classList.contains('open')) placeMenu();
+    });
   }
 
   /* ── Intersection Observer for all scroll animations ── */

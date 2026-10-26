@@ -407,6 +407,17 @@ main:focus { outline: none }
 .part.on { background: var(--stock); color: var(--on-stock); box-shadow: var(--shadow-sm) }
 .part.on .nav-ico { opacity: 1 }
 
+/* About's stock is --tint-cream, the same near-black as the chrome itself, so
+   the About pill showed no colour at all — idle, hovered and active looked
+   identical. Rebind the two stock variables on that one pill (and its drawer
+   row) to the Request Resume button's pair, and every rule above paints it
+   correctly with no further change. The masthead's own stock is untouched. */
+.index .part.stock-cream,
+.nav-mobile .row.stock-cream {
+  --stock: var(--on-deep-teal);
+  --on-stock: var(--deep-teal);
+}
+
 .controls {
   grid-area: toggle; z-index: 60; justify-self: start;
   display: flex; flex-wrap: wrap; gap: 8px;
@@ -414,33 +425,43 @@ main:focus { outline: none }
 .trigger { display: inline-flex }
 @media (min-width: 900px) { .trigger { display: none } }
 
-/* ── mobile index sheet ── */
+/* ── mobile index dropdown ──
+   A panel anchored under the INDEX button, not a full-screen takeover: the
+   page stays visible around it so the visitor keeps their place. Positioned
+   absolutely in document coordinates (scripts.js sets top/left from the
+   button's box), so it travels with the header as the page scrolls.      */
 .nav-mobile {
-  position: fixed; inset: 0; z-index: 100; overflow: auto;
-  padding: 18px 16px 28px;
+  position: absolute; z-index: 100;
+  width: min(286px, calc(100vw - 28px));
+  padding: 12px;
+  border: var(--border-card) solid var(--edge);
+  box-shadow: var(--shadow-lg, 10px 10px 0 rgba(0,0,0,.55));
   background: var(--stock); color: var(--on-stock);
   display: none;
 }
 .nav-mobile.open { display: block }
+/* if the viewport grows to desktop while the dropdown is open, the pills take
+   over and the panel must not linger (its trigger is already hidden) */
+@media (min-width: 900px) { .nav-mobile, .nav-mobile.open { display: none } }
 .nav-mobile .bar {
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-  border-bottom: var(--border-slab) solid var(--on-stock);
-  padding-bottom: 14px; margin-bottom: 22px;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  border-bottom: var(--border-hair) solid var(--on-stock);
+  padding-bottom: 8px; margin-bottom: 12px;
 }
 .nav-mobile .close {
-  display: inline-flex; margin-left: auto; padding: 10px;
-  border: var(--border-card) solid var(--on-stock);
-  background: none; color: inherit; cursor: pointer; font-size: 1rem;
+  display: inline-flex; margin-left: auto; padding: 5px 8px;
+  border: var(--border-hair) solid var(--on-stock);
+  background: none; color: inherit; cursor: pointer; font-size: .85rem;
 }
-.nav-mobile ul { display: grid; gap: 14px }
+.nav-mobile ul { display: grid; gap: 8px }
 .nav-mobile .row {
-  display: flex; align-items: center; gap: 14px; padding: 16px;
-  border: var(--border-card) solid var(--edge); box-shadow: var(--shadow-md);
+  display: flex; align-items: center; gap: 11px; padding: 10px 12px;
+  border: var(--border-hair) solid var(--edge); box-shadow: var(--shadow-sm);
   background: var(--stock); color: var(--on-stock);
-  font-family: var(--font-mono); font-size: 1.05rem; font-weight: 700;
+  font-family: var(--font-mono); font-size: .88rem; font-weight: 700;
   text-transform: lowercase; letter-spacing: .02em;
 }
-.nav-mobile .row .nav-ico { font-size: 1.1rem; width: 1.25em; opacity: .82 }
+.nav-mobile .row .nav-ico { font-size: .95rem; width: 1.25em; opacity: .82 }
 .nav-mobile .row.on .nav-ico { opacity: 1 }
 /* the drawer rows already carry their stock, so hover/focus adds the lift
    instead of a fill — the same feedback the desktop pills give */
@@ -940,6 +961,24 @@ main:focus { outline: none }
 @media (max-width: 899px) {
   .controls { gap: 10px }
   .controls .app-btn { height: var(--nav-btn-h); padding: 6px 14px; font-size: .72rem }
+
+  /* INDEX shares the brand's row and sits at the right edge, centred on it,
+     instead of stacking underneath. `.index` is hidden here, so its grid row
+     collapses and the masthead stays a single line.                      */
+  .masthead {
+    grid-template-columns: minmax(0,1fr) auto;
+    grid-template-areas: "brand toggle" "index index";
+    align-items: center;
+    gap: 14px 16px;
+  }
+  .controls { justify-self: end; align-self: center }
+}
+
+/* too narrow for brand + label: the button keeps the hamburger alone */
+@media (max-width: 399px) {
+  .controls .app-btn.trigger span { display: none }
+  .controls .app-btn.trigger { padding: 6px 10px }
+  .controls .app-btn.trigger i { font-size: .9rem }
 }
 
 /* The equal-height rule above sets `display: inline-flex` on
