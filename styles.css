@@ -62,6 +62,7 @@
      near-black: a single text colour across seven accents is what
      makes them read as one family.                                */
   --tint-cream:   #181A20;   /* the neutral surface: chrome + About */
+  --tint-slate:   #21242B;   /* one step up: lifts a band off the surface */
   --tint-teal:    #4ECEC0;
   --tint-cobalt:  #7D9BF2;
   --tint-yellow:  #E0C651;
@@ -71,6 +72,7 @@
   --tint-orange:  #E19455;
 
   --deep-cream:   #181A20;
+  --deep-slate:   #21242B;
   --deep-teal:    #0F2622;
   --deep-cobalt:  #151B31;
   --deep-yellow:  #292411;
@@ -80,6 +82,7 @@
   --deep-orange:  #2A1D12;
 
   --on-cream:   #E9E7E2;
+  --on-slate:   #E9E7E2;
   --on-teal:    #0C0D11;
   --on-cobalt:  #0C0D11;
   --on-yellow:  #0C0D11;
@@ -88,7 +91,8 @@
   --on-magenta: #0C0D11;
   --on-orange:  #0C0D11;
 
-  --on-deep-cream:   #E9E7E2;  --on-deep-teal:    #D4EEEA;
+  --on-deep-cream:   #E9E7E2;  --on-deep-slate:   #E9E7E2;
+  --on-deep-teal:    #D4EEEA;
   --on-deep-cobalt:  #DCE3F8;  --on-deep-yellow:  #EFE7D0;
   --on-deep-lime:    #E1EFD2;  --on-deep-violet:  #E7DDF5;
   --on-deep-magenta: #F2DCE6;  --on-deep-orange:  #F2E3D2;
@@ -124,6 +128,7 @@
    A stock is a coloured paper. It rebinds four variables and
    every component paints with them, never with a named colour. */
 .stock-cream  { --stock:var(--tint-cream);  --on-stock:var(--on-cream);  --deep:var(--deep-cream);  --on-deep:var(--on-deep-cream) }
+.stock-slate  { --stock:var(--tint-slate);  --on-stock:var(--on-slate);  --deep:var(--deep-slate);  --on-deep:var(--on-deep-slate) }
 .stock-yellow { --stock:var(--tint-yellow); --on-stock:var(--on-yellow); --deep:var(--deep-yellow); --on-deep:var(--on-deep-yellow) }
 .stock-magenta{ --stock:var(--tint-magenta);--on-stock:var(--on-magenta);--deep:var(--deep-magenta);--on-deep:var(--on-deep-magenta) }
 .stock-teal   { --stock:var(--tint-teal);   --on-stock:var(--on-teal);   --deep:var(--deep-teal);   --on-deep:var(--on-deep-teal) }
