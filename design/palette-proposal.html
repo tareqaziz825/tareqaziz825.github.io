@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Palette Review — tareqaziz825</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&family=Oxanium:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── Layout concept: a studio spec sheet. Neutral graphite chrome so no
+      proposal is flattered by the page around it; every colour on screen
+      belongs to a palette being judged, never to the document itself. ── */
+:root {
+  --doc-ground:  #0d0e11;
+  --doc-surface: #15171b;
+  --doc-raised:  #1c1f25;
+  --doc-ink:     #e8e9ec;
+  --doc-soft:    #9aa0aa;
+  --doc-faint:   #6b717b;
+  --doc-rule:    #262a31;
+  --doc-mark:    #d8dde6;
+
+  --font-display: 'Oxanium', system-ui, sans-serif;
+  --font-body:    'Outfit', system-ui, -apple-system, sans-serif;
+  --font-mono:    'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+
+  --step--1: .76rem;
+  --step-0:  1rem;
+  --step-1:  1.32rem;
+  --step-2:  1.85rem;
+  --step-3:  2.6rem;
+  --step-4:  clamp(2.4rem, 6vw, 4rem);
+
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100% }
+
+body {
+  background: var(--doc-ground);
+  color: var(--doc-ink);
+  font-family: var(--font-body);
+  font-size: var(--step-0);
+  line-height: 1.6;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100% }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding-left: max(20px, env(safe-area-inset-left, 0px));
+  padding-right: max(20px, env(safe-area-inset-right, 0px));
+}
+
+/* ─────────────────────────────── masthead ── */
+.doc-head { padding-block: 72px 44px; border-bottom: 1px solid var(--doc-rule) }
+.kicker {
+  font-family: var(--font-mono); font-size: var(--step--1);
+  letter-spacing: .18em; text-transform: uppercase; color: var(--doc-faint);
+  display: flex; flex-wrap: wrap; gap: 6px 14px; margin-bottom: 22px;
+}
+.kicker b { color: var(--doc-soft); font-weight: 500 }
+h1 {
+  font-family: var(--font-display); font-size: var(--step-4); font-weight: 800;
+  line-height: 1.02; letter-spacing: -.02em; text-wrap: balance; margin-bottom: 18px;
+}
+.lede { font-size: var(--step-1); line-height: 1.5; color: var(--doc-soft); max-width: 62ch; font-weight: 300 }
+.lede strong { color: var(--doc-ink); font-weight: 500 }
+
+.facts {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1px; margin-top: 38px; background: var(--doc-rule);
+  border: 1px solid var(--doc-rule);
+}
+.fact { background: var(--doc-ground); padding: 14px 16px }
+.fact dt {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--doc-faint); margin-bottom: 5px;
+}
+.fact dd { font-size: .92rem; color: var(--doc-ink); font-weight: 400 }
+
+/* ─────────────────────────────── sections ── */
+section { padding-block: 64px; border-bottom: 1px solid var(--doc-rule) }
+.sec-head { display: flex; align-items: baseline; gap: 16px; margin-bottom: 10px; flex-wrap: wrap }
+.sec-num {
+  font-family: var(--font-mono); font-size: var(--step--1); font-weight: 600;
+  letter-spacing: .12em; color: var(--doc-faint);
+}
+h2 {
+  font-family: var(--font-display); font-size: var(--step-2); font-weight: 700;
+  letter-spacing: -.015em; line-height: 1.12; text-wrap: balance;
+}
+h3 {
+  font-family: var(--font-display); font-size: var(--step-1); font-weight: 600;
+  letter-spacing: -.01em; margin-bottom: 12px;
+}
+.sec-sub { color: var(--doc-soft); max-width: 68ch; margin-bottom: 34px }
+p + p { margin-top: 14px }
+.prose { max-width: 68ch; color: var(--doc-soft) }
+.prose strong { color: var(--doc-ink); font-weight: 500 }
+code {
+  font-family: var(--font-mono); font-size: .86em;
+  background: var(--doc-raised); padding: 1px 6px; color: var(--doc-mark);
+}
+
+/* ─────────────────────────────── token legend ── */
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; margin-top: 8px }
+.legend div { border-left: 2px solid var(--doc-rule); padding-left: 14px }
+.legend dt { font-family: var(--font-mono); font-size: .8rem; color: var(--doc-mark); margin-bottom: 4px }
+.legend dd { font-size: .88rem; color: var(--doc-soft) }
+
+/* ─────────────────────────────── palette block ── */
+.pal { margin-top: 8px }
+.pal-head {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 20px; flex-wrap: wrap; margin-bottom: 8px;
+}
+.pal-tag {
+  font-family: var(--font-mono); font-size: .66rem; letter-spacing: .15em;
+  text-transform: uppercase; padding: 5px 11px; border: 1px solid currentColor;
+  white-space: nowrap;
+}
+.tag-now  { color: #8e94a0 }
+.tag-prop { color: #7fb6a8 }
+
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(118px, 1fr)); gap: 1px; background: var(--doc-rule); border: 1px solid var(--doc-rule); margin: 26px 0 }
+.chip { padding: 0; display: flex; flex-direction: column }
+.chip-fill { height: 72px; display: block }
+.chip-meta { background: var(--doc-ground); padding: 9px 11px 11px; display: flex; flex-direction: column; gap: 2px }
+.chip-name { font-size: .76rem; color: var(--doc-soft); line-height: 1.3 }
+.chip-hex {
+  font-family: var(--font-mono); font-size: .74rem; font-weight: 500;
+  color: var(--doc-mark); text-transform: uppercase; letter-spacing: .02em;
+}
+
+/* accent table */
+.tbl-scroll { overflow-x: auto; margin: 22px 0 }
+table { border-collapse: collapse; width: 100%; min-width: 620px; font-size: .84rem }
+th, td { text-align: left; padding: 10px 12px; border-bottom: 1px solid var(--doc-rule) }
+thead th {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--doc-faint); font-weight: 500;
+  border-bottom: 1px solid var(--doc-rule); white-space: nowrap;
+}
+tbody tr:last-child td { border-bottom: none }
+td.page { color: var(--doc-ink); font-weight: 400; white-space: nowrap }
+td.hex { font-family: var(--font-mono); font-size: .78rem; color: var(--doc-soft); text-transform: uppercase }
+.sw { display: inline-block; width: 13px; height: 13px; margin-right: 8px; vertical-align: -2px; border: 1px solid rgb(255 255 255 / .22) }
+.ratio { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: .78rem; white-space: nowrap }
+.pass { color: #8fc9a4 }
+.ok   { color: #cbbd77 }
+.na   { color: var(--doc-faint) }
+
+/* ─────────────────────────────── live preview ── */
+.pv-label {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .15em;
+  text-transform: uppercase; color: var(--doc-faint); margin: 34px 0 12px;
+  display: flex; align-items: center; gap: 12px;
+}
+.pv-label::after { content: ""; flex: 1; height: 1px; background: var(--doc-rule) }
+
+.pv {
+  background: var(--pv-ground); padding: 18px; display: grid; gap: var(--pv-gap, 16px);
+  border: 1px solid var(--doc-rule); overflow: hidden;
+}
+.pv-bar, .pv-hero, .pv-card, .pv-foot {
+  background: var(--pv-surface); color: var(--pv-ink);
+  border: var(--pv-bw) solid var(--pv-edge); box-shadow: var(--pv-shadow);
+}
+.pv-bar { padding: 13px 15px; display: flex; flex-wrap: wrap; gap: 11px 14px; align-items: center }
+.pv-brand {
+  font-family: var(--font-mono); font-weight: 700; font-size: .95rem;
+  letter-spacing: -.02em; color: var(--pv-ink); margin-right: auto;
+}
+.pv-pill {
+  font-family: var(--font-mono); font-size: .6rem; font-weight: 600; letter-spacing: .07em;
+  padding: 4px 9px; border: 1px solid var(--pv-edge); color: var(--pv-ink);
+  background: var(--pv-ground); display: inline-flex; align-items: center; gap: 6px;
+}
+.pv-dot { width: 7px; height: 7px; flex: 0 0 auto }
+
+.pv-hero { background: var(--pv-hero-bg); color: var(--pv-hero-ink); padding: 26px 20px 24px }
+.pv-eyebrow {
+  font-family: var(--font-mono); font-size: .58rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--pv-hero-accent); margin-bottom: 10px;
+}
+.pv-h1 {
+  font-family: var(--font-display); font-size: clamp(1.5rem, 4.6vw, 2.1rem); font-weight: 800;
+  line-height: 1.04; letter-spacing: -.02em; color: var(--pv-hero-ink);
+}
+.pv-sub { font-size: .82rem; color: var(--pv-hero-ink); opacity: .72; margin-top: 9px }
+.pv-cta {
+  display: inline-block; margin-top: 16px; font-family: var(--font-mono);
+  font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  padding: 8px 14px; background: var(--pv-hero-accent); color: var(--pv-hero-bg);
+}
+
+.pv-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--pv-gap, 16px) }
+.pv-card { padding: 0; overflow: hidden }
+.pv-card-head {
+  padding: 9px 12px; font-family: var(--font-mono); font-size: .62rem;
+  font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+  background: var(--c-tint); color: var(--c-on-tint);
+}
+.pv-card-body { padding: 11px 12px; background: var(--c-deep); color: var(--c-on-deep); font-size: .76rem; line-height: 1.5 }
+.pv-foot {
+  padding: 13px 15px; text-align: center; font-family: var(--font-mono);
+  font-size: .64rem; color: var(--pv-ink); opacity: .82;
+  background: var(--pv-foot-bg);
+}
+
+/* ─────────────────────────────── verdict ── */
+.verdict { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 1px; background: var(--doc-rule); border: 1px solid var(--doc-rule); margin-top: 28px }
+.verdict > div { background: var(--doc-ground); padding: 18px 18px 20px }
+.verdict h4 {
+  font-family: var(--font-mono); font-size: .64rem; letter-spacing: .14em;
+  text-transform: uppercase; color: var(--doc-faint); font-weight: 500; margin-bottom: 10px;
+}
+.verdict p { font-size: .86rem; color: var(--doc-soft) }
+.verdict .good { color: #8fc9a4 }
+.verdict .bad { color: #cf9a93 }
+
+/* ─────────────────────────────── recommendation ── */
+.rec { border: 1px solid var(--doc-rule); margin-top: 26px }
+.rec-head {
+  padding: 16px 20px; background: var(--doc-surface); border-bottom: 1px solid var(--doc-rule);
+  display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+}
+.rec-head h3 { margin: 0; font-size: 1.1rem }
+.rec-body { padding: 20px }
+.rec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin: 18px 0 4px }
+.rec-cell { border: 1px solid var(--doc-rule) }
+.rec-cell .band { height: 54px; display: flex; align-items: center; justify-content: center; font-family: var(--font-mono); font-size: .64rem; letter-spacing: .1em; text-transform: uppercase }
+.rec-cell .cap { padding: 10px 12px; font-size: .78rem; color: var(--doc-soft); border-top: 1px solid var(--doc-rule) }
+.rec-cell .cap b { display: block; font-family: var(--font-mono); font-size: .76rem; color: var(--doc-mark); font-weight: 500; text-transform: uppercase }
+
+ul.reasons { list-style: none; display: grid; gap: 11px; margin-top: 16px; max-width: 70ch }
+ul.reasons li { padding-left: 20px; position: relative; color: var(--doc-soft); font-size: .92rem }
+ul.reasons li::before {
+  content: "—"; position: absolute; left: 0; color: var(--doc-faint);
+  font-family: var(--font-mono);
+}
+ul.reasons b { color: var(--doc-ink); font-weight: 500 }
+
+.aside {
+  border-left: 2px solid var(--doc-rule); padding: 2px 0 2px 16px;
+  margin-top: 20px; max-width: 68ch; color: var(--doc-faint); font-size: .88rem;
+}
+
+footer.doc-foot { padding-block: 48px 72px; color: var(--doc-faint); font-size: .82rem }
+footer.doc-foot p + p { margin-top: 8px }
+
+@media (max-width: 560px) {
+  .doc-head { padding-block: 48px 34px }
+  section { padding-block: 46px }
+  .chip-fill { height: 58px }
+}
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto } }
+</style>
+</head>
+
+<body>
+
+<div class="wrap">
+
+  <header class="doc-head">
+    <div class="kicker">
+      <span>Design review</span>
+      <span>·</span>
+      <span><b>tareqaziz825.github.io</b></span>
+      <span>·</span>
+      <span>26 Oct 2026</span>
+    </div>
+    <h1>Palette Review</h1>
+    <p class="lede">
+      An audit of the colour system currently running on the portfolio, two alternative
+      directions built on the same token structure, and a recommended colour for the
+      <strong>header, footer and hero</strong>. All three palettes keep the six-colour
+      page coding and are checked against WCAG contrast.
+    </p>
+
+    <dl class="facts">
+      <div class="fact"><dt>Audience</dt><dd>ML &amp; AI employers</dd></div>
+      <div class="fact"><dt>Theme</dt><dd>Dark only</dd></div>
+      <div class="fact"><dt>Page coding</dt><dd>Six accent colours, retained</dd></div>
+      <div class="fact"><dt>Contrast target</dt><dd>WCAG AA, body text AAA</dd></div>
+    </dl>
+  </header>
+
+  <!-- ══════════════════════ how to read ══════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">00</span><h2>How the system works</h2></div>
+    <p class="sec-sub">
+      Your stylesheet doesn't use named colours in components. It uses a "stock" model —
+      a panel declares which coloured paper it is printed on, and four tokens rebind.
+      Every palette below is expressed in that same vocabulary, so swapping one is a
+      token change, not a rewrite.
+    </p>
+    <dl class="legend">
+      <div><dt>--ground</dt><dd>The page behind everything. Nothing is printed directly on it.</dd></div>
+      <div><dt>--stock / tint</dt><dd>The vivid version of a colour. Card heads, badges, active nav.</dd></div>
+      <div><dt>--deep</dt><dd>The muted version. Used for full-page sheets, so the vivid cards inside still read as the loudest thing.</dd></div>
+      <div><dt>--on-stock / --on-deep</dt><dd>The text colour that belongs to each. Never chosen per component.</dd></div>
+    </dl>
+  </section>
+
+  <!-- ══════════════════════ 01 · current ══════════════════════ -->
+  <section>
+    <div class="pal">
+      <div class="pal-head">
+        <div>
+          <div class="sec-head"><span class="sec-num">01</span><h2>Current — Form NV</h2></div>
+          <p class="sec-sub" style="margin-bottom:0">
+            Neo-brutalist. Near-black ground, cream ink, 6px borders, hard offset shadows,
+            and six saturated page colours derived from a neon base palette.
+          </p>
+        </div>
+        <span class="pal-tag tag-now">In use</span>
+      </div>
+
+      <div class="strip">
+        <div class="chip"><span class="chip-fill" style="background:#121216"></span><span class="chip-meta"><span class="chip-name">Ground</span><span class="chip-hex">#121216</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#1c1c22"></span><span class="chip-meta"><span class="chip-name">Surface</span><span class="chip-hex">#1C1C22</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#ebe7dc"></span><span class="chip-meta"><span class="chip-name">Ink</span><span class="chip-hex">#EBE7DC</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#b7b2a6"></span><span class="chip-meta"><span class="chip-name">Ink soft</span><span class="chip-hex">#B7B2A6</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#cfcabb"></span><span class="chip-meta"><span class="chip-name">Edge</span><span class="chip-hex">#CFCABB</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#ff4d9e"></span><span class="chip-meta"><span class="chip-name">Selection</span><span class="chip-hex">#FF4D9E</span></span></div>
+      </div>
+
+      <div class="tbl-scroll">
+        <table>
+          <thead>
+            <tr><th>Page</th><th>Tint</th><th>Deep (sheet)</th><th>On tint</th><th>On deep</th><th>Tint / on</th><th>Deep / on</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="page">About</td><td class="hex"><i class="sw" style="background:#1c1c22"></i>#1C1C22</td><td class="hex">#1C1C22</td><td class="hex">#EBE7DC</td><td class="hex">#EBE7DC</td><td class="ratio na">neutral</td><td class="ratio pass">13.72</td></tr>
+            <tr><td class="page">Projects</td><td class="hex"><i class="sw" style="background:#7a93e0"></i>#7A93E0</td><td class="hex">#171D3A</td><td class="hex">#0A0D18</td><td class="hex">#DDE3F7</td><td class="ratio ok">6.53</td><td class="ratio pass">12.88</td></tr>
+            <tr><td class="page">Education</td><td class="hex"><i class="sw" style="background:#d9c400"></i>#D9C400</td><td class="hex">#2E2714</td><td class="hex">#15130A</td><td class="hex">#EFE8D2</td><td class="ratio pass">10.49</td><td class="ratio pass">12.10</td></tr>
+            <tr><td class="page">Skills</td><td class="hex"><i class="sw" style="background:#9ccf33"></i>#9CCF33</td><td class="hex">#1D2A14</td><td class="hex">#111806</td><td class="hex">#E2EFD4</td><td class="ratio pass">9.84</td><td class="ratio pass">12.58</td></tr>
+            <tr><td class="page">Experience</td><td class="hex"><i class="sw" style="background:#a481d9"></i>#A481D9</td><td class="hex">#241A35</td><td class="hex">#120D1B</td><td class="hex">#E8DEF5</td><td class="ratio ok">6.11</td><td class="ratio pass">12.71</td></tr>
+            <tr><td class="page">Blog</td><td class="hex"><i class="sw" style="background:#e0568f"></i>#E0568F</td><td class="hex">#2F1623</td><td class="hex">#16090F</td><td class="hex">#F2DDE6</td><td class="ratio ok">5.46</td><td class="ratio pass">12.91</td></tr>
+            <tr><td class="page">Teal <span style="color:var(--doc-faint)">— defined, unused</span></td><td class="hex"><i class="sw" style="background:#38c9bb"></i>#38C9BB</td><td class="hex">#122A28</td><td class="hex">#08100F</td><td class="hex">#D8EFEC</td><td class="ratio pass">9.38</td><td class="ratio pass">12.60</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pv-label">Applied</div>
+      <div class="pv" style="
+        --pv-ground:#121216; --pv-surface:#1c1c22; --pv-ink:#ebe7dc; --pv-edge:#cfcabb;
+        --pv-bw:3px; --pv-shadow:6px 6px 0 #000; --pv-gap:18px;
+        --pv-hero-bg:#1c1c22; --pv-hero-ink:#ebe7dc; --pv-hero-accent:#ebe7dc;
+        --pv-foot-bg:#1c1c22;">
+        <div class="pv-bar">
+          <span class="pv-brand">tareqaziz825</span>
+          <span class="pv-pill"><i class="pv-dot" style="background:#7a93e0"></i>projects</span>
+          <span class="pv-pill"><i class="pv-dot" style="background:#d9c400"></i>education</span>
+          <span class="pv-pill"><i class="pv-dot" style="background:#9ccf33"></i>skills</span>
+        </div>
+        <div class="pv-hero">
+          <div class="pv-eyebrow">Machine learning &amp; deep learning</div>
+          <div class="pv-h1">MOHAMMOD<br>TAREQ AZIZ</div>
+          <div class="pv-sub">ICT Assistant, ITN-BUET</div>
+          <span class="pv-cta">Request resume</span>
+        </div>
+        <div class="pv-row">
+          <div class="pv-card" style="--c-tint:#7a93e0; --c-on-tint:#0a0d18; --c-deep:#171d3a; --c-on-deep:#dde3f7">
+            <div class="pv-card-head">Projects</div>
+            <div class="pv-card-body">Vision transformer benchmark</div>
+          </div>
+          <div class="pv-card" style="--c-tint:#9ccf33; --c-on-tint:#111806; --c-deep:#1d2a14; --c-on-deep:#e2efd4">
+            <div class="pv-card-head">Skills</div>
+            <div class="pv-card-body">PyTorch · OpenCV · scikit-learn</div>
+          </div>
+        </div>
+        <div class="pv-foot">mohammodtareqaziz@gmail.com · © 2026</div>
+      </div>
+
+      <div class="verdict">
+        <div>
+          <h4><span class="good">Working</span></h4>
+          <p>The stock model is genuinely good architecture — colour lives in four tokens, not scattered through components. Contrast is strong everywhere; nothing fails AA. The six-colour coding makes the site memorable.</p>
+        </div>
+        <div>
+          <h4><span class="bad">Against you</span></h4>
+          <p>The accents come from a neon base (<code>#ff0080</code>, <code>#0033ff</code>, <code>#aaff00</code>) and sit at uneven lightness, so Blog shouts and Projects mutters. To an ML hiring manager the overall read is <em>student project</em> rather than <em>practitioner</em>.</p>
+        </div>
+        <div>
+          <h4>Unused</h4>
+          <p>Teal is fully defined in the token set and assigned to no page. The hero, header and footer all use the same neutral stock, so the landing page has no identity of its own.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 02 · Instrument ══════════════════════ -->
+  <section>
+    <div class="pal">
+      <div class="pal-head">
+        <div>
+          <div class="sec-head"><span class="sec-num">02</span><h2>Proposal A — Instrument</h2></div>
+          <p class="sec-sub" style="margin-bottom:0">
+            Keeps the brutalist structure, disciplines the colour. Every accent is pulled
+            to the same perceived lightness and chroma, so the six pages read as one family
+            instead of six moods. Neutrals shift slightly cool — the register of measurement
+            equipment rather than paper forms.
+          </p>
+        </div>
+        <span class="pal-tag tag-prop">Proposal</span>
+      </div>
+
+      <div class="strip">
+        <div class="chip"><span class="chip-fill" style="background:#0E0F13"></span><span class="chip-meta"><span class="chip-name">Ground</span><span class="chip-hex">#0E0F13</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#181A20"></span><span class="chip-meta"><span class="chip-name">Surface</span><span class="chip-hex">#181A20</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#21242B"></span><span class="chip-meta"><span class="chip-name">Raised</span><span class="chip-hex">#21242B</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#E9E7E2"></span><span class="chip-meta"><span class="chip-name">Ink</span><span class="chip-hex">#E9E7E2</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#A9A79F"></span><span class="chip-meta"><span class="chip-name">Ink soft</span><span class="chip-hex">#A9A79F</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#C8CBD3"></span><span class="chip-meta"><span class="chip-name">Edge</span><span class="chip-hex">#C8CBD3</span></span></div>
+      </div>
+
+      <div class="tbl-scroll">
+        <table>
+          <thead>
+            <tr><th>Page</th><th>Tint</th><th>Deep (sheet)</th><th>On tint</th><th>On deep</th><th>Tint / on</th><th>Deep / on</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="page">About</td><td class="hex"><i class="sw" style="background:#181A20"></i>#181A20</td><td class="hex">#0F2622 <span style="color:var(--doc-faint)">(see §04)</span></td><td class="hex">#E9E7E2</td><td class="hex">#D4EEEA</td><td class="ratio na">neutral</td><td class="ratio pass">13.04</td></tr>
+            <tr><td class="page">Projects</td><td class="hex"><i class="sw" style="background:#7D9BF2"></i>#7D9BF2</td><td class="hex">#151B31</td><td class="hex">#0C0D11</td><td class="hex">#DCE3F8</td><td class="ratio pass">7.25</td><td class="ratio pass">13.29</td></tr>
+            <tr><td class="page">Education</td><td class="hex"><i class="sw" style="background:#E0C651"></i>#E0C651</td><td class="hex">#292411</td><td class="hex">#0C0D11</td><td class="hex">#EFE7D0</td><td class="ratio pass">11.44</td><td class="ratio pass">12.56</td></tr>
+            <tr><td class="page">Skills</td><td class="hex"><i class="sw" style="background:#A4CC5B"></i>#A4CC5B</td><td class="hex">#1B2613</td><td class="hex">#0C0D11</td><td class="hex">#E1EFD2</td><td class="ratio pass">10.51</td><td class="ratio pass">13.11</td></tr>
+            <tr><td class="page">Experience</td><td class="hex"><i class="sw" style="background:#AE8AE0"></i>#AE8AE0</td><td class="hex">#211833</td><td class="hex">#0C0D11</td><td class="hex">#E7DDF5</td><td class="ratio ok">6.95</td><td class="ratio pass">12.92</td></tr>
+            <tr><td class="page">Blog</td><td class="hex"><i class="sw" style="background:#E86CA1"></i>#E86CA1</td><td class="hex">#2C1522</td><td class="hex">#0C0D11</td><td class="hex">#F2DCE6</td><td class="ratio ok">6.56</td><td class="ratio pass">13.06</td></tr>
+            <tr><td class="page">Teal <span style="color:var(--doc-faint)">— hero</span></td><td class="hex"><i class="sw" style="background:#4ECEC0"></i>#4ECEC0</td><td class="hex">#0F2622</td><td class="hex">#0C0D11</td><td class="hex">#D4EEEA</td><td class="ratio pass">10.09</td><td class="ratio pass">13.04</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pv-label">Applied</div>
+      <div class="pv" style="
+        --pv-ground:#0E0F13; --pv-surface:#181A20; --pv-ink:#E9E7E2; --pv-edge:#C8CBD3;
+        --pv-bw:3px; --pv-shadow:6px 6px 0 #000; --pv-gap:18px;
+        --pv-hero-bg:#0F2622; --pv-hero-ink:#D4EEEA; --pv-hero-accent:#4ECEC0;
+        --pv-foot-bg:#0E0F13;">
+        <div class="pv-bar">
+          <span class="pv-brand">tareqaziz825</span>
+          <span class="pv-pill"><i class="pv-dot" style="background:#7D9BF2"></i>projects</span>
+          <span class="pv-pill"><i class="pv-dot" style="background:#E0C651"></i>education</span>
+          <span class="pv-pill"><i class="pv-dot" style="background:#A4CC5B"></i>skills</span>
+        </div>
+        <div class="pv-hero">
+          <div class="pv-eyebrow">Machine learning &amp; deep learning</div>
+          <div class="pv-h1">MOHAMMOD<br>TAREQ AZIZ</div>
+          <div class="pv-sub">ICT Assistant, ITN-BUET</div>
+          <span class="pv-cta">Request resume</span>
+        </div>
+        <div class="pv-row">
+          <div class="pv-card" style="--c-tint:#7D9BF2; --c-on-tint:#0C0D11; --c-deep:#151B31; --c-on-deep:#DCE3F8">
+            <div class="pv-card-head">Projects</div>
+            <div class="pv-card-body">Vision transformer benchmark</div>
+          </div>
+          <div class="pv-card" style="--c-tint:#A4CC5B; --c-on-tint:#0C0D11; --c-deep:#1B2613; --c-on-deep:#E1EFD2">
+            <div class="pv-card-head">Skills</div>
+            <div class="pv-card-body">PyTorch · OpenCV · scikit-learn</div>
+          </div>
+        </div>
+        <div class="pv-foot">mohammodtareqaziz@gmail.com · © 2026</div>
+      </div>
+
+      <div class="verdict">
+        <div><h4>Keeps</h4><p>The structure you already built — thick edges, hard shadows, flat colour, mono labels. A visitor who saw the old site still recognises this one.</p></div>
+        <div><h4>Changes</h4><p>Accents are tuned to a narrow lightness band, so no page dominates. Minimum accent contrast rises from 5.46 to 6.56. Neutrals go cool, which separates the chrome from the warm accents.</p></div>
+        <div><h4>Risk</h4><p>Still a strong, opinionated look. If a reviewer dislikes brutalism, this does not rescue you — it executes the style properly rather than abandoning it.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 03 · Archive ══════════════════════ -->
+  <section>
+    <div class="pal">
+      <div class="pal-head">
+        <div>
+          <div class="sec-head"><span class="sec-num">03</span><h2>Proposal B — Archive</h2></div>
+          <p class="sec-sub" style="margin-bottom:0">
+            The restrained direction. Hard edges give way to quiet hairlines and surface
+            elevation; accents drop in saturation and stop flooding whole pages, acting as
+            markers instead. The six-colour coding survives, but as a filing system rather
+            than a paint job.
+          </p>
+        </div>
+        <span class="pal-tag tag-prop">Proposal</span>
+      </div>
+
+      <div class="strip">
+        <div class="chip"><span class="chip-fill" style="background:#0F1114"></span><span class="chip-meta"><span class="chip-name">Ground</span><span class="chip-hex">#0F1114</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#15181C"></span><span class="chip-meta"><span class="chip-name">Surface</span><span class="chip-hex">#15181C</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#1C2026"></span><span class="chip-meta"><span class="chip-name">Raised</span><span class="chip-hex">#1C2026</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#E6E8EB"></span><span class="chip-meta"><span class="chip-name">Ink</span><span class="chip-hex">#E6E8EB</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#9AA0A8"></span><span class="chip-meta"><span class="chip-name">Ink soft</span><span class="chip-hex">#9AA0A8</span></span></div>
+        <div class="chip"><span class="chip-fill" style="background:#3C434D"></span><span class="chip-meta"><span class="chip-name">Edge</span><span class="chip-hex">#3C434D</span></span></div>
+      </div>
+
+      <div class="tbl-scroll">
+        <table>
+          <thead>
+            <tr><th>Page</th><th>Tint</th><th>Deep (sheet)</th><th>On tint</th><th>On deep</th><th>Tint / on</th><th>Deep / on</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="page">About</td><td class="hex"><i class="sw" style="background:#15181C"></i>#15181C</td><td class="hex">#12201F <span style="color:var(--doc-faint)">(see §04)</span></td><td class="hex">#E6E8EB</td><td class="hex">#D8E9E6</td><td class="ratio na">neutral</td><td class="ratio pass">13.35</td></tr>
+            <tr><td class="page">Projects</td><td class="hex"><i class="sw" style="background:#7E9CC4"></i>#7E9CC4</td><td class="hex">#141922</td><td class="hex">#0F1114</td><td class="hex">#DCE4EE</td><td class="ratio ok">6.70</td><td class="ratio pass">13.74</td></tr>
+            <tr><td class="page">Education</td><td class="hex"><i class="sw" style="background:#C5A55F"></i>#C5A55F</td><td class="hex">#211D14</td><td class="hex">#0F1114</td><td class="hex">#EDE4D2</td><td class="ratio pass">8.03</td><td class="ratio pass">13.30</td></tr>
+            <tr><td class="page">Skills</td><td class="hex"><i class="sw" style="background:#8CAE7F"></i>#8CAE7F</td><td class="hex">#171E16</td><td class="hex">#0F1114</td><td class="hex">#DFEAD9</td><td class="ratio pass">7.63</td><td class="ratio pass">13.71</td></tr>
+            <tr><td class="page">Experience</td><td class="hex"><i class="sw" style="background:#9D8FBE"></i>#9D8FBE</td><td class="hex">#1B1725</td><td class="hex">#0F1114</td><td class="hex">#E4DEEF</td><td class="ratio ok">6.40</td><td class="ratio pass">13.37</td></tr>
+            <tr><td class="page">Blog</td><td class="hex"><i class="sw" style="background:#C2838E"></i>#C2838E</td><td class="hex">#211619</td><td class="hex">#0F1114</td><td class="hex">#EFDDE0</td><td class="ratio ok">6.24</td><td class="ratio pass">13.48</td></tr>
+            <tr><td class="page">Teal <span style="color:var(--doc-faint)">— hero</span></td><td class="hex"><i class="sw" style="background:#6FB0A8"></i>#6FB0A8</td><td class="hex">#12201F</td><td class="hex">#0F1114</td><td class="hex">#D8E9E6</td><td class="ratio pass">7.61</td><td class="ratio pass">13.35</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pv-label">Applied</div>
+      <div class="pv" style="
+        --pv-ground:#0F1114; --pv-surface:#15181C; --pv-ink:#E6E8EB; --pv-edge:#3C434D;
+        --pv-bw:1px; --pv-shadow:none; --pv-gap:14px;
+        --pv-hero-bg:#12201F; --pv-hero-ink:#D8E9E6; --pv-hero-accent:#6FB0A8;
+        --pv-foot-bg:#0F1114;">
+        <div class="pv-bar">
+          <span class="pv-brand">tareqaziz825</span>
+          <span class="pv-pill"><i class="pv-dot" style="background:#7E9CC4"></i>projects</span>
+          <span class="pv-pill"><i class="pv-dot" style="background:#C5A55F"></i>education</span>
+          <span class="pv-pill"><i class="pv-dot" style="background:#8CAE7F"></i>skills</span>
+        </div>
+        <div class="pv-hero">
+          <div class="pv-eyebrow">Machine learning &amp; deep learning</div>
+          <div class="pv-h1">MOHAMMOD<br>TAREQ AZIZ</div>
+          <div class="pv-sub">ICT Assistant, ITN-BUET</div>
+          <span class="pv-cta">Request resume</span>
+        </div>
+        <div class="pv-row">
+          <div class="pv-card" style="--c-tint:#7E9CC4; --c-on-tint:#0F1114; --c-deep:#141922; --c-on-deep:#DCE4EE">
+            <div class="pv-card-head">Projects</div>
+            <div class="pv-card-body">Vision transformer benchmark</div>
+          </div>
+          <div class="pv-card" style="--c-tint:#8CAE7F; --c-on-tint:#0F1114; --c-deep:#171E16; --c-on-deep:#DFEAD9">
+            <div class="pv-card-head">Skills</div>
+            <div class="pv-card-body">PyTorch · OpenCV · scikit-learn</div>
+          </div>
+        </div>
+        <div class="pv-foot">mohammodtareqaziz@gmail.com · © 2026</div>
+      </div>
+
+      <div class="verdict">
+        <div><h4>Keeps</h4><p>Six-page coding, the stock token model, dark-only. Nothing in the HTML changes.</p></div>
+        <div><h4>Changes</h4><p>Borders drop from 6px to 1px and offset shadows disappear, so hierarchy comes from surface steps instead. This is a structural change, not only a colour one — <code>--border-*</code> and <code>--shadow-*</code> move too.</p></div>
+        <div><h4>Risk</h4><p>Safe reads as forgettable. This palette looks like competent product design; it no longer looks like <em>you</em>. Choose it if the portfolio's job is to not get in the way of the work.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 04 · recommendation ══════════════════════ -->
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Header, footer and hero</h2></div>
+    <p class="sec-sub">You asked me to choose. These two decisions apply to whichever palette you pick.</p>
+
+    <div class="rec">
+      <div class="rec-head">
+        <h3>Header &amp; footer — stay neutral</h3>
+      </div>
+      <div class="rec-body">
+        <div class="rec-grid">
+          <div class="rec-cell">
+            <div class="band" style="background:#1c1c22;color:#ebe7dc">Header · Current</div>
+            <div class="cap"><b>#1C1C22</b>surface, unchanged</div>
+          </div>
+          <div class="rec-cell">
+            <div class="band" style="background:#181A20;color:#E9E7E2">Header · Instrument</div>
+            <div class="cap"><b>#181A20</b>surface</div>
+          </div>
+          <div class="rec-cell">
+            <div class="band" style="background:#15181C;color:#E6E8EB">Header · Archive</div>
+            <div class="cap"><b>#15181C</b>surface</div>
+          </div>
+        </div>
+        <div class="rec-grid">
+          <div class="rec-cell">
+            <div class="band" style="background:#121216;color:#b7b2a6">Footer · Current</div>
+            <div class="cap"><b>#121216</b>ground, one step down</div>
+          </div>
+          <div class="rec-cell">
+            <div class="band" style="background:#0E0F13;color:#A9A79F">Footer · Instrument</div>
+            <div class="cap"><b>#0E0F13</b>ground</div>
+          </div>
+          <div class="rec-cell">
+            <div class="band" style="background:#0F1114;color:#9AA0A8">Footer · Archive</div>
+            <div class="cap"><b>#0F1114</b>ground</div>
+          </div>
+        </div>
+
+        <ul class="reasons">
+          <li><b>The chrome must not compete with the page coding.</b> Header and footer appear on all eleven pages, and six of those pages carry a different accent. Colour the chrome and it either fights each page or forces one page's colour to own the whole site. Neutral chrome is what makes the accent mean <em>you are on this page</em>.</li>
+          <li><b>Your header now holds six coloured nav icons.</b> That row is already the colour event in the masthead. A coloured background behind it would halve its legibility.</li>
+          <li><b>One change I do recommend: drop the footer to ground.</b> Right now header and footer are the same value, so the page ends on the same note it opened with. Moving the footer to <code>--ground</code> lets it recede, while the header stays raised and reads as a fixed object. Keep the border so it still closes the page.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="rec">
+      <div class="rec-head">
+        <h3>Hero — teal</h3>
+      </div>
+      <div class="rec-body">
+        <div class="rec-grid">
+          <div class="rec-cell">
+            <div class="band" style="background:#122a28;color:#38c9bb">Hero · Current tokens</div>
+            <div class="cap"><b>#122A28</b>sheet · accent #38C9BB</div>
+          </div>
+          <div class="rec-cell">
+            <div class="band" style="background:#0F2622;color:#4ECEC0">Hero · Instrument</div>
+            <div class="cap"><b>#0F2622</b>sheet · accent #4ECEC0</div>
+          </div>
+          <div class="rec-cell">
+            <div class="band" style="background:#12201F;color:#6FB0A8">Hero · Archive</div>
+            <div class="cap"><b>#12201F</b>sheet · accent #6FB0A8</div>
+          </div>
+        </div>
+
+        <ul class="reasons">
+          <li><b>Teal is already in your token set and no page uses it.</b> Adopting it for the hero costs nothing, steals no section's identity, and finally gives the landing page a colour of its own — right now it shares the neutral stock with the header, footer and Connect panel, so the most important screen on the site is also the blankest.</li>
+          <li><b>It reads as instrumentation.</b> Cyan-teal is the signal colour of oscilloscopes, terminals and plotting libraries. For an ML and computer-vision audience that is the right register — technical rather than corporate.</li>
+          <li><b>It sits opposite cobalt.</b> Projects owns cobalt, and those are your two most-visited pages. Teal and cobalt are far enough apart in hue to be told apart instantly, close enough in temperature that the site still feels like one object.</li>
+          <li><b>Use it narrowly.</b> Deep teal for the hero sheet, the bright tint for the eyebrow label and the <em>Request resume</em> button only. The portrait and the name stay neutral — the accent frames them, it doesn't tint them.</li>
+        </ul>
+
+        <p class="aside">
+          Cobalt was the other candidate, and it is the stronger "trustworthy technical" signal in isolation.
+          I rejected it because Projects already owns it: repeating it on the landing page blurs the one
+          navigational cue the six-colour system exists to provide.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════ 05 · next ══════════════════════ -->
+  <section style="border-bottom:none">
+    <div class="sec-head"><span class="sec-num">05</span><h2>What a switch actually costs</h2></div>
+    <div class="prose">
+      <p>
+        <strong>Instrument</strong> is a token-only change. Every value lives in the
+        <code>:root</code> block of <code>styles.css</code> — around 40 lines. No HTML changes,
+        no component changes.
+      </p>
+      <p>
+        <strong>Archive</strong> is tokens plus geometry: <code>--border-hair</code>,
+        <code>--border-card</code>, <code>--border-slab</code> drop to 1–2px and the three
+        <code>--shadow-*</code> tokens go to <code>none</code> or a soft blur. Still no HTML
+        changes, but the site will look substantially different, and a few spacing values
+        will want revisiting once the heavy borders are gone.
+      </p>
+      <p>
+        <strong>Header, footer and hero</strong> can be applied on their own, to the palette you
+        already have, without committing to either proposal.
+      </p>
+    </div>
+  </section>
+
+  <footer class="doc-foot">
+    <p>Contrast ratios calculated to WCAG 2.1 relative luminance. "Tint / on" is the accent against its own text colour; "Deep / on" is the page sheet against its body text.</p>
+    <p>Prepared for Mohammod Tareq Aziz Justice · 26 October 2026</p>
+  </footer>
+
+</div>
+
+</body>
+
+</html>
