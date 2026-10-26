@@ -380,14 +380,30 @@ main:focus { outline: none }
   border: var(--border-hair) solid var(--ink);
   background: var(--paper); color: var(--ink);
   font-family: var(--font-mono); text-transform: lowercase;
-  transition: box-shadow .2s, transform .2s;
+  transition: box-shadow .2s, transform .2s, background-color .2s, color .2s;
 }
 .part-label { font-size: .7rem; font-weight: 600; letter-spacing: .06em }
 .nav-ico {
   flex: 0 0 auto; width: 1.05em; font-size: .84rem; line-height: 1;
   text-align: center; opacity: .78;
 }
-@media (hover: hover) { .part:hover { box-shadow: var(--shadow-sm); transform: translate(-1px,-1px) } }
+
+/* A hovered pill previews the page it leads to: it paints itself in its own
+   stock, exactly as that page's pill looks once you are there. The active
+   pill is already painted, so hover only lifts it. Both keep the lift so
+   hover still reads as "clickable" and not merely as a colour change. */
+@media (hover: hover) {
+  .part:hover { box-shadow: var(--shadow-sm); transform: translate(-1px,-1px) }
+  .part:hover:not(.on) { background: var(--stock); color: var(--on-stock) }
+  .part:hover .nav-ico { opacity: 1 }
+}
+/* keyboard users get the identical cue, pointer or not */
+.part:focus-visible {
+  background: var(--stock); color: var(--on-stock);
+  box-shadow: var(--shadow-sm); transform: translate(-1px,-1px);
+}
+.part:focus-visible .nav-ico { opacity: 1 }
+
 .part.on { background: var(--stock); color: var(--on-stock); box-shadow: var(--shadow-sm) }
 .part.on .nav-ico { opacity: 1 }
 
@@ -426,6 +442,14 @@ main:focus { outline: none }
 }
 .nav-mobile .row .nav-ico { font-size: 1.1rem; width: 1.25em; opacity: .82 }
 .nav-mobile .row.on .nav-ico { opacity: 1 }
+/* the drawer rows already carry their stock, so hover/focus adds the lift
+   instead of a fill — the same feedback the desktop pills give */
+@media (hover: hover) {
+  .nav-mobile .row:hover { transform: translate(-1px,-1px) }
+  .nav-mobile .row:hover .nav-ico { opacity: 1 }
+}
+.nav-mobile .row:focus-visible { transform: translate(-1px,-1px) }
+.nav-mobile .row:focus-visible .nav-ico { opacity: 1 }
 .nav-mobile .row:active { box-shadow: 0 0 0 var(--edge); translate: var(--press) var(--press) }
 .nav-mobile .go { margin-left: auto }
 
