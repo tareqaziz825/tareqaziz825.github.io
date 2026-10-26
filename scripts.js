@@ -25,6 +25,8 @@
   const mmenu = document.getElementById('mobileNav');
   const mclose= document.getElementById('navClose');
 
+  let openScrollY = 0;
+
   function placeMenu() {
     if (!ham || !mmenu) return;
     const b = ham.getBoundingClientRect();
@@ -47,7 +49,7 @@
     // and pushed the button down, stretching the masthead by exactly 18px
     // every time the index was opened. `is-open` collides with nothing.
     if (ham) { ham.classList.toggle('is-open', open); ham.setAttribute('aria-expanded', String(open)); }
-    if (open) placeMenu();
+    if (open) { openScrollY = window.scrollY; placeMenu(); }
   }
 
   if (ham && mmenu) {
@@ -61,6 +63,27 @@
     window.addEventListener('resize', () => {
       if (mmenu.classList.contains('open')) placeMenu();
     });
+
+    /* A tapped row navigates away. Close the panel first, so the page being
+       left is never stored with the index open: the back/forward cache keeps
+       the DOM exactly as it was, which is why returning to a page used to
+       bring the menu back with it.                                        */
+    mmenu.querySelectorAll('a.row').forEach((a) => {
+      a.addEventListener('click', () => setMenu(false));
+    });
+
+    /* Belt and braces for the cache: pageshow fires on every display of the
+       page, restored or freshly loaded, so the index always starts closed.  */
+    window.addEventListener('pageshow', () => setMenu(false));
+
+    /* Scrolling closes the dropdown instead of letting it drift off with the
+       header. The threshold is there because a phone collapsing its address
+       bar fires a scroll of a few px right after the tap, which would snap
+       the panel shut before it was ever seen.                             */
+    window.addEventListener('scroll', () => {
+      if (!mmenu.classList.contains('open')) return;
+      if (Math.abs(window.scrollY - openScrollY) > 12) setMenu(false);
+    }, { passive: true });
   }
 
   /* ── Intersection Observer for all scroll animations ── */
