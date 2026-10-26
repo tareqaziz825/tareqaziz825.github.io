@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tareqaziz825.github.io/sitemap.xml
