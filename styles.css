@@ -1213,16 +1213,18 @@ main:focus { outline: none }
 /* issuer and date are two rows of the same ledger: label, value, and a
    hairline under the pair that closes the header off from the prose */
 .cert-meta {
-  display: flex; align-items: flex-start; gap: 9px;
+  display: flex; align-items: flex-start; gap: 13px;
   font-family: var(--font-mono); font-size: .78rem; font-weight: 500;
   letter-spacing: .02em; line-height: 1.45; color: var(--on-stock);
 }
 .cert-meta + .cert-meta { margin-top: 6px }
 .cert-meta i { width: 15px; flex: 0 0 auto; margin-top: .2em; opacity: .7 }
 .cert-meta strong { font-weight: 700 }
+/* the pair is ruled off from the prose by one thin ink line, as on the
+   record this page is modelled on */
 .cert-meta.cert-rule {
-  padding-bottom: 10px;
-  border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--on-stock);
 }
 .cert-desc { font-size: .88rem; line-height: 1.6; margin: 14px 0 0; color: var(--on-stock) }
 .cert-verify { margin-top: 16px }
