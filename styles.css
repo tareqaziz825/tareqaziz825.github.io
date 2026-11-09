@@ -1210,20 +1210,21 @@ main:focus { outline: none }
   font-size: 1rem; line-height: 1.2; letter-spacing: -.02em;
 }
 
-/* the issuer is the card's second voice: mono, full width, ruled off */
-.cert-issuer {
-  font-family: var(--font-mono); font-size: .86rem; font-weight: 700;
-  letter-spacing: .01em; line-height: 1.35;
-  margin: 0 0 2px; padding-bottom: 8px; color: var(--on-stock);
+/* issuer and date are two rows of the same ledger: label, value, and a
+   hairline under the pair that closes the header off from the prose */
+.cert-meta {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-family: var(--font-mono); font-size: .78rem; font-weight: 500;
+  letter-spacing: .02em; line-height: 1.45; color: var(--on-stock);
+}
+.cert-meta + .cert-meta { margin-top: 6px }
+.cert-meta i { width: 15px; flex: 0 0 auto; margin-top: .2em; opacity: .7 }
+.cert-meta strong { font-weight: 700 }
+.cert-meta.cert-rule {
+  padding-bottom: 10px;
   border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent);
 }
-.cert-meta {
-  display: flex; align-items: center; gap: 9px; margin-top: 10px;
-  font-family: var(--font-mono); font-size: .72rem; font-weight: 500;
-  letter-spacing: .04em; color: var(--on-stock);
-}
-.cert-meta i { width: 15px; flex: 0 0 auto; opacity: .7 }
-.cert-desc { font-size: .88rem; line-height: 1.6; margin: 12px 0 0; color: var(--on-stock) }
+.cert-desc { font-size: .88rem; line-height: 1.6; margin: 14px 0 0; color: var(--on-stock) }
 .cert-verify { margin-top: 16px }
 
 /* every card in a row ends on the same line, so the verify buttons align */
@@ -1231,6 +1232,8 @@ main:focus { outline: none }
 .cert-grid > .filed > .holder { flex: 1; display: flex; flex-direction: column }
 .cert-grid > .filed > .holder > .cert-card { flex: 1; display: flex; flex-direction: column }
 .cert-grid > .filed > .holder > .cert-card > .app-card-body {
-  flex: 1; display: flex; flex-direction: column; align-items: flex-start;
+  flex: 1; display: flex; flex-direction: column; align-items: stretch;
 }
+/* the rows rule the full width of the card; only the button hugs its label */
+.cert-verify { align-self: flex-start }
 .cert-grid .cert-verify { margin-top: auto }
