@@ -581,7 +581,7 @@ main:focus { outline: none }
   padding: 5px 10px; margin-bottom: 18px;
   border: var(--border-hair) solid var(--on-stock);
   background: var(--on-stock); color: var(--stock);
-  rotate: var(--rot-2);
+  rotate: 0deg;
 }
 .hero-name { font-size: clamp(2rem, 6.4vw, 3.9rem); line-height: .94; margin-bottom: 16px }
 .hero-name-line { display: block; width: fit-content; position: relative }
@@ -591,11 +591,12 @@ main:focus { outline: none }
   font-family: var(--font-mono); font-weight: 700; color: var(--on-stock);
   border-right: 3px solid var(--on-stock); display: inline;
 }
-.hero-actions { display: flex; gap: 10px; flex-wrap: wrap }
+.hero-actions { --btn-h: 44px; display: flex; gap: 10px; flex-wrap: nowrap; align-items: center }
 .btn-hero-outline {
   display: inline-flex; align-items: center; gap: 7px;
   font-family: var(--font-mono); font-size: .72rem; font-weight: 700;
-  text-transform: uppercase; letter-spacing: .08em; padding: 10px 16px;
+  text-transform: uppercase; letter-spacing: .08em;
+  height: var(--btn-h, 44px); padding: 0 16px;
   background: var(--on-stock); color: var(--stock);
   border: var(--border-hair) solid var(--on-stock);
   transition: box-shadow .2s, transform .2s;
@@ -604,6 +605,32 @@ main:focus { outline: none }
   .btn-hero-outline:hover { color: var(--stock); box-shadow: var(--shadow-sm); transform: translate(-1px,-1px) }
 }
 .btn-hero-outline:active { box-shadow: none; transform: translate(var(--press), var(--press)) }
+.btn-hero-outline { flex: 0 1 auto; min-width: 0; white-space: nowrap }
+
+/* square social boxes alongside it — same height, same slab edge */
+.btn-hero-icon {
+  display: inline-flex; align-items: center; justify-content: center;
+  flex: 0 0 auto; width: var(--btn-h, 44px); height: var(--btn-h, 44px);
+  padding: 0; font-size: 1rem; line-height: 1;
+  background: var(--on-stock); color: var(--stock);
+  border: var(--border-hair) solid var(--on-stock);
+  transition: box-shadow .2s, transform .2s, background-color .2s, color .2s, border-color .2s;
+}
+.btn-hero-icon.linkedin { --brand: #0A66C2; --on-brand: #fff }
+.btn-hero-icon.github   { --brand: #24292F; --on-brand: #fff }
+@media (hover: hover) {
+  .btn-hero-icon:hover, .btn-hero-icon:focus-visible {
+    background: var(--brand); color: var(--on-brand); border-color: var(--brand);
+    box-shadow: var(--shadow-sm); transform: translate(-1px,-1px);
+  }
+}
+.btn-hero-icon:active { box-shadow: none; transform: translate(var(--press), var(--press)) }
+
+@media (max-width: 420px) {
+  .hero-actions { --btn-h: 40px; gap: 8px }
+  .btn-hero-outline { padding: 0 11px; font-size: .67rem; letter-spacing: .05em }
+  .btn-hero-icon { font-size: .95rem }
+}
 
 @media (max-width: 900px) {
   .hero-inner.hero-split { grid-template-columns: 1fr; gap: 2.2rem; text-align: left }
@@ -672,8 +699,15 @@ main:focus { outline: none }
   background: var(--on-stock); color: var(--stock);
   rotate: var(--rot-2);
 }
-.tag:nth-child(3n+2), .chip:nth-child(3n+2), .skill-pill:nth-child(3n+2) { rotate: var(--rot-1) }
-.tag:nth-child(3n+3), .chip:nth-child(3n+3), .skill-pill:nth-child(3n+3) { rotate: 0deg }
+.tag:nth-child(3n+2), .chip:nth-child(3n+2) { rotate: var(--rot-1) }
+.tag:nth-child(3n+3), .chip:nth-child(3n+3) { rotate: 0deg }
+/* core-skills pills sit level on one baseline and carry the same glyph
+   the full skills page gives that skill */
+.skill-pill {
+  display: inline-flex; align-items: center; gap: 6px;
+  rotate: 0deg; vertical-align: middle;
+}
+.skill-pill i { font-size: 1.05em; line-height: 1; flex: 0 0 auto }
 @media (max-width: 639px) { .tag, .chip, .skill-pill { rotate: 0deg !important } }
 .tag-list, .pill-cloud { display: flex; flex-wrap: wrap; gap: 5px; margin: 12px 0 0 }
 .btn-sm-outline, .btn-read, .back-btn {
