@@ -383,6 +383,16 @@ main:focus { outline: none }
   transition: box-shadow .2s, transform .2s, background-color .2s, color .2s;
 }
 .part-label { font-size: .7rem; font-weight: 600; letter-spacing: .06em }
+
+/* Seven pills, not six. Between the hamburger breakpoint and the width at
+   which the row is comfortably wide, tighten the rhythm so the index still
+   reads as one line rather than wrapping the masthead onto two.        */
+@media (min-width: 900px) and (max-width: 1100px) {
+  .index ul { gap: 8px }
+  .part { gap: 7px; padding: 6px 10px 6px 8px }
+  .part-label { font-size: .66rem; letter-spacing: .035em }
+  .nav-ico { font-size: .78rem }
+}
 .nav-ico {
   flex: 0 0 auto; width: 1.05em; font-size: .84rem; line-height: 1;
   text-align: center; opacity: .78;
@@ -725,8 +735,8 @@ main:focus { outline: none }
 }
 
 /* education */
-.edu-grid, .skills-grid { display: grid; gap: 36px 26px; grid-template-columns: 1fr }
-@media (min-width: 900px) { .edu-grid, .skills-grid { grid-template-columns: 1fr 1fr } }
+.edu-grid, .skills-grid, .cert-grid { display: grid; gap: 36px 26px; grid-template-columns: 1fr }
+@media (min-width: 900px) { .edu-grid, .skills-grid, .cert-grid { grid-template-columns: 1fr 1fr } }
 .edu-logo { width: 54px; height: 54px; object-fit: contain; margin-bottom: 10px; filter: grayscale(1) contrast(1.1) }
 .edu-degree { font-family: var(--font-display); font-weight: 800; text-transform: uppercase; font-size: 1rem; line-height: 1.15; letter-spacing: -.02em }
 .edu-inst { font-family: var(--font-mono); font-size: .66rem; font-weight: 700; text-transform: uppercase; letter-spacing: .09em; margin-top: 5px }
@@ -1187,3 +1197,40 @@ main:focus { outline: none }
 
 /* a section head that carries a link keeps the two ends apart */
 .sec-head .btn-sm-outline { flex: 0 0 auto }
+
+/* ============================================================ 30 · CERTIFICATIONS
+   One record per credential, filed like every other card: clip, plate,
+   notch. Three rows of two on desktop, a single column on phones. The
+   card carries only what a reader needs to trust it — what it is, who
+   issued it, when, a sentence of context, and a way to check.        */
+.cert-card .app-card-head { display: block }
+.cert-icon { font-size: 1.05rem; margin-bottom: 8px; color: inherit }
+.cert-title {
+  font-family: var(--font-display); font-weight: 800; text-transform: uppercase;
+  font-size: 1rem; line-height: 1.2; letter-spacing: -.02em;
+}
+
+/* the issuer is the card's second voice: mono, full width, ruled off */
+.cert-issuer {
+  font-family: var(--font-mono); font-size: .86rem; font-weight: 700;
+  letter-spacing: .01em; line-height: 1.35;
+  margin: 0 0 2px; padding-bottom: 8px; color: var(--on-stock);
+  border-bottom: 1px solid color-mix(in srgb, var(--on-stock) 20%, transparent);
+}
+.cert-meta {
+  display: flex; align-items: center; gap: 9px; margin-top: 10px;
+  font-family: var(--font-mono); font-size: .72rem; font-weight: 500;
+  letter-spacing: .04em; color: var(--on-stock);
+}
+.cert-meta i { width: 15px; flex: 0 0 auto; opacity: .7 }
+.cert-desc { font-size: .88rem; line-height: 1.6; margin: 12px 0 0; color: var(--on-stock) }
+.cert-verify { margin-top: 16px }
+
+/* every card in a row ends on the same line, so the verify buttons align */
+.cert-grid > .filed { align-self: stretch; display: flex; flex-direction: column }
+.cert-grid > .filed > .holder { flex: 1; display: flex; flex-direction: column }
+.cert-grid > .filed > .holder > .cert-card { flex: 1; display: flex; flex-direction: column }
+.cert-grid > .filed > .holder > .cert-card > .app-card-body {
+  flex: 1; display: flex; flex-direction: column; align-items: flex-start;
+}
+.cert-grid .cert-verify { margin-top: auto }
